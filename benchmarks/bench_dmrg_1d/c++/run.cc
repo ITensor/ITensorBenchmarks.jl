@@ -44,7 +44,7 @@ main()
   {
   int maxdim_first = 20;
   int maxdim_step = 20;
-  int maxdim_last = 200;
+  int maxdim_last = 40;
 
   int nmaxdims = (maxdim_last - maxdim_first) / maxdim_step + 1;
   auto maxdims = std::vector<int>(nmaxdims);

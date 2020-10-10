@@ -25,7 +25,7 @@ function main()
   # Warm up step for compilation
   run(maxdim = 200, nsweeps = 1, outputlevel = 0)
 
-  maxdims = 20:20:200
+  maxdims = 20:20:40
   N = length(maxdims)
   data = zeros(Union{Int, Float64}, N, 2)
   # Run and time
