@@ -6,6 +6,7 @@ println("Using $blas_num_threads BLAS thread")
 
 benchmarks = ["dmrg_1d"]
 
+println()
 println("Benchmarking $benchmarks")
 
 for benchmark in benchmarks

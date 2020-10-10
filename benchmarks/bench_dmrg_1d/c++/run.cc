@@ -60,7 +60,7 @@ main()
     auto time = elapsed.count();
     maxdims[j] = maxLinkDim(psi);
     times[j] = time;
-    println()
+    println();
     println("maxdim = ", maxLinkDim(psi));
     println("Time = ", time);
     maxdim += maxdim_step;
