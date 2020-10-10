@@ -5,12 +5,12 @@ function run(; maxdim::Int,
                nsweeps::Int = 5,
                outputlevel::Int = 1)
   N = 100
-  sites = siteinds("S=1",N)
+  sites = siteinds("S=1", N; conserve_qns = true)
   ampo = AutoMPO()
   for j=1:N-1
-    ampo .+= "Sz",j,"Sz",j+1
-    ampo .+= 0.5,"S+",j,"S-",j+1
-    ampo .+= 0.5,"S-",j,"S+",j+1
+    ampo .+=      "Sz", j, "Sz", j+1
+    ampo .+= 0.5, "S+", j, "S-", j+1
+    ampo .+= 0.5, "S-", j, "S+", j+1
   end
   H = MPO(ampo,sites)
   psi0 = productMPS(sites, n -> isodd(n) ? "↑" : "↓")
@@ -34,7 +34,7 @@ function main()
   # Run and time
   for j in 1:N
     maxdim = maxdims[j]
-    println("Running 1D Heisenberg model with no QNs and maxdim = $maxdim")
+    println("Running 1D Heisenberg model with QNs and maxdim = $maxdim")
     t = @elapsed energy, psi = run(maxdim = maxdim)
     println()
     data[j, 1] = maxlinkdim(psi)

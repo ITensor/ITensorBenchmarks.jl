@@ -1,9 +1,9 @@
 # 1. Put this file in the same folder as your 'driver' code 
 #    (the code containing the 'main' function).
 
-# 2. Edit LIBRARY_DIR to point at the location of your ITensor Library
+# 2. Edit LIBRARY_DIR in itensor_dir.mk to point at the location of your ITensor Library
 #    source folder (this is the folder that has options.mk in it)
-LIBRARY_DIR=$(HOME)/software/itensor
+include ../../itensor_dir.mk
 
 # 3. If your 'main' function is in a file called 'myappname.cc', then
 #    set APP to 'myappname'. Running 'make' will compile the app.

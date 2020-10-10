@@ -4,7 +4,9 @@ blas_num_threads = parse(Int, ARGS[1])
 
 println("Using $blas_num_threads BLAS thread")
 
-benchmarks = ["dmrg_1d"]
+benchmarks = ["dmrg_1d",
+              "dmrg_1d_qns",
+              "dmrg_2d_qns"]
 
 println()
 println("Benchmarking $benchmarks")
