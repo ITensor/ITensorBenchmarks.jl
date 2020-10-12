@@ -2,8 +2,8 @@ using ITensors
 using DelimitedFiles
 
 function run(; maxdim::Int,
-               nsweeps::Int = 5,
-               outputlevel::Int = 1)
+               nsweeps::Int,
+               outputlevel::Int)
   N = 100
   sites = siteinds("S=1", N; conserve_qns = true)
   ampo = AutoMPO()
@@ -29,16 +29,22 @@ function main()
   run(maxdim = 200, nsweeps = 1, outputlevel = 0)
 
   maxdims = 20:20:40
+  nsweeps = 5
   N = length(maxdims)
   data = zeros(Union{Int, Float64}, N, 2)
   # Run and time
   for j in 1:N
     maxdim = maxdims[j]
     println("Running 1D Heisenberg model with QNs and maxdim = $maxdim")
-    t = @elapsed energy, psi = run(maxdim = maxdim)
+    time = @elapsed energy, psi = run(maxdim = maxdim, nsweeps = 5, outputlevel = 0)
+    @show nsweeps
+    @show maxlinkdim(psi)
+    @show flux(psi)
+    @show energy
+    @show time
     println()
     data[j, 1] = maxlinkdim(psi)
-    data[j, 2] = t
+    data[j, 2] = time
   end
 
   filename = joinpath(@__DIR__, "data.txt")

@@ -4,9 +4,8 @@ using DelimitedFiles
 function run(; maxdim::Int,
                nsweeps::Int = 10,
                outputlevel::Int = 1)
-  Ny, Nx = 3, 12
+  Nx, Ny = 6, 3
   N = Nx * Ny
-  Npart = N ÷ 2
   t = 1.0
   U = 8.0
   sites = siteinds("Electron", N; conserve_qns = true)
@@ -22,19 +21,8 @@ function run(; maxdim::Int,
     ampo .+= U, "Nupdn", n
   end
   H = MPO(ampo,sites)
-  state = ["Emp" for n in 1:N]
-  p = Npart
-  for i in N:-1:1
-    if p > i
-      state[i] = "UpDn"
-      p -= 2
-    elseif p > 0
-      state[i] = (isodd(i) ? "Up" : "Dn")
-      p -= 1
-    end
-  end
+  state = [isodd(n) ? "↑" : "↓" for n in 1:N]
   psi0 = productMPS(sites, state)
-  @show flux(psi0)
   sweeps = Sweeps(nsweeps)
   maxdims = min.(maxdim, [20, 60, 100, 100, 200, 400, 800, maxdim])
   maxdim!(sweeps, maxdims...)
@@ -51,16 +39,25 @@ function main()
   run(maxdim = 200, nsweeps = 1, outputlevel = 0)
 
   maxdims = 20:20:40
+  nsweeps = 10
+  outputlevel = 0
   N = length(maxdims)
   data = zeros(Union{Int, Float64}, N, 2)
   # Run and time
   for j in 1:N
     maxdim = maxdims[j]
-    println("Running 1D Heisenberg model with QNs and maxdim = $maxdim")
-    t = @elapsed energy, psi = run(maxdim = maxdim)
+    println("Running 2D Hubbard model with QNs and maxdim = $maxdim")
+    time = @elapsed energy, psi = run(maxdim = maxdim,
+                                   nsweeps = nsweeps,
+                                   outputlevel = outputlevel)
+    @show nsweeps
+    @show maxlinkdim(psi)
+    @show flux(psi)
+    @show energy
+    @show time
     println()
     data[j, 1] = maxlinkdim(psi)
-    data[j, 2] = t
+    data[j, 2] = time
   end
 
   filename = joinpath(@__DIR__, "data.txt")
