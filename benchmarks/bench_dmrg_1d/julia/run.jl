@@ -5,19 +5,19 @@ function run(; maxdim::Int,
                nsweeps::Int,
                outputlevel::Int)
   N = 100
-  sites = siteinds("S=1",N)
+  sites = siteinds("S=1", N)
   ampo = AutoMPO()
-  for j=1:N-1
-    ampo .+= "Sz",j,"Sz",j+1
-    ampo .+= 0.5,"S+",j,"S-",j+1
-    ampo .+= 0.5,"S-",j,"S+",j+1
+  for j in 1:N-1
+    ampo .+= 0.5,"S+", j, "S-", j + 1
+    ampo .+= 0.5,"S-", j, "S+", j + 1
+    ampo .+=     "Sz", j, "Sz", j + 1
   end
   H = MPO(ampo,sites)
   psi0 = productMPS(sites, n -> isodd(n) ? "↑" : "↓")
   sweeps = Sweeps(nsweeps)
   maxdims = min.(maxdim, [10, 20, 100, 100, maxdim])
   maxdim!(sweeps, maxdims...)
-  cutoff!(sweeps, 1e-14)
+  #cutoff!(sweeps, 1e-14)
   energy, psi = dmrg(H, psi0, sweeps;
                      svd_alg = "divide_and_conquer",
                      outputlevel = outputlevel)
@@ -37,7 +37,9 @@ function main()
   for j in 1:N
     maxdim = maxdims[j]
     println("Running 1D Heisenberg model with no QNs and maxdim = $maxdim")
-    time = @elapsed energy, psi = run(maxdim = maxdim, nsweeps = nsweeps, outputlevel = outputlevel)
+    time = @elapsed energy, psi = run(maxdim = maxdim,
+                                      nsweeps = nsweeps,
+                                      outputlevel = outputlevel)
     @show nsweeps
     @show maxlinkdim(psi)
     @show flux(psi)
@@ -48,6 +50,9 @@ function main()
     data[j, 2] = time
   end
 
+  # TODO: add version number to date file name
+  # v = Pkg.dependencies()[Base.UUID("9136182c-28ba-11e9-034c-db9fb085ebd5")].version
+  # "$(v.major).$(v.minor).$(v.patch)"
   filename = joinpath(@__DIR__, "data.txt")
   println("Writing results to $filename")
   mkpath(dirname(filename))

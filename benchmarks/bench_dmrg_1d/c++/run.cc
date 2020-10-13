@@ -5,7 +5,7 @@
 #include <fstream>
 using namespace itensor;
 
-std::tuple<float, MPS>
+std::tuple<Real, MPS>
 run(Args const& args)
   {
   int maxdim = args.getInt("Maxdim");
@@ -17,9 +17,9 @@ run(Args const& args)
   auto ampo = AutoMPO(sites);
   for(auto j : range1(N-1))
       {
-      ampo += 0.5,"S+",j,"S-",j+1;
-      ampo += 0.5,"S-",j,"S+",j+1;
-      ampo +=     "Sz",j,"Sz",j+1;
+      ampo += 0.5, "S+", j, "S-", j + 1;
+      ampo += 0.5, "S-", j, "S+", j + 1;
+      ampo +=      "Sz", j, "Sz", j + 1;
       }
   auto H = toMPO(ampo);
   auto state = InitState(sites);
@@ -27,13 +27,17 @@ run(Args const& args)
     state.set(j, (j % 2 == 1 ? "Up" : "Dn"));
   auto psi0 = MPS(state);
   auto sweeps = Sweeps(nsweeps);
-  sweeps.maxdim() = 10, 20, std::min(100, maxdim), std::min(100, maxdim), maxdim;
-  sweeps.cutoff() = 1E-14;
+  sweeps.maxdim() = std::min(10, maxdim),
+                    std::min(20, maxdim),
+                    std::min(100, maxdim),
+                    std::min(100, maxdim),
+                    maxdim;
+  //sweeps.cutoff() = 1E-14;
   auto [energy, psi] = dmrg(H, psi0, sweeps,
                             {"Quiet = ", true,
                              "Silent = ", silent,
                              "SVDMethod = ", "gesdd"});
-  return std::tuple<float, MPS>({energy, psi});
+  return std::tuple<Real, MPS>({energy, psi});
   }
 
 int 
@@ -56,7 +60,9 @@ main()
     {
     auto start = std::chrono::high_resolution_clock::now();
     println("Running 1D Heisenberg model with no QNs and maxdim = ", maxdim);
-    auto [energy, psi] = run({"Maxdim = ", maxdim, "NSweeps = ", nsweeps, "Silent = ", silent});
+    auto [energy, psi] = run({"Maxdim = ", maxdim,
+                              "NSweeps = ", nsweeps,
+                              "Silent = ", silent});
     auto finish = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed = finish - start;
     auto time = elapsed.count();

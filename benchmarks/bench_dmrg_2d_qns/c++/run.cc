@@ -28,7 +28,7 @@ run(Args const& args)
     ampo += -t, "Cdagdn", j.s2, "Cdn", j.s1;
     }
   for(auto j : range1(N))
-    ampo += U,"Nupdn",j;
+    ampo += U, "Nupdn", j;
   auto H = toMPO(ampo);
   auto state = InitState(sites);
   for(auto j : range1(N))
@@ -44,7 +44,7 @@ run(Args const& args)
                     std::min(800, maxdim),
                     maxdim;
   sweeps.noise() = 1E-7, 1E-8, 1E-10, 0, 1E-11, 0;
-  sweeps.cutoff() = 1E-8;
+  //sweeps.cutoff() = 1E-8;
   auto [energy, psi] = dmrg(H, psi0, sweeps,
                             {"Quiet = ", true,
                              "Silent = ", silent,
