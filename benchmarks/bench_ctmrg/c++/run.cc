@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 
-std::tuple<Real, ITensor>
+std::tuple<Real, Real, ITensor>
 run(Args const& args)
   {
   int maxdim = args.getInt("Maxdim");
@@ -13,23 +13,46 @@ run(Args const& args)
 
   Real betac = 0.5 * log(sqrt(2) + 1.0);
   Real beta = 1.001 * betac;
-  int topscale = nsweeps;
   
   auto dim0 = 2;
   
   // Define an initial Index making up
   // the Ising partition function
-  auto s = Index(dim0);
+  auto s = Index(dim0, "Site");
   
   // Define the indices of the scale-0
   // Boltzmann weight tensor "A"
   auto sh = addTags(s, "horiz");
   auto sv = addTags(s, "vert");
   
-  auto A0 = ising(sh, sv, beta);
-  auto [A, z] = trg(A0, maxdim, topscale);
+  auto T = ising(sh, sv, beta);
 
-  return std::tuple<Real, ITensor>({z, A});
+  auto l = Index(1, "Link");
+  auto lh = addTags(l, "horiz");
+  auto lv = addTags(l, "vert");
+  auto Clu0 = ITensor(lv, lh);
+  Clu0.set(1, 1, 1.0);
+  auto Al0 = ITensor(lv, prime(lv), sh);
+  Al0.set(lv = 1, prime(lv) = 1, sh = 1, 1.0);
+
+  auto [Clu, Al] = ctmrg(T, Clu0, Al0, maxdim, nsweeps);
+
+  lv = commonIndex(Clu, Al);
+  lh = uniqueIndex(Clu, Al);
+
+  auto Au = replaceInds(Al, {lv, prime(lv), sh},
+                            {lh, prime(lh), sv});
+
+  auto ACl = Al * Clu * dag(prime(Clu));
+
+  auto ACTl = prime(ACl * dag(prime(Au)) * T * Au, -1);
+  auto kappa = elt(ACTl * dag(ACl));
+
+  auto Tsz = ising(sh, sv, beta, true);
+  auto ACTszl = prime(ACl * dag(prime(Au)) * Tsz * Au, -1);
+  auto m = elt(ACTszl * dag(ACl)) / kappa;
+
+  return std::tuple<Real, Real, ITensor>({kappa, m, Clu});
   }
 
 int
@@ -40,7 +63,7 @@ main()
   int maxdim_last = 40;
 
   int nmaxdims = (maxdim_last - maxdim_first) / maxdim_step + 1;
-  auto nsweeps = 20;
+  auto nsweeps = 500;
   auto maxdims = std::vector<int>(nmaxdims);
   auto times = std::vector<float>(nmaxdims);
   int maxdim = maxdim_first;
@@ -51,8 +74,8 @@ main()
     {
     auto start = std::chrono::high_resolution_clock::now();
     println("Running TRG on 2D classical Ising model and maxdim = ", maxdim);
-    auto [kappa, T] = run({"Maxdim = ", maxdim,
-                           "NSweeps = ", nsweeps});
+    auto [kappa, m, T] = run({"Maxdim = ", maxdim,
+                              "NSweeps = ", nsweeps});
     auto finish = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed = finish - start;
     auto time = elapsed.count();
@@ -61,6 +84,7 @@ main()
     println("nsweeps = ", nsweeps);
     println("maxdim(T) = ", maxDim(T));
     println("kappa = ", kappa);
+    println("m = ", m);
     println("time = ", time);
     println();
     maxdim += maxdim_step;

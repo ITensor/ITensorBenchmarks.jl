@@ -46,10 +46,13 @@ function run(; maxdim::Int,
   ACₗ = Aₗ * Cₗᵤ * dag(Cₗᵤ')
 
   ACTₗ = prime(ACₗ * dag(Aᵤ') * T * Aᵤ, -1)
-
   κ = (ACTₗ * dag(ACₗ))[]
 
-  return κ, exp(-β * ising_free_energy(β)), Cₗᵤ
+  Tsz = ising_mpo(sₕ, sᵥ, β; sz = true)
+  ACTszₗ = prime(ACₗ * dag(Aᵤ') * Tsz * Aᵤ, -1)
+  m = (ACTszₗ * dag(ACₗ))[] / κ
+
+  return κ, exp(-β * ising_free_energy(β)), m, ising_magnetization(β), Cₗᵤ
 end
 
 function main()
@@ -61,12 +64,14 @@ function main()
   for j in 1:N
     maxdim_ = maxdims[j]
     println("Running CTMRG on 2D classical Ising model and maxdim = $maxdim_")
-    time = @elapsed κ, κ_exact, Cₗᵤ = run(; maxdim = maxdim_,
-                                            nsweeps = nsweeps)
+    time = @elapsed κ, κ_exact, m, m_exact, Cₗᵤ = run(; maxdim = maxdim_,
+                                                        nsweeps = nsweeps)
     @show nsweeps
     @show maxdim(Cₗᵤ)
     @show κ
     @show abs(κ - κ_exact)
+    @show m
+    @show abs(abs(m) - m_exact)
     @show time
     println()
     data[j, 1] = maxdim(Cₗᵤ)
