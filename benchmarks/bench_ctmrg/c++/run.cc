@@ -35,7 +35,9 @@ run(Args const& args)
   auto Al0 = ITensor(lv, prime(lv), sh);
   Al0.set(lv = 1, prime(lv) = 1, sh = 1, 1.0);
 
-  auto [Clu, Al] = ctmrg(T, Clu0, Al0, maxdim, nsweeps);
+  Real cutoff = 0.0;
+  auto [Clu, Al] = ctmrg(T, Clu0, Al0,
+                         maxdim, nsweeps, cutoff);
 
   lv = commonIndex(Clu, Al);
   lh = uniqueIndex(Clu, Al);
@@ -58,12 +60,12 @@ run(Args const& args)
 int
 main()
   {
-  int maxdim_first = 20;
-  int maxdim_step = 20;
-  int maxdim_last = 40;
+  int maxdim_first = 50;
+  int maxdim_step = 50;
+  int maxdim_last = 400;
 
   int nmaxdims = (maxdim_last - maxdim_first) / maxdim_step + 1;
-  auto nsweeps = 500;
+  auto nsweeps = 800;
   auto maxdims = std::vector<int>(nmaxdims);
   auto times = std::vector<float>(nmaxdims);
   int maxdim = maxdim_first;
@@ -73,7 +75,7 @@ main()
   for(auto j : range(nmaxdims))
     {
     auto start = std::chrono::high_resolution_clock::now();
-    println("Running TRG on 2D classical Ising model and maxdim = ", maxdim);
+    println("Running CTMRG on 2D classical Ising model and maxdim = ", maxdim);
     auto [kappa, m, T] = run({"Maxdim = ", maxdim,
                               "NSweeps = ", nsweeps});
     auto finish = std::chrono::high_resolution_clock::now();

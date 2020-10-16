@@ -17,7 +17,7 @@ function run(; maxdim::Int,
   sweeps = Sweeps(nsweeps)
   maxdims = min.(maxdim, [10, 20, 100, 100, maxdim])
   maxdim!(sweeps, maxdims...)
-  #cutoff!(sweeps, 1e-14)
+  cutoff!(sweeps, 0.0)
   energy, psi = dmrg(H, psi0, sweeps;
                      svd_alg = "divide_and_conquer",
                      outputlevel = outputlevel)
@@ -30,7 +30,7 @@ function main()
 
   outputlevel = 0
   nsweeps = 5
-  maxdims = 20:20:40
+  maxdims = 50:50:350
   N = length(maxdims)
   data = zeros(Union{Int, Float64}, N, 2)
   # Run and time

@@ -44,7 +44,7 @@ run(Args const& args)
                     std::min(800, maxdim),
                     maxdim;
   sweeps.noise() = 1E-7, 1E-8, 1E-10, 0, 1E-11, 0;
-  //sweeps.cutoff() = 1E-8;
+  sweeps.cutoff() = 0.0;
   auto [energy, psi] = dmrg(H, psi0, sweeps,
                             {"Quiet = ", true,
                              "Silent = ", silent,
@@ -55,9 +55,9 @@ run(Args const& args)
 int
 main()
   {
-  int maxdim_first = 20;
-  int maxdim_step = 20;
-  int maxdim_last = 40;
+  int maxdim_first = 200;
+  int maxdim_step = 200;
+  int maxdim_last = 1000;
 
   int nmaxdims = (maxdim_last - maxdim_first) / maxdim_step + 1;
   auto nsweeps = 10;

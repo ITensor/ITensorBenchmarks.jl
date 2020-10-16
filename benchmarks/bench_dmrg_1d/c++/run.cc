@@ -32,7 +32,7 @@ run(Args const& args)
                     std::min(100, maxdim),
                     std::min(100, maxdim),
                     maxdim;
-  //sweeps.cutoff() = 1E-14;
+  sweeps.cutoff() = 0.0;
   auto [energy, psi] = dmrg(H, psi0, sweeps,
                             {"Quiet = ", true,
                              "Silent = ", silent,
@@ -43,9 +43,9 @@ run(Args const& args)
 int 
 main()
   {
-  int maxdim_first = 20;
-  int maxdim_step = 20;
-  int maxdim_last = 40;
+  int maxdim_first = 50;
+  int maxdim_step = 50;
+  int maxdim_last = 350;
 
   int nmaxdims = (maxdim_last - maxdim_first) / maxdim_step + 1;
   auto nsweeps = 5;

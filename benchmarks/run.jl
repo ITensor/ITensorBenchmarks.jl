@@ -24,11 +24,16 @@ settings = ArgParseSettings()
     help = "Number of BLAS threads."
     arg_type = Int
     default = 1
+  "--omp_num_threads"
+    help = "Number of OpenMP threads (for block sparse contractions)."
+    arg_type = Int
+    default = 1
 end
 
 args = parse_args(settings)
 
 blas_num_threads = args["blas_num_threads"]
+omp_num_threads = args["omp_num_threads"]
 which_version = args["which_version"]
 benchmarks = args["benchmarks"]
 
@@ -75,7 +80,7 @@ for benchmark in benchmarks
     println()
     open("run.sh", "w") do io
       write(io, """#!/bin/bash
-                   MKL_NUM_THREADS=$blas_num_threads ./run""")
+                   MKL_NUM_THREADS=$blas_num_threads OMP_NUM_THREADS=$omp_num_threads ./run""")
     end
     chmod("run.sh", 0o777)
     Base.run(`./run.sh`)

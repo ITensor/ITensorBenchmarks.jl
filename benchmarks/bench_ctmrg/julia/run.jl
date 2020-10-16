@@ -3,6 +3,7 @@ Pkg.activate(".")
 
 using ITensors
 using DelimitedFiles
+
 examples_dir = joinpath(dirname(pathof(ITensors)),
                         "..", "examples", "src")
 # Alternatively, use:
@@ -36,7 +37,10 @@ function run(; maxdim::Int,
   Aₗ[lᵥ => 1, lᵥ' => 1, sₕ => 1] = 1.0
   Aₗ[lᵥ => 1, lᵥ' => 1, sₕ => 2] = 0.0
 
-  Cₗᵤ, Aₗ = ctmrg(T, Cₗᵤ, Aₗ; χmax = maxdim, nsteps = nsweeps)
+  Cₗᵤ, Aₗ = ctmrg(T, Cₗᵤ, Aₗ;
+                  χmax = maxdim,
+                  cutoff = 0.0,
+                  nsteps = nsweeps)
 
   lᵥ = commonind(Cₗᵤ, Aₗ)
   lₕ = noncommoninds(Cₗᵤ, Aₗ)[1]
@@ -57,10 +61,10 @@ end
 
 function main()
   run(; maxdim = 5, nsweeps = 2)
-  maxdims = 20:20:40
+  maxdims = 50:50:400
   N = length(maxdims)
   data = zeros(Union{Int, Float64}, N, 2)
-  nsweeps = 500
+  nsweeps = 800
   for j in 1:N
     maxdim_ = maxdims[j]
     println("Running CTMRG on 2D classical Ising model and maxdim = $maxdim_")

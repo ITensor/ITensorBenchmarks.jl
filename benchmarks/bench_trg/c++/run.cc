@@ -1,4 +1,4 @@
-#include "sample/src/ctmrg.h"
+#include "sample/src/trg.h"
 #include "sample/src/ising.h"
 #include "itensor/util/print_macro.h"
 #include <chrono>
@@ -27,7 +27,8 @@ run(Args const& args)
   auto sv = addTags(s, "vert");
   
   auto A0 = ising(sh, sv, beta);
-  auto [A, z] = trg(A0, maxdim, topscale);
+  Real cutoff = 0.0;
+  auto [A, z] = trg(A0, maxdim, topscale, cutoff);
 
   return std::tuple<Real, ITensor>({z, A});
   }
@@ -35,9 +36,9 @@ run(Args const& args)
 int
 main()
   {
-  int maxdim_first = 20;
-  int maxdim_step = 20;
-  int maxdim_last = 40;
+  int maxdim_first = 10;
+  int maxdim_step = 10;
+  int maxdim_last = 50;
 
   int nmaxdims = (maxdim_last - maxdim_first) / maxdim_step + 1;
   auto nsweeps = 20;

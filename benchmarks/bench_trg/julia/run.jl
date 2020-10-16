@@ -23,14 +23,14 @@ function run(; maxdim::Int,
 
   χmax = maxdim
   nsteps = nsweeps
-  κ, T = trg(T; χmax = χmax, nsteps = nsteps)
+  κ, T = trg(T; χmax = χmax, cutoff = 0.0, nsteps = nsteps)
 
   return κ, exp(-β * ising_free_energy(β)), T
 end
 
 function main()
   run(; maxdim = 3, nsweeps = 2)
-  maxdims = 20:20:40
+  maxdims = 10:10:50
   N = length(maxdims)
   data = zeros(Union{Int, Float64}, N, 2)
   nsweeps = 20

@@ -26,7 +26,7 @@ function run(; maxdim::Int,
   sweeps = Sweeps(nsweeps)
   maxdims = min.(maxdim, [20, 60, 100, 100, 200, 400, 800, maxdim])
   maxdim!(sweeps, maxdims...)
-  #cutoff!(sweeps, 1e-8)
+  cutoff!(sweeps, 0.0)
   noise!(sweeps, 1e-7, 1e-8, 1e-10, 0.0, 1e-11, 0.0)
   energy,psi = dmrg(H, psi0, sweeps;
                     svd_alg = "divide_and_conquer",
@@ -38,7 +38,7 @@ function main()
   # Warm up step for compilation
   run(maxdim = 200, nsweeps = 1, outputlevel = 0)
 
-  maxdims = 20:20:40
+  maxdims = 200:200:1_000
   nsweeps = 10
   outputlevel = 0
   N = length(maxdims)
