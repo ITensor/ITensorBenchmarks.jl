@@ -1,4 +1,6 @@
 #include "itensor/all.h"
+#include "sample/src/electronk.h"
+#include "sample/src/hubbard.h"
 #include "itensor/util/print_macro.h"
 #include <chrono>
 #include <iostream>
@@ -12,52 +14,70 @@ run(Args const& args)
   int nsweeps = args.getInt("NSweeps", 10);
   bool silent = args.getBool("Silent", false);
 
-  auto Nx = 6,
-       Ny = 3;
-  auto N = Nx * Ny;
-  auto sites = Electron(N, {"ConserveQNs = ", true});
-  auto t = 1.0;
-  auto U = 8.0;
-  auto ampo = AutoMPO(sites);
-  auto lattice = squareLattice(Nx, Ny, {"YPeriodic=",true});
-  for(auto j : lattice)
-    {
-    ampo += -t, "Cdagup", j.s1, "Cup", j.s2;
-    ampo += -t, "Cdagup", j.s2, "Cup", j.s1;
-    ampo += -t, "Cdagdn", j.s1, "Cdn", j.s2;
-    ampo += -t, "Cdagdn", j.s2, "Cdn", j.s1;
-    }
-  for(auto j : range1(N))
-    ampo += U, "Nupdn", j;
-  auto H = toMPO(ampo);
-  auto state = InitState(sites);
-  for(auto j : range1(N))
-    state.set(j, (j % 2 == 1 ? "Up" : "Dn"));
-  auto psi0 = MPS(state);
+  int Nx = 6;
+  int Ny = 3;
+  double U = 4.0;
+  double t = 1.0;
+
+  auto args = Args("Kmod", Ny);
+  args.add("ConserveQNs", true);
+  args.add("ConserveK", true);
+  int N = Nx * Ny;
+
   auto sweeps = Sweeps(nsweeps);
-  sweeps.maxdim() = std::min(20, maxdim),
-                    std::min(60, maxdim),
-                    std::min(100, maxdim),
-                    std::min(100, maxdim),
+  sweeps.maxdim() = 100, 200, 400, 800, 2000, 3000;
+  sweeps.maxdim() = std::min(100, maxdim),
                     std::min(200, maxdim),
                     std::min(400, maxdim),
                     std::min(800, maxdim),
+                    std::min(2000, maxdim),
+                    std::min(3000, maxdim),
                     maxdim;
-  sweeps.noise() = 1E-7, 1E-8, 1E-10, 0, 1E-11, 0;
+
   sweeps.cutoff() = 0.0;
+  sweeps.noise() = 1e-6, 1e-7, 1e-8, 0.0;
+
+  SiteSet sites = ElectronK(N, args);
+  auto ampo = hubbard_2d_ky(sites, {"Nx = ", Nx,
+                                    "Ny = ", Ny,
+                                    "U = ", U});
+
+  auto H = toMPO(ampo);
+
+  // Create start state
+  auto state = InitState(sites);
+  for (auto i : range1(N))
+    {
+    int x = (i-1)/Ny;
+    int y = (i-1)%Ny;
+
+    if(x%2==0)
+      {
+      if (y%2==0) state.set(i,"Up");
+      else        state.set(i,"Dn");
+      }
+    else
+      {
+      if (y%2==0) state.set(i,"Dn");
+      else        state.set(i,"Up");
+      }
+    }
+
+  auto psi0 = MPS(state);
+  
+  psi0.position(1);
   auto [energy, psi] = dmrg(H, psi0, sweeps,
                             {"Quiet = ", true,
-                             "Silent = ", silent,
-                             "SVDMethod = ", "gesdd"});
-  return std::tuple<float, MPS>({energy, psi});
+                             "Silent = ", silent});
+  return std::tuple<Real, MPS>({energy, psi});
   }
 
 int
 main()
   {
-  int maxdim_first = 200;
-  int maxdim_step = 200;
-  int maxdim_last = 1000;
+  int maxdim_first = 1000;
+  int maxdim_step = 1000;
+  int maxdim_last = 5000;
 
   int nmaxdims = (maxdim_last - maxdim_first) / maxdim_step + 1;
   auto nsweeps = 10;
@@ -71,7 +91,7 @@ main()
   for(auto j : range(nmaxdims))
     {
     auto start = std::chrono::high_resolution_clock::now();
-    println("Running 2D Hubbard model with momentum around the cylinder conserved and maxdim = ", maxdim);
+    println("Running 2D Hubbard model with QNs and maxdim = ", maxdim);
     auto [energy, psi] = run({"Maxdim = ", maxdim,
                               "NSweeps = ", nsweeps,
                               "Silent = ", silent});

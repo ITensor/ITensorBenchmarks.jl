@@ -48,8 +48,8 @@ function main()
     maxdim = maxdims[j]
     println("Running 2D Hubbard model with QNs and maxdim = $maxdim")
     time = @elapsed energy, psi = run(maxdim = maxdim,
-                                   nsweeps = nsweeps,
-                                   outputlevel = outputlevel)
+                                      nsweeps = nsweeps,
+                                      outputlevel = outputlevel)
     @show nsweeps
     @show maxlinkdim(psi)
     @show flux(psi)

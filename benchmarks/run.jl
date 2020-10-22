@@ -11,15 +11,6 @@ benchmarks .= replace.(benchmarks, "bench_" => "")
 
 settings = ArgParseSettings()
 @add_arg_table! settings begin
-  "--which_version"
-    help = "Which version to run."
-    arg_type = Union{Nothing, String}
-    default = nothing
-  "--benchmarks"
-    help = "Which benchmarks to run."
-    nargs = '+'
-    arg_type = String
-    default = benchmarks
   "--blas_num_threads"
     help = "Number of BLAS threads."
     arg_type = Int
@@ -28,6 +19,15 @@ settings = ArgParseSettings()
     help = "Number of OpenMP threads (for block sparse contractions)."
     arg_type = Int
     default = 1
+  "--which_version"
+    help = "Which version to run. Options are \"c++\" or \"julia\". If nothing is specified, both are run."
+    arg_type = Union{Nothing, String}
+    default = nothing
+  "--benchmarks"
+    help = "Which benchmarks to run. If nothing is specified, all are run."
+    nargs = '+'
+    arg_type = String
+    default = benchmarks
 end
 
 args = parse_args(settings)
