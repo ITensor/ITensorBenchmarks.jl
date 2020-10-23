@@ -7,11 +7,10 @@ include(joinpath(examples_dir, "2d_classical_ising.jl"))
 
 function run(; maxdim::Int,
                nsweeps::Int = 800,
-               outputlevel::Int = 0)
+               outputlevel::Int = 0,
+               β::Float64 = 1.001 * βc)
   # Make Ising model MPO
-  β = 1.001 * βc
-  d = 2
-  s = Index(d, "Site")
+  s = Index(2, "Site")
   sₕ = addtags(s, "horiz")
   sᵥ = addtags(s, "vert")
 

@@ -4,7 +4,12 @@ function run(; maxdim::Int,
                nsweeps::Int = 5,
                outputlevel::Int = 0,
                conserve_qns::Bool = false,
-               N::Int = 100)
+               N::Int = 100,
+               cutoff::Real = 0.0)
+  sweeps = Sweeps(nsweeps)
+  maxdims = min.(maxdim, [10, 20, 100, maxdim])
+  maxdim!(sweeps, maxdims...)
+  cutoff!(sweeps, cutoff)
   sites = siteinds("S=1", N; conserve_qns = conserve_qns)
   ampo = AutoMPO()
   for j in 1:N-1
@@ -14,10 +19,6 @@ function run(; maxdim::Int,
   end
   H = MPO(ampo,sites)
   psi0 = productMPS(sites, n -> isodd(n) ? "↑" : "↓")
-  sweeps = Sweeps(nsweeps)
-  maxdims = min.(maxdim, [10, 20, 100, maxdim])
-  maxdim!(sweeps, maxdims...)
-  cutoff!(sweeps, 0.0)
   energy, ψ = dmrg(H, psi0, sweeps;
                    svd_alg = "divide_and_conquer",
                    outputlevel = outputlevel)

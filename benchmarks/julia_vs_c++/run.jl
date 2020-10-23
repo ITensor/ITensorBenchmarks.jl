@@ -65,9 +65,14 @@ maxdims["dmrg_2d_conserve_ky"] = 1_000:1_000:2_000
 maxdims["dmrg_2d_qns"] = 200:200:400
 maxdims["trg"] = 10:10:20
 
+println("Running for bond dimensions $maxdims")
+
 seperator = "#"^70
 
+outputlevel = 1
+
 for benchmark in benchmarks
+  println("Running benchmark $benchmark for bond dimensions $(maxdims[benchmark])")
   for maxdim in maxdims[benchmark]
     if isnothing(which_version) || which_version == "julia"
       julia_dir = joinpath(@__DIR__, "bench_$benchmark", "julia")
@@ -86,7 +91,7 @@ for benchmark in benchmarks
       run(maxdim = 10, nsweeps = 2, outputlevel = 0)
 
       time = @elapsed maxdim_ = run(maxdim = maxdim,
-                                    outputlevel = 1)
+                                    outputlevel = outputlevel)
 
       println()
       println("Maximum dimension = $maxdim_")
@@ -109,21 +114,45 @@ for benchmark in benchmarks
       cpp_dir = joinpath(@__DIR__, "bench_$benchmark", "c++")
 
       println(seperator)
-      println("Run C++ benchmark $benchmark in path $cpp_dir")
+      println("Run C++ benchmark $benchmark.")
+      println()
+      println("Benchmark located in path $cpp_dir")
       println()
 
-      cp("Makefile", joinpath(cpp_dir, "Makefile"); force = true)
-      cd(cpp_dir)
+      open("run.h", "w") do io
+        write(io, "#include \"$(joinpath(cpp_dir, "run.h"))\"")
+      end
+      # Trigger rebuild
+      touch("run.cc")
+      println("Compile the benchmark")
       Base.run(`make`)
       println()
+      rm("run.h")
       open("run.sh", "w") do io
         write(io, """#!/bin/bash
-                     MKL_NUM_THREADS=$blas_num_threads OPENBLAS_NUM_THREADS=$blas_num_threads OMP_NUM_THREADS=$omp_num_threads ./run $blas_num_threads""")
+                     export MKL_NUM_THREADS=$blas_num_threads
+                     export OPENBLAS_NUM_THREADS=$blas_num_threads
+                     export OMP_NUM_THREADS=$omp_num_threads
+                     ./run $maxdim $outputlevel""")
       end
       chmod("run.sh", 0o777)
-      Base.run(`./run.sh`)
+      time = @elapsed Base.run(`./run.sh`)
       rm("run.sh")
-      cd(@__DIR__)
+
+      println()
+      println("Maximum dimension = $maxdim")
+      println("Total runtime = $time seconds")
+      println()
+
+      # TODO: add version number to data file name
+
+      filename = "data_blas_num_threads_$(blas_num_threads)"
+      filename *= "_maxdim_$(maxdim).txt"
+      filepath = joinpath(cpp_dir, "data", filename)
+      println("Writing results to $filepath")
+      println()
+      mkpath(dirname(filepath))
+      writedlm(filepath, time)
     end
   end
 end
