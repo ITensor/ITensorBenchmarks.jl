@@ -1,62 +1,26 @@
-using Pkg
-Pkg.activate(".")
-
 using ITensors
-using DelimitedFiles
+
 examples_dir = joinpath(dirname(pathof(ITensors)),
                         "..", "examples", "src")
-# Alternatively, use:
-# joinpath(dirname(Base.find_package(@__MODULE__, "ITensors")),
-#          "..", "examples", "src")
 include(joinpath(examples_dir, "trg.jl"))
 include(joinpath(examples_dir, "2d_classical_ising.jl"))
 
 function run(; maxdim::Int,
-               nsweeps::Int)
+               nsweeps::Int = 20,
+               outputlevel::Int = 0,
+               cutoff::Float64 = 0.0,
+               β::Float64 = 1.001 * βc)
   # Make Ising model MPO
-  β = 1.001 * βc
-  d = 2
-  s = Index(d)
+  s = Index(2)
   sₕ = addtags(s, "horiz")
   sᵥ = addtags(s, "vert")
   T = ising_mpo(sₕ, sᵥ, β)
-
-  χmax = maxdim
-  nsteps = nsweeps
-  κ, T = trg(T; χmax = χmax, cutoff = 0.0, nsteps = nsteps)
-
-  return κ, exp(-β * ising_free_energy(β)), T
-end
-
-function main()
-  run(; maxdim = 3, nsweeps = 2)
-  maxdims = 10:10:50
-  N = length(maxdims)
-  data = zeros(Union{Int, Float64}, N, 2)
-  nsweeps = 20
-  for j in 1:N
-    maxdim_ = maxdims[j]
-    println("Running TRG on 2D classical Ising model and maxdim = $maxdim_")
-    time = @elapsed κ, κ_exact, T = run(; maxdim = maxdim_,
-                                          nsweeps = nsweeps)
+  κ, T = trg(T; χmax = maxdim, cutoff = cutoff, nsteps = nsweeps)
+  if outputlevel > 0
     @show nsweeps
-    @show maxdim(T)
-    @show κ
-    @show abs(κ - κ_exact)
-    @show time
-    println()
-    data[j, 1] = maxdim(T)
-    data[j, 2] = time
+    @show cutoff
+    @show κ, exp(-β * ising_free_energy(β))
   end
-
-  # TODO: add version number to date file name
-  # v = Pkg.dependencies()[Base.UUID("9136182c-28ba-11e9-034c-db9fb085ebd5")].version
-  # "$(v.major).$(v.minor).$(v.patch)"
-  filename = joinpath(@__DIR__, "data.txt")
-  println("Writing results to $filename")
-  mkpath(dirname(filename))
-  writedlm(filename, data)
+  return ITensors.maxdim(T)
 end
-
-main()
 

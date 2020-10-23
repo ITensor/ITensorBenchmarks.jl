@@ -1,8 +1,10 @@
 using Pkg
 Pkg.activate(".")
 
+using ITensors
 using LinearAlgebra
 using ArgParse
+using DelimitedFiles
 
 benchmarks = readdir(@__DIR__)
 benchmarks = filter!(file -> startswith(file, "bench_"),
@@ -37,6 +39,7 @@ omp_num_threads = args["omp_num_threads"]
 which_version = args["which_version"]
 benchmarks = args["benchmarks"]
 
+println()
 print("Using $blas_num_threads BLAS thread")
 blas_num_threads > 1 ? println("s") : println()
 
@@ -44,50 +47,84 @@ println()
 println("Benchmarking $benchmarks")
 println()
 
+maxdims = Dict{String, StepRange{Int64, Int64}}()
+
+# Defaults
+maxdims["ctmrg"] = 50:50:400
+maxdims["dmrg_1d"] = 50:50:350
+maxdims["dmrg_1d_qns"] = 200:200:1_000
+maxdims["dmrg_2d_conserve_ky"] = 1_000:1_000:5_000
+maxdims["dmrg_2d_qns"] = 200:200:1_000
+maxdims["trg"] = 10:10:50
+
+# Testing
+maxdims["ctmrg"] = 50:50:100
+maxdims["dmrg_1d"] = 50:50:100
+maxdims["dmrg_1d_qns"] = 200:200:400
+maxdims["dmrg_2d_conserve_ky"] = 1_000:1_000:2_000
+maxdims["dmrg_2d_qns"] = 200:200:400
+maxdims["trg"] = 10:10:20
+
 seperator = "#"^70
 
 for benchmark in benchmarks
-  if isnothing(which_version) || which_version == "julia"
-    julia_dir = joinpath(@__DIR__, "bench_$benchmark", "julia")
+  for maxdim in maxdims[benchmark]
+    if isnothing(which_version) || which_version == "julia"
+      julia_dir = joinpath(@__DIR__, "bench_$benchmark", "julia")
 
-    println(seperator)
-    println("Run Julia benchmark $benchmark in path $julia_dir")
+      println(seperator)
+      println("Run Julia benchmark $benchmark.")
+      println()
+      println("Benchmark located in path $julia_dir")
+      println()
 
-    # Set number of threads for Julia to 1
-    BLAS.set_num_threads(blas_num_threads)
+      BLAS.set_num_threads(blas_num_threads)
 
-    println()
-    Pkg.activate(julia_dir)
-    println()
+      include(joinpath(julia_dir, "run.jl"))
 
-    include(joinpath(julia_dir, "run.jl"))
+      # Trigger compilation
+      run(maxdim = 10, nsweeps = 2, outputlevel = 0)
 
-    main(blas_num_threads = blas_num_threads)
+      time = @elapsed maxdim_ = run(maxdim = maxdim,
+                                    outputlevel = 1)
 
-    println()
-    Pkg.activate()
-    println()
-  end
+      println()
+      println("Maximum dimension = $maxdim_")
+      println("Total runtime = $time seconds")
+      println()
 
-  if isnothing(which_version) || which_version == "c++"
-    cpp_dir = joinpath(@__DIR__, "bench_$benchmark", "c++")
-
-    println(seperator)
-    println("Run C++ benchmark $benchmark in path $cpp_dir")
-    println()
-
-    cp("Makefile", joinpath(cpp_dir, "Makefile"); force = true)
-    cd(cpp_dir)
-    Base.run(`make`)
-    println()
-    open("run.sh", "w") do io
-      write(io, """#!/bin/bash
-                   MKL_NUM_THREADS=$blas_num_threads OPENBLAS_NUM_THREADS=$blas_num_threads OMP_NUM_THREADS=$omp_num_threads ./run $blas_num_threads""")
+      # TODO: add version number to data file name
+      # v = Pkg.dependencies()[Base.UUID("9136182c-28ba-11e9-034c-db9fb085ebd5")].version
+      # "$(v.major).$(v.minor).$(v.patch)"
+      
+      filename = "data_blas_num_threads_$(blas_num_threads)"
+      filename *= "_maxdim_$(maxdim_).txt"
+      filepath = joinpath(julia_dir, "data", filename)
+      println("Writing results to $filepath")
+      println()
+      mkpath(dirname(filepath))
+      writedlm(filepath, time)
     end
-    chmod("run.sh", 0o777)
-    Base.run(`./run.sh`)
-    rm("run.sh")
-    cd(@__DIR__)
+    if isnothing(which_version) || which_version == "c++"
+      cpp_dir = joinpath(@__DIR__, "bench_$benchmark", "c++")
+
+      println(seperator)
+      println("Run C++ benchmark $benchmark in path $cpp_dir")
+      println()
+
+      cp("Makefile", joinpath(cpp_dir, "Makefile"); force = true)
+      cd(cpp_dir)
+      Base.run(`make`)
+      println()
+      open("run.sh", "w") do io
+        write(io, """#!/bin/bash
+                     MKL_NUM_THREADS=$blas_num_threads OPENBLAS_NUM_THREADS=$blas_num_threads OMP_NUM_THREADS=$omp_num_threads ./run $blas_num_threads""")
+      end
+      chmod("run.sh", 0o777)
+      Base.run(`./run.sh`)
+      rm("run.sh")
+      cd(@__DIR__)
+    end
   end
 end
 

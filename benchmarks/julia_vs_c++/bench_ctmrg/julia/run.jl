@@ -1,19 +1,13 @@
-using Pkg
-Pkg.activate(".")
-
 using ITensors
-using DelimitedFiles
 
 examples_dir = joinpath(dirname(pathof(ITensors)),
                         "..", "examples", "src")
-# Alternatively, use:
-# joinpath(dirname(Base.find_package(@__MODULE__, "ITensors")),
-#          "..", "examples", "src")
 include(joinpath(examples_dir, "ctmrg_isotropic.jl"))
 include(joinpath(examples_dir, "2d_classical_ising.jl"))
 
 function run(; maxdim::Int,
-               nsweeps::Int)
+               nsweeps::Int = 800,
+               outputlevel::Int = 0)
   # Make Ising model MPO
   β = 1.001 * βc
   d = 2
@@ -55,40 +49,12 @@ function run(; maxdim::Int,
   ACTszₗ = prime(ACₗ * dag(Aᵤ') * Tsz * Aᵤ, -1)
   m = (ACTszₗ * dag(ACₗ))[] / κ
 
-  return κ, exp(-β * ising_free_energy(β)), m, ising_magnetization(β), Cₗᵤ
-end
-
-function main(; blas_num_threads::Int = 1)
-  run(; maxdim = 5, nsweeps = 2)
-  maxdims = 50:50:400
-  N = length(maxdims)
-  nsweeps = 800
-  for j in 1:N
-    maxdim_ = maxdims[j]
-    println("Running CTMRG on 2D classical Ising model and maxdim = $maxdim_")
-    time = @elapsed κ, κ_exact, m, m_exact, Cₗᵤ = run(; maxdim = maxdim_,
-                                                        nsweeps = nsweeps)
+  if outputlevel > 0
     @show nsweeps
-    @show maxdim(Cₗᵤ)
-    @show κ
-    @show abs(κ - κ_exact)
-    @show m
-    @show abs(abs(m) - m_exact)
-    @show time
-    println()
-
-    # TODO: add version number to data file name
-    # v = Pkg.dependencies()[Base.UUID("9136182c-28ba-11e9-034c-db9fb085ebd5")].version
-    # "$(v.major).$(v.minor).$(v.patch)"
-    filename = joinpath(@__DIR__, "data",
-                        "data_blas_num_threads_$(blas_num_threads)_maxdim_$(maxdim(Cₗᵤ)).txt")
-    println("Writing results to $filename")
-    println()
-    mkpath(dirname(filename))
-    writedlm(filename, time)
+    @show κ, exp(-β * ising_free_energy(β))
+    @show m, ising_magnetization(β)
   end
 
+  return ITensors.maxdim(Cₗᵤ)
 end
-
-#main()
 

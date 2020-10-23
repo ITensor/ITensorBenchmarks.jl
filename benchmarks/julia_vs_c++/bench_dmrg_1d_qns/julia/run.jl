@@ -1,57 +1,31 @@
 using ITensors
-using DelimitedFiles
 
 function run(; maxdim::Int,
-               nsweeps::Int,
-               outputlevel::Int)
-  N = 100
-  sites = siteinds("S=1", N; conserve_qns = true)
+               nsweeps::Int = 5,
+               outputlevel::Int = 0,
+               conserve_qns::Bool = true,
+               N::Int = 100)
+  sites = siteinds("S=1", N; conserve_qns = conserve_qns)
   ampo = AutoMPO()
-  for j=1:N-1
-    ampo .+=      "Sz", j, "Sz", j+1
-    ampo .+= 0.5, "S+", j, "S-", j+1
-    ampo .+= 0.5, "S-", j, "S+", j+1
+  for j in 1:N-1
+    ampo .+= 0.5, "S+", j, "S-", j + 1
+    ampo .+= 0.5, "S-", j, "S+", j + 1
+    ampo .+=      "Sz", j, "Sz", j + 1
   end
   H = MPO(ampo,sites)
   psi0 = productMPS(sites, n -> isodd(n) ? "↑" : "↓")
   sweeps = Sweeps(nsweeps)
-  maxdims = min.(maxdim, [10, 20, 100, 100, maxdim])
+  maxdims = min.(maxdim, [10, 20, 100, maxdim])
   maxdim!(sweeps, maxdims...)
   cutoff!(sweeps, 0.0)
-  energy, psi = dmrg(H, psi0, sweeps;
-                     svd_alg = "divide_and_conquer",
-                     outputlevel = outputlevel)
-  return energy, psi
-end
-
-function main()
-  # Warm up step for compilation
-  run(maxdim = 200, nsweeps = 1, outputlevel = 0)
-
-  maxdims = 200:200:1_000
-  nsweeps = 5
-  N = length(maxdims)
-  data = zeros(Union{Int, Float64}, N, 2)
-  # Run and time
-  for j in 1:N
-    maxdim = maxdims[j]
-    println("Running 1D Heisenberg model with QNs and maxdim = $maxdim")
-    time = @elapsed energy, psi = run(maxdim = maxdim, nsweeps = 5, outputlevel = 0)
+  energy, ψ = dmrg(H, psi0, sweeps;
+                   svd_alg = "divide_and_conquer",
+                   outputlevel = outputlevel)
+  if outputlevel > 0
     @show nsweeps
-    @show maxlinkdim(psi)
-    @show flux(psi)
     @show energy
-    @show time
-    println()
-    data[j, 1] = maxlinkdim(psi)
-    data[j, 2] = time
+    @show flux(ψ)
   end
-
-  filename = joinpath(@__DIR__, "data.txt")
-  println("Writing results to $filename")
-  mkpath(dirname(filename))
-  writedlm(filename, data)
+  return maxlinkdim(ψ)
 end
-
-main()
 

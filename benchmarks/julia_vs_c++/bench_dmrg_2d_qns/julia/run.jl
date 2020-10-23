@@ -1,13 +1,19 @@
 using ITensors
-using DelimitedFiles
 
 function run(; maxdim::Int,
                nsweeps::Int = 10,
-               outputlevel::Int = 1)
-  Nx, Ny = 6, 3
+               outputlevel::Int = 0,
+               cutoff::Float64 = 0.0,
+               Nx::Int = 6,
+               Ny::Int = 3,
+               U::Float64 = 8.0,
+               t::Float64 = 1.0)
   N = Nx * Ny
-  t = 1.0
-  U = 8.0
+  sweeps = Sweeps(nsweeps)
+  maxdims = min.(maxdim, [100, 200, 400, 800, 2000, 3000, maxdim])
+  maxdim!(sweeps, maxdims...)
+  cutoff!(sweeps, cutoff)
+  noise!(sweeps, 1e-6, 1e-7, 1e-8, 0.0)
   sites = siteinds("Electron", N; conserve_qns = true)
   lattice = square_lattice(Nx, Ny; yperiodic = true)
   ampo = AutoMPO()
@@ -22,49 +28,50 @@ function run(; maxdim::Int,
   end
   H = MPO(ampo,sites)
   state = [isodd(n) ? "↑" : "↓" for n in 1:N]
-  psi0 = productMPS(sites, state)
-  sweeps = Sweeps(nsweeps)
-  maxdims = min.(maxdim, [20, 60, 100, 100, 200, 400, 800, maxdim])
-  maxdim!(sweeps, maxdims...)
-  cutoff!(sweeps, 0.0)
-  noise!(sweeps, 1e-7, 1e-8, 1e-10, 0.0, 1e-11, 0.0)
-  energy,psi = dmrg(H, psi0, sweeps;
-                    svd_alg = "divide_and_conquer",
-                    outputlevel = outputlevel)
-  return energy, psi
-end
-
-function main()
-  # Warm up step for compilation
-  run(maxdim = 200, nsweeps = 1, outputlevel = 0)
-
-  maxdims = 200:200:1_000
-  nsweeps = 10
-  outputlevel = 0
-  N = length(maxdims)
-  data = zeros(Union{Int, Float64}, N, 2)
-  # Run and time
-  for j in 1:N
-    maxdim = maxdims[j]
-    println("Running 2D Hubbard model with QNs and maxdim = $maxdim")
-    time = @elapsed energy, psi = run(maxdim = maxdim,
-                                      nsweeps = nsweeps,
-                                      outputlevel = outputlevel)
+  ψ0 = productMPS(sites, state)
+  energy, ψ = dmrg(H, ψ0, sweeps;
+                   svd_alg = "divide_and_conquer",
+                   outputlevel = outputlevel)
+  if outputlevel > 0
     @show nsweeps
-    @show maxlinkdim(psi)
-    @show flux(psi)
+    @show cutoff
     @show energy
-    @show time
-    println()
-    data[j, 1] = maxlinkdim(psi)
-    data[j, 2] = time
+    @show flux(ψ)
   end
-
-  filename = joinpath(@__DIR__, "data.txt")
-  println("Writing results to $filename")
-  mkpath(dirname(filename))
-  writedlm(filename, data)
+  return maxlinkdim(ψ)
 end
 
-main()
+#function main()
+#  # Warm up step for compilation
+#  run(maxdim = 200, nsweeps = 1, outputlevel = 0)
+#
+#  maxdims = 200:200:1_000
+#  nsweeps = 10
+#  outputlevel = 0
+#  N = length(maxdims)
+#  data = zeros(Union{Int, Float64}, N, 2)
+#  # Run and time
+#  for j in 1:N
+#    maxdim = maxdims[j]
+#    println("Running 2D Hubbard model with QNs and maxdim = $maxdim")
+#    time = @elapsed energy, psi = run(maxdim = maxdim,
+#                                      nsweeps = nsweeps,
+#                                      outputlevel = outputlevel)
+#    @show nsweeps
+#    @show maxlinkdim(psi)
+#    @show flux(psi)
+#    @show energy
+#    @show time
+#    println()
+#    data[j, 1] = maxlinkdim(psi)
+#    data[j, 2] = time
+#  end
+#
+#  filename = joinpath(@__DIR__, "data.txt")
+#  println("Writing results to $filename")
+#  mkpath(dirname(filename))
+#  writedlm(filename, data)
+#end
+#
+#main()
 

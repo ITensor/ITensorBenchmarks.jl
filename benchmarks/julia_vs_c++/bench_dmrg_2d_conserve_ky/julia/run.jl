@@ -1,36 +1,31 @@
 using ITensors
-using DelimitedFiles
 
 examples_dir = joinpath(dirname(pathof(ITensors)),
                         "..", "examples", "src")
-
 include(joinpath(examples_dir, "electronk.jl"))
 include(joinpath(examples_dir, "hubbard.jl"))
 
 function run(; maxdim::Int,
                nsweeps::Int = 10,
-               outputlevel::Int = 1,
-               Nx = 6,
-               Ny = 3,
-               U = 4.0,
-               t = 1.0,
-               conserve_ky = true)
+               outputlevel::Int = 0,
+               conserve_ky::Bool = true,
+               cutoff::Float64 = 0.0,
+               Nx::Int = 6,
+               Ny::Int = 3,
+               U::Float64 = 4.0,
+               t::Float64 = 1.0)
   N = Nx * Ny
-
   sweeps = Sweeps(nsweeps)
   maxdims = min.(maxdim, [100, 200, 400, 800, 2000, 3000, maxdim])
   maxdim!(sweeps, maxdims...) 
-  cutoff!(sweeps, 0.0)
+  cutoff!(sweeps, cutoff) 
   noise!(sweeps, 1e-6, 1e-7, 1e-8, 0.0)
-
   sites = siteinds("ElecK", N;
                    conserve_qns = true,
                    conserve_ky = conserve_ky,
                    modulus_ky = Ny)
-
   ampo = hubbard(Nx = Nx, Ny = Ny, t = t, U = U, ky = true) 
   H = MPO(ampo, sites)
-
   # Create start state
   state = Vector{String}(undef, N)
   for i in 1:N
@@ -50,44 +45,14 @@ function run(; maxdim::Int,
       end
     end
   end
-
-  psi0 = randomMPS(sites, state, 10)
-
-  energy, psi = dmrg(H, psi0, sweeps; outputlevel = outputlevel)
-  return energy, psi
-end
-
-function main()
-  # Warm up step for compilation
-  run(maxdim = 200, nsweeps = 1, outputlevel = 0)
-
-  maxdims = 1000:1000:5000
-  nsweeps = 10
-  outputlevel = 0
-  N = length(maxdims)
-  data = zeros(Union{Int, Float64}, N, 2)
-  # Run and time
-  for j in 1:N
-    maxdim = maxdims[j]
-    println("Running 2D Hubbard model with momentum around the cylinder conserved and maxdim = $maxdim")
-    time = @elapsed energy, psi = run(maxdim = maxdim,
-                                      nsweeps = nsweeps,
-                                      outputlevel = outputlevel)
+  ψ0 = productMPS(sites, state)
+  energy, ψ = dmrg(H, ψ0, sweeps; outputlevel = outputlevel)
+  if outputlevel > 0
     @show nsweeps
-    @show maxlinkdim(psi)
-    @show flux(psi)
+    @show cutoff
     @show energy
-    @show time
-    println()
-    data[j, 1] = maxlinkdim(psi)
-    data[j, 2] = time
+    @show flux(ψ)
   end
-
-  filename = joinpath(@__DIR__, "data.txt")
-  println("Writing results to $filename")
-  mkpath(dirname(filename))
-  writedlm(filename, data)
+  return maxlinkdim(ψ)
 end
-
-main()
 
