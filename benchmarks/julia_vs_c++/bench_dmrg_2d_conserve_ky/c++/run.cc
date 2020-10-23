@@ -19,13 +19,9 @@ run(Args const& args)
   double U = 4.0;
   double t = 1.0;
 
-  auto args = Args("Kmod", Ny);
-  args.add("ConserveQNs", true);
-  args.add("ConserveK", true);
   int N = Nx * Ny;
 
   auto sweeps = Sweeps(nsweeps);
-  sweeps.maxdim() = 100, 200, 400, 800, 2000, 3000;
   sweeps.maxdim() = std::min(100, maxdim),
                     std::min(200, maxdim),
                     std::min(400, maxdim),
@@ -37,7 +33,9 @@ run(Args const& args)
   sweeps.cutoff() = 0.0;
   sweeps.noise() = 1e-6, 1e-7, 1e-8, 0.0;
 
-  SiteSet sites = ElectronK(N, args);
+  SiteSet sites = ElectronK(N, {"Kmod = ", Ny,
+                                "ConserveQNs = ", true,
+                                "ConserveK = ", true});
   auto ampo = hubbard_2d_ky(sites, {"Nx = ", Nx,
                                     "Ny = ", Ny,
                                     "U = ", U});
@@ -91,7 +89,7 @@ main()
   for(auto j : range(nmaxdims))
     {
     auto start = std::chrono::high_resolution_clock::now();
-    println("Running 2D Hubbard model with QNs and maxdim = ", maxdim);
+    println("Running 2D Hubbard model with momentum around the cylinder conserved and maxdim = ", maxdim);
     auto [energy, psi] = run({"Maxdim = ", maxdim,
                               "NSweeps = ", nsweeps,
                               "Silent = ", silent});

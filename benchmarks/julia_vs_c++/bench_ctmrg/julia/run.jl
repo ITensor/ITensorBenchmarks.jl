@@ -35,7 +35,6 @@ function run(; maxdim::Int,
   # Initial HRTM
   Aₗ = ITensor(lᵥ, lᵥ', sₕ)
   Aₗ[lᵥ => 1, lᵥ' => 1, sₕ => 1] = 1.0
-  Aₗ[lᵥ => 1, lᵥ' => 1, sₕ => 2] = 0.0
 
   Cₗᵤ, Aₗ = ctmrg(T, Cₗᵤ, Aₗ;
                   χmax = maxdim,
@@ -59,11 +58,10 @@ function run(; maxdim::Int,
   return κ, exp(-β * ising_free_energy(β)), m, ising_magnetization(β), Cₗᵤ
 end
 
-function main()
+function main(; blas_num_threads::Int = 1)
   run(; maxdim = 5, nsweeps = 2)
   maxdims = 50:50:400
   N = length(maxdims)
-  data = zeros(Union{Int, Float64}, N, 2)
   nsweeps = 800
   for j in 1:N
     maxdim_ = maxdims[j]
@@ -78,18 +76,19 @@ function main()
     @show abs(abs(m) - m_exact)
     @show time
     println()
-    data[j, 1] = maxdim(Cₗᵤ)
-    data[j, 2] = time
+
+    # TODO: add version number to data file name
+    # v = Pkg.dependencies()[Base.UUID("9136182c-28ba-11e9-034c-db9fb085ebd5")].version
+    # "$(v.major).$(v.minor).$(v.patch)"
+    filename = joinpath(@__DIR__, "data",
+                        "data_blas_num_threads_$(blas_num_threads)_maxdim_$(maxdim(Cₗᵤ)).txt")
+    println("Writing results to $filename")
+    println()
+    mkpath(dirname(filename))
+    writedlm(filename, time)
   end
 
-  # TODO: add version number to date file name
-  # v = Pkg.dependencies()[Base.UUID("9136182c-28ba-11e9-034c-db9fb085ebd5")].version
-  # "$(v.major).$(v.minor).$(v.patch)"
-  filename = joinpath(@__DIR__, "data.txt")
-  println("Writing results to $filename")
-  mkpath(dirname(filename))
-  writedlm(filename, data)
 end
 
-main()
+#main()
 

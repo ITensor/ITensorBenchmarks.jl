@@ -62,6 +62,8 @@ for benchmark in benchmarks
 
     include(joinpath(julia_dir, "run.jl"))
 
+    main(blas_num_threads = blas_num_threads)
+
     println()
     Pkg.activate()
     println()
@@ -80,7 +82,7 @@ for benchmark in benchmarks
     println()
     open("run.sh", "w") do io
       write(io, """#!/bin/bash
-                   MKL_NUM_THREADS=$blas_num_threads OMP_NUM_THREADS=$omp_num_threads ./run""")
+                   MKL_NUM_THREADS=$blas_num_threads OPENBLAS_NUM_THREADS=$blas_num_threads OMP_NUM_THREADS=$omp_num_threads ./run $blas_num_threads""")
     end
     chmod("run.sh", 0o777)
     Base.run(`./run.sh`)

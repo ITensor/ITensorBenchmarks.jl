@@ -58,16 +58,18 @@ run(Args const& args)
   }
 
 int
-main()
+main(int argc, char *argv[])
   {
+  auto blas_num_threads = 1;
+  if(argc > 1)
+    blas_num_threads = std::stoi(argv[1]);
+
   int maxdim_first = 50;
   int maxdim_step = 50;
   int maxdim_last = 400;
 
   int nmaxdims = (maxdim_last - maxdim_first) / maxdim_step + 1;
   auto nsweeps = 800;
-  auto maxdims = std::vector<int>(nmaxdims);
-  auto times = std::vector<float>(nmaxdims);
   int maxdim = maxdim_first;
 
   std::cout.precision(16);
@@ -81,8 +83,6 @@ main()
     auto finish = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed = finish - start;
     auto time = elapsed.count();
-    maxdims[j] = maxDim(T);
-    times[j] = time;
     println("nsweeps = ", nsweeps);
     println("maxdim(T) = ", maxDim(T));
     println("kappa = ", kappa);
@@ -90,15 +90,17 @@ main()
     println("time = ", time);
     println();
     maxdim += maxdim_step;
-    }
 
-  // Write results to file
-  println("Writing results to data.txt");
-  std::ofstream myfile;
-  myfile.open("data.txt");
-  for(auto j : range(nmaxdims))
-    myfile << maxdims[j] << " " << times[j] << "\n";
-  myfile.close();
+    // Write results to file
+    string filename = "data/data_blas_num_threads_" + std::to_string(blas_num_threads);
+    filename += "_maxdim_" + std::to_string(maxDim(T)) + ".txt";
+    println("Writing results to ", filename);
+    println();
+    std::ofstream myfile;
+    myfile.open(filename);
+    myfile << time << "\n";
+    myfile.close();
+    }
 
   return 0;
   }
