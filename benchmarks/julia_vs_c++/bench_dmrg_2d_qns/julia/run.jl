@@ -41,37 +41,3 @@ function run(; maxdim::Int,
   return maxlinkdim(ψ)
 end
 
-#function main()
-#  # Warm up step for compilation
-#  run(maxdim = 200, nsweeps = 1, outputlevel = 0)
-#
-#  maxdims = 200:200:1_000
-#  nsweeps = 10
-#  outputlevel = 0
-#  N = length(maxdims)
-#  data = zeros(Union{Int, Float64}, N, 2)
-#  # Run and time
-#  for j in 1:N
-#    maxdim = maxdims[j]
-#    println("Running 2D Hubbard model with QNs and maxdim = $maxdim")
-#    time = @elapsed energy, psi = run(maxdim = maxdim,
-#                                      nsweeps = nsweeps,
-#                                      outputlevel = outputlevel)
-#    @show nsweeps
-#    @show maxlinkdim(psi)
-#    @show flux(psi)
-#    @show energy
-#    @show time
-#    println()
-#    data[j, 1] = maxlinkdim(psi)
-#    data[j, 2] = time
-#  end
-#
-#  filename = joinpath(@__DIR__, "data.txt")
-#  println("Writing results to $filename")
-#  mkpath(dirname(filename))
-#  writedlm(filename, data)
-#end
-#
-#main()
-

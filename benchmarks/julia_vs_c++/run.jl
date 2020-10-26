@@ -58,14 +58,14 @@ maxdims["dmrg_2d_qns"] = 200:200:1_000
 maxdims["trg"] = 10:10:50
 
 # Testing
-maxdims["ctmrg"] = 50:50:100
-maxdims["dmrg_1d"] = 50:50:100
-maxdims["dmrg_1d_qns"] = 200:200:400
-maxdims["dmrg_2d_conserve_ky"] = 1_000:1_000:2_000
-maxdims["dmrg_2d_qns"] = 200:200:400
-maxdims["trg"] = 10:10:20
+#maxdims["ctmrg"] = 50:50:100
+#maxdims["dmrg_1d"] = 50:50:100
+#maxdims["dmrg_1d_qns"] = 200:200:400
+#maxdims["dmrg_2d_conserve_ky"] = 1_000:1_000:2_000
+#maxdims["dmrg_2d_qns"] = 200:200:400
+#maxdims["trg"] = 10:10:20
 
-println("Running for bond dimensions $maxdims")
+println("Bond dimensions set to $maxdims")
 
 seperator = "#"^70
 
@@ -73,6 +73,7 @@ outputlevel = 1
 
 for benchmark in benchmarks
   println("Running benchmark $benchmark for bond dimensions $(maxdims[benchmark])")
+  println()
   for maxdim in maxdims[benchmark]
     if isnothing(which_version) || which_version == "julia"
       julia_dir = joinpath(@__DIR__, "bench_$benchmark", "julia")
@@ -81,6 +82,8 @@ for benchmark in benchmarks
       println("Run Julia benchmark $benchmark.")
       println()
       println("Benchmark located in path $julia_dir")
+      println()
+      println("Maximum bond dimension set to $maxdim.")
       println()
 
       BLAS.set_num_threads(blas_num_threads)
@@ -117,6 +120,8 @@ for benchmark in benchmarks
       println("Run C++ benchmark $benchmark.")
       println()
       println("Benchmark located in path $cpp_dir")
+      println()
+      println("Maximum bond dimension set to $maxdim.")
       println()
 
       open("run.h", "w") do io
