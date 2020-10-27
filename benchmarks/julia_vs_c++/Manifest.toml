@@ -65,7 +65,7 @@ version = "1.10.5+6"
 
 [[ITensors]]
 deps = ["Compat", "HDF5", "KrylovKit", "LinearAlgebra", "NDTensors", "PackageCompiler", "Printf", "Random", "StaticArrays", "TimerOutputs"]
-path = "/mnt/home/mfishman/.julia/dev/ITensors"
+path = "/home/mfishman/.julia/dev/ITensors"
 uuid = "9136182c-28ba-11e9-034c-db9fb085ebd5"
 version = "0.1.24"
 

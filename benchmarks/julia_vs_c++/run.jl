@@ -3,41 +3,9 @@ Pkg.activate(".")
 
 using ITensors
 using LinearAlgebra
-using ArgParse
 using DelimitedFiles
 
-benchmarks = readdir(@__DIR__)
-benchmarks = filter!(file -> startswith(file, "bench_"),
-                     benchmarks)
-benchmarks .= replace.(benchmarks, "bench_" => "")
-
-settings = ArgParseSettings()
-@add_arg_table! settings begin
-  "--blas_num_threads"
-    help = "Number of BLAS threads."
-    arg_type = Int
-    default = 1
-  "--omp_num_threads"
-    help = "Number of OpenMP threads (for block sparse contractions)."
-    arg_type = Int
-    default = 1
-  "--which_version"
-    help = "Which version to run. Options are \"c++\" or \"julia\". If nothing is specified, both are run."
-    arg_type = Union{Nothing, String}
-    default = nothing
-  "--benchmarks"
-    help = "Which benchmarks to run. If nothing is specified, all are run."
-    nargs = '+'
-    arg_type = String
-    default = benchmarks
-end
-
-args = parse_args(settings)
-
-blas_num_threads = args["blas_num_threads"]
-omp_num_threads = args["omp_num_threads"]
-which_version = args["which_version"]
-benchmarks = args["benchmarks"]
+include("options.jl")
 
 println()
 print("Using $blas_num_threads BLAS thread")
@@ -47,25 +15,21 @@ println()
 println("Benchmarking $benchmarks")
 println()
 
-maxdims = Dict{String, StepRange{Int64, Int64}}()
+println("Bond dimensions set to:")
+display(maxdims)
+println()
 
-# Defaults
-maxdims["ctmrg"] = 50:50:400
-maxdims["dmrg_1d"] = 50:50:350
-maxdims["dmrg_1d_qns"] = 200:200:1_000
-maxdims["dmrg_2d_conserve_ky"] = 1_000:1_000:5_000
-maxdims["dmrg_2d_qns"] = 200:200:1_000
-maxdims["trg"] = 10:10:50
+warning_seperator = "X"^70
 
-# Testing
-#maxdims["ctmrg"] = 50:50:100
-#maxdims["dmrg_1d"] = 50:50:100
-#maxdims["dmrg_1d_qns"] = 200:200:400
-#maxdims["dmrg_2d_conserve_ky"] = 1_000:1_000:2_000
-#maxdims["dmrg_2d_qns"] = 200:200:400
-#maxdims["trg"] = 10:10:20
-
-println("Bond dimensions set to $maxdims")
+println()
+println(warning_seperator)
+if write_results
+  println("XXX WARNING: benchmark results are set to be written to disk, may overwrite previous results")
+else
+  println("XXX WARNING: benchmark results are not set to be written to disk.")
+end
+println(warning_seperator)
+println()
 
 seperator = "#"^70
 
@@ -101,17 +65,19 @@ for benchmark in benchmarks
       println("Total runtime = $time seconds")
       println()
 
-      # TODO: add version number to data file name
-      # v = Pkg.dependencies()[Base.UUID("9136182c-28ba-11e9-034c-db9fb085ebd5")].version
-      # "$(v.major).$(v.minor).$(v.patch)"
+      if write_results
+        # TODO: add version number to data file name
+        # v = Pkg.dependencies()[Base.UUID("9136182c-28ba-11e9-034c-db9fb085ebd5")].version
+        # "$(v.major).$(v.minor).$(v.patch)"
       
-      filename = "data_blas_num_threads_$(blas_num_threads)"
-      filename *= "_maxdim_$(maxdim_).txt"
-      filepath = joinpath(julia_dir, "data", filename)
-      println("Writing results to $filepath")
-      println()
-      mkpath(dirname(filepath))
-      writedlm(filepath, time)
+        filename = "data_blas_num_threads_$(blas_num_threads)"
+        filename *= "_maxdim_$(maxdim_).txt"
+        filepath = joinpath(julia_dir, "data", filename)
+        println("Writing results to $filepath")
+        println()
+        mkpath(dirname(filepath))
+        writedlm(filepath, time)
+      end
     end
     if isnothing(which_version) || which_version == "c++"
       cpp_dir = joinpath(@__DIR__, "bench_$benchmark", "c++")
@@ -149,15 +115,17 @@ for benchmark in benchmarks
       println("Total runtime = $time seconds")
       println()
 
-      # TODO: add version number to data file name
+      if write_results
+        # TODO: add version number to data file name
 
-      filename = "data_blas_num_threads_$(blas_num_threads)"
-      filename *= "_maxdim_$(maxdim).txt"
-      filepath = joinpath(cpp_dir, "data", filename)
-      println("Writing results to $filepath")
-      println()
-      mkpath(dirname(filepath))
-      writedlm(filepath, time)
+        filename = "data_blas_num_threads_$(blas_num_threads)"
+        filename *= "_maxdim_$(maxdim).txt"
+        filepath = joinpath(cpp_dir, "data", filename)
+        println("Writing results to $filepath")
+        println()
+        mkpath(dirname(filepath))
+        writedlm(filepath, time)
+      end
     end
   end
 end
