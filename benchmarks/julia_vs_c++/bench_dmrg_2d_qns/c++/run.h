@@ -34,13 +34,12 @@ run(Args const& args)
     state.set(j, (j % 2 == 1 ? "Up" : "Dn"));
   auto psi0 = MPS(state);
   auto sweeps = Sweeps(nsweeps);
-  sweeps.maxdim() = std::min(20, maxdim),
-                    std::min(60, maxdim),
-                    std::min(100, maxdim),
-                    std::min(100, maxdim),
+  sweeps.maxdim() = std::min(100, maxdim),
                     std::min(200, maxdim),
                     std::min(400, maxdim),
                     std::min(800, maxdim),
+                    std::min(2000, maxdim),
+                    std::min(3000, maxdim),
                     maxdim;
   sweeps.noise() = 1E-6, 1E-7, 1E-8, 0;
   sweeps.cutoff() = 0.0;

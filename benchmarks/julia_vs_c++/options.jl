@@ -11,7 +11,7 @@ maxdims["ctmrg"] = 50:50:400
 maxdims["dmrg_1d"] = 50:50:350
 maxdims["dmrg_1d_qns"] = 200:200:1_000
 maxdims["dmrg_2d_conserve_ky"] = 1_000:1_000:5_000
-maxdims["dmrg_2d_qns"] = 200:200:1_000
+maxdims["dmrg_2d_qns"] = 1_000:1_000:5_000
 maxdims["trg"] = 10:10:50
 
 # Testing
