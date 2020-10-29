@@ -6,7 +6,7 @@ function run(; maxdim::Int,
                cutoff::Float64 = 0.0,
                Nx::Int = 6,
                Ny::Int = 3,
-               U::Float64 = 8.0,
+               U::Float64 = 4.0,
                t::Float64 = 1.0)
   N = Nx * Ny
   sweeps = Sweeps(nsweeps)

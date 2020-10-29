@@ -33,7 +33,7 @@ run(Args const& args)
   auto psi0 = MPS(state);
   auto silent = true;
   // C++ DMRG is too noisy
-  //if(outputlevel > 0) silent = false;
+  if(outputlevel > 0) silent = false;
   auto [energy, psi] = dmrg(H, psi0, sweeps,
                             {"Quiet = ", true,
                              "Silent = ", silent,

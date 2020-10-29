@@ -8,7 +8,7 @@ benchmarks .= replace.(benchmarks, "bench_" => "")
 # Defaults
 maxdims = Dict{String, StepRange{Int64, Int64}}()
 maxdims["ctmrg"] = 50:50:400
-maxdims["dmrg_1d"] = 50:50:350
+maxdims["dmrg_1d"] = 200:200:1_000
 maxdims["dmrg_1d_qns"] = 200:200:1_000
 maxdims["dmrg_2d_conserve_ky"] = 1_000:1_000:5_000
 maxdims["dmrg_2d_qns"] = 1_000:1_000:5_000
@@ -73,4 +73,13 @@ maxdims = args["maxdims"]
 if test
   maxdims = maxdims_test
 end
+
+descriptions = Dict{String, String}()
+descriptions["ctmrg"] = "CTMRG, 2D classical Ising model\nN → ∞\nβ = 1.001 βc"
+descriptions["dmrg_1d"] = "DMRG, 1D S=1 Heisenberg model\nN = 100\nNo conserved quantities"
+descriptions["dmrg_1d_qns"] = "DMRG, 1D S=1 Heisenberg model\nN = 100\nConserve total spin projection symmetry"
+descriptions["dmrg_2d_conserve_ky"] = "DMRG, 2D Hubbard model (U = 4)\nNx, Ny = 6, 3\nHybrid real and momentum space"
+descriptions["dmrg_2d_qns"] = "DMRG, 2D Hubbard model (U = 4)\nNx, Ny = 6, 3\nReal space, periodic in the y-direction"
+descriptions["trg"] = "TRG, 2D classical Ising model\nN → ∞\nβ = 1.001 βc"
+
 

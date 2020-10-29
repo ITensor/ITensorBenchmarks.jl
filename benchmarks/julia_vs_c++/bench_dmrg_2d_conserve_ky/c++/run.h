@@ -63,6 +63,7 @@ run(Args const& args)
   
   psi0.position(1);
   auto silent = true;
+  if(outputlevel > 0) silent = false;
   auto [energy, psi] = dmrg(H, psi0, sweeps,
                             {"Quiet = ", true,
                              "Silent = ", silent,

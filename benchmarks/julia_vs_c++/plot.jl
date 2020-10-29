@@ -46,6 +46,7 @@ for benchmark in benchmarks
     end
   end
   p = plot(maxdims[benchmark], times_julia;
+           title = descriptions[benchmark],
            legendfontsize = 14,
            xlabel = "Maximum bond dimension",
            ylabel = "Computation time (seconds)",

@@ -10,7 +10,7 @@ run(Args const& args)
   auto outputlevel = args.getInt("OutputLevel", 0);
   int Nx = args.getInt("Nx", 6);
   int Ny = args.getInt("Ny", 3);
-  auto U = args.getReal("U", 8.0);
+  auto U = args.getReal("U", 4.0);
   auto t = args.getReal("t", 1.0);
   int nsweeps = args.getInt("NSweeps", 10);
   auto cutoff = args.getReal("Cutoff", 0.0);
@@ -44,6 +44,7 @@ run(Args const& args)
   sweeps.noise() = 1E-6, 1E-7, 1E-8, 0;
   sweeps.cutoff() = 0.0;
   auto silent = true;
+  if(outputlevel > 0) silent = false;
   auto [energy, psi] = dmrg(H, psi0, sweeps,
                             {"Quiet = ", true,
                              "Silent = ", silent,
