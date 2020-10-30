@@ -41,19 +41,28 @@ title *= "Hybrid real and momentum space\n"
 title *= "Nx, Ny = $Nx, $Ny\n"
 title *= "U = $U, maxdim = $maxdim"
 
-p = plot(omp_num_threads, times;
+speedup_ratio = times[1] ./ times
+
+p = plot(omp_num_threads, speedup_ratio;
          title = title,
          legendfontsize = 14,
-         xlabel = "Number of OpenMP threads",
-         ylabel = "Computation time (seconds)",
+         xlabel = "n (number of OpenMP threads)",
+         ylabel = "Speedup ratio time₁/timeₙ",
          xtickfontsize = 14,
          ytickfontsize = 14,
          xguidefontsize = 14,
          yguidefontsize = 14,
          line = (:solid, 4),
          marker = (:dot, 8),
-         legend = :topright,
-         label = "C++")
+         legend = :bottomright,
+         label = "Actual C++")
+
+# Plot the ideal speedup ratio
+max_ratio = Int(round(maximum(speedup_ratio), RoundUp))
+plot!(p, 1:max_ratio, 1:max_ratio;
+      line = (:solid, 4),
+      label = "Ideal")
+
 savefig(p, joinpath(@__DIR__, "plots",
                     "plot" * filename_suffix_maxdim * ".png"))
 
