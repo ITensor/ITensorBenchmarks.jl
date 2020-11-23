@@ -1,7 +1,6 @@
 using ITensors
 
-examples_dir = joinpath(dirname(pathof(ITensors)),
-                        "..", "examples", "src")
+examples_dir = joinpath(ITensors.examples_dir(), "src")
 include(joinpath(examples_dir, "trg.jl"))
 include(joinpath(examples_dir, "2d_classical_ising.jl"))
 

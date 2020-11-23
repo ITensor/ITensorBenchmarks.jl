@@ -30,7 +30,6 @@ function run(; maxdim::Int,
   state = [isodd(n) ? "↑" : "↓" for n in 1:N]
   ψ0 = productMPS(sites, state)
   energy, ψ = dmrg(H, ψ0, sweeps;
-                   svd_alg = "divide_and_conquer",
                    outputlevel = outputlevel)
   if outputlevel > 0
     @show nsweeps

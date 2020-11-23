@@ -20,7 +20,6 @@ function run(; maxdim::Int,
   H = MPO(ampo,sites)
   psi0 = productMPS(sites, n -> isodd(n) ? "↑" : "↓")
   energy, ψ = dmrg(H, psi0, sweeps;
-                   svd_alg = "divide_and_conquer",
                    outputlevel = outputlevel)
   if outputlevel > 0
     @show nsweeps

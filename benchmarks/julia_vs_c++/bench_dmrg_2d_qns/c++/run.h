@@ -47,8 +47,7 @@ run(Args const& args)
   if(outputlevel > 0) silent = false;
   auto [energy, psi] = dmrg(H, psi0, sweeps,
                             {"Quiet = ", true,
-                             "Silent = ", silent,
-                             "SVDMethod = ", "gesdd"});
+                             "Silent = ", silent});
   if(outputlevel > 0)
     {
     std::cout.precision(16);
