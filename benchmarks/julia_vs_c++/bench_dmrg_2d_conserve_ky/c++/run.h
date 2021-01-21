@@ -10,8 +10,8 @@ run(Args const& args)
   {
   int maxdim = args.getInt("Maxdim");
   auto outputlevel = args.getInt("OutputLevel", 0);
-  int Nx = args.getInt("Nx", 6);
-  int Ny = args.getInt("Ny", 3);
+  int Nx = args.getInt("Nx", 8);
+  int Ny = args.getInt("Ny", 4);
   auto U = args.getReal("U", 4.0);
   auto t = args.getReal("t", 1.0);
   int nsweeps = args.getInt("NSweeps", 10);
@@ -25,7 +25,7 @@ run(Args const& args)
                     std::min(400, maxdim),
                     std::min(800, maxdim),
                     std::min(2000, maxdim),
-                    std::min(3000, maxdim),
+                    std::min(10000, maxdim),
                     maxdim;
 
   sweeps.cutoff() = cutoff;
