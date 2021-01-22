@@ -43,6 +43,11 @@ julia> for n in 1:Sys.CPU_THREADS # 1:6 if your system has 6 available threads
 ```
 or you can use a shell script to do the same thing.
 
+Run in the background with:
+```
+$ nohup julia -e 'using ITensorsBenchmarks; runbenchmarks(write_results = true, blas_num_threads = 1:8)' > log.txt 2> err.txt &
+```
+
 ## TODO
 
  - Make a version of `plotbenchmarks` the plots with respect to number of threads and also shows speedups as a function of number of threads.
