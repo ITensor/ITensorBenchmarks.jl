@@ -92,7 +92,6 @@ function runbenchmarks(io; write_results = OPTIONS["write_results"],
     println(io, st)
     println(io)
     # Print the more detailed description of the benchmark
-    io ≠ stdout && println(stdout, "\n" * descriptions[benchmark])
     println(io, descriptions[benchmark])
     println(io)
     valbenchmark = Val(Symbol(benchmark))
