@@ -1,11 +1,31 @@
 module ITensorsBenchmarks
 
-using ArgParse
+ENV["GKSwstype"]="100"
+
+using Dates
+using DelimitedFiles
 using ITensors
 using LinearAlgebra
-using DelimitedFiles
+using Plots
+using Random
+using Suppressor
 
-export runbenchmarks
+export runbenchmarks,
+       plotbenchmarks
+
+#
+# OPTIONS
+#
+
+const DEFAULT_OPTIONS = Dict{String, Any}()
+
+# A range of maximum dimensions for each benchmark
+DEFAULT_OPTIONS["maxdims"] = Dict{String, StepRange{Int64, Int64}}()
+const maxdims = DEFAULT_OPTIONS["maxdims"]
+
+# Descriptions of each benchmark
+DEFAULT_OPTIONS["descriptions"] = Dict{String, String}()
+const descriptions = DEFAULT_OPTIONS["descriptions"]
 
 # Get a list of the built-in benchmarks
 _benchmarks = readdir(joinpath(pkgdir(@__MODULE__), "src"))
@@ -16,35 +36,22 @@ for benchmark in _benchmarks
   include("bench_$benchmark/runbenchmark.jl")
 end
 
-#
-# OPTIONS
-#
-
-DEFAULT_OPTIONS = Dict{String, Any}()
-
 DEFAULT_OPTIONS["write_results"] = false
-DEFAULT_OPTIONS["which_version"] = nothing
+DEFAULT_OPTIONS["cpp_or_julia"] = nothing
 DEFAULT_OPTIONS["blocksparse_num_threads"] = 1
 DEFAULT_OPTIONS["blas_num_threads"] = 1
 DEFAULT_OPTIONS["test"] = false
 DEFAULT_OPTIONS["benchmarks"] = _benchmarks
 DEFAULT_OPTIONS["julia_itensor_version"] = ITensors.version()
 DEFAULT_OPTIONS["cpp_itensor_version"] = v"3.1.6"
+DEFAULT_OPTIONS["cpp_itensor_dir"] = joinpath(pkgdir(@__MODULE__), "deps", "itensor_v$(DEFAULT_OPTIONS["cpp_itensor_version"])")
 
-DEFAULT_OPTIONS["maxdims"] = Dict{String, StepRange{Int64, Int64}}()
-maxdims = DEFAULT_OPTIONS["maxdims"]
-maxdims["ctmrg"] = 50:50:400
-maxdims["dmrg_1d"] = 200:200:1_000
-maxdims["dmrg_1d_qns"] = 200:200:1_000
-maxdims["dmrg_2d_conserve_ky"] = 1_000:1_000:5_000
-maxdims["dmrg_2d_qns"] = 1_000:1_000:5_000
-maxdims["trg"] = 10:10:50
-
-OPTIONS = deepcopy(DEFAULT_OPTIONS)
+const OPTIONS = deepcopy(DEFAULT_OPTIONS)
 function reset_options!()
   empty!(OPTIONS)
+  OPTIONS_COPY = deepcopy(DEFAULT_OPTIONS)
   for k in keys(OPTIONS)
-    OPTIONS[k] = DEFAULT_OPTIONS[k]
+    OPTIONS[k] = OPTIONS_COPY[k]
   end
 end
 
@@ -60,5 +67,6 @@ include(joinpath(examples_dir, "electronk.jl"))
 include(joinpath(examples_dir, "hubbard.jl"))
 
 include("runbenchmarks.jl")
+include("plotbenchmarks.jl")
 
 end # module

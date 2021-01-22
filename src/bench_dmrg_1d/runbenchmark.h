@@ -39,6 +39,8 @@ run(Args const& args)
   if(outputlevel > 0) 
     {
     std::cout.precision(16);
+    PrintData(N);
+    PrintData(cutoff);
     PrintData(nsweeps);
     PrintData(maxLinkDim(psi));
     std::cout << "energy = " << energy << std::endl;

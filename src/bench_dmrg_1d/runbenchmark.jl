@@ -1,4 +1,7 @@
 
+maxdims["dmrg_1d"] = 200:200:1_000
+descriptions["dmrg_1d"] = "DMRG, 1D S=1 Heisenberg model\nN = 100, 5 sweeps\nNo conserved quantities"
+
 function runbenchmark(::Val{:dmrg_1d};
                       maxdim::Int, nsweeps::Int = 5,
                       outputlevel::Int = 0,
@@ -21,6 +24,8 @@ function runbenchmark(::Val{:dmrg_1d};
                    outputlevel = outputlevel)
   if outputlevel > 0
     @show nsweeps
+    @show N
+    @show cutoff
     @show energy
     @show flux(ψ)
   end

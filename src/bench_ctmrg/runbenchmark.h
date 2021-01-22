@@ -52,6 +52,8 @@ run(Args const& args)
     {
     std::cout.precision(16);
     PrintData(nsweeps);
+    std::cout << "beta = " << beta << std::endl;
+    std::cout << "cutoff = " << cutoff << std::endl;
     std::cout << "kappa = " << kappa << std::endl;
     std::cout << "m = " << m << std::endl;
     PrintData(maxDim(Clu));

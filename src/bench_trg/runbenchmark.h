@@ -32,6 +32,7 @@ run(Args const& args)
     {
     std::cout.precision(16);
     PrintData(nsweeps);
+    PrintData(beta);
     PrintData(maxDim(A));
     std::cout << "kappa = " << kappa << std::endl;
     }

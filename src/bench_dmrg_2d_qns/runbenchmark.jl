@@ -1,8 +1,11 @@
 
+maxdims["dmrg_2d_qns"] = 1_000:1_000:5_000
+descriptions["dmrg_2d_qns"] = "DMRG, 2D Hubbard model (U/t = 4)\n(Nx, Ny) = (8, 4), 10 sweeps\nReal space, periodic in the y-direction"
+
 function runbenchmark(::Val{:dmrg_2d_qns};
                       maxdim::Int, nsweeps::Int = 10,
                       outputlevel::Int = 0, cutoff::Float64 = 0.0,
-                      Nx::Int = 6, Ny::Int = 3,
+                      Nx::Int = 8, Ny::Int = 4,
                       U::Float64 = 4.0, t::Float64 = 1.0)
   N = Nx * Ny
   sweeps = Sweeps(nsweeps)
@@ -29,6 +32,8 @@ function runbenchmark(::Val{:dmrg_2d_qns};
                    outputlevel = outputlevel)
   if outputlevel > 0
     @show nsweeps
+    @show Nx, Ny
+    @show U, t
     @show cutoff
     @show energy
     @show flux(ψ)

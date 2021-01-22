@@ -52,6 +52,11 @@ run(Args const& args)
     {
     std::cout.precision(16);
     PrintData(nsweeps);
+    PrintData(Nx);
+    PrintData(Ny);
+    PrintData(U);
+    PrintData(t);
+    PrintData(cutoff);
     PrintData(maxLinkDim(psi));
     PrintData(totalQN(psi));
     std::cout << "energy = " << energy << std::endl;

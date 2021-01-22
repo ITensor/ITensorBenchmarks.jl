@@ -1,2 +1,0 @@
-This is where we will try to build C++ ITensor
-Now enter the directory /home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6 and type `make` at the command line to build C++ ITensor

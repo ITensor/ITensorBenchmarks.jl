@@ -1,8 +1,11 @@
 
+maxdims["ctmrg"] = 50:50:500
+descriptions["ctmrg"] = "CTMRG, 2D classical Ising model\nN → ∞, 800 iterations\nβ = 1.001 βc"
+
 function runbenchmark(::Val{:ctmrg};
                       maxdim::Int,
                       nsweeps::Int = 800,
-                      outputlevel::Int = 0,
+                      outputlevel::Int = 1,
                       β::Float64 = 1.001 * βc)
   # Make Ising model MPO
   s = Index(2, "Site")
@@ -45,6 +48,7 @@ function runbenchmark(::Val{:ctmrg};
 
   if outputlevel > 0
     @show nsweeps
+    @show β
     @show κ, exp(-β * ising_free_energy(β))
     @show m, ising_magnetization(β)
   end

@@ -1,4 +1,7 @@
 
+maxdims["dmrg_2d_conserve_ky"] = 1_000:1_000:5_000
+descriptions["dmrg_2d_conserve_ky"] = "DMRG, 2D Hubbard model (U/t = 4)\n(Nx, Ny) = (8, 4), 10 sweeps\nHybrid real and momentum space"
+
 function runbenchmark(::Val{:dmrg_2d_conserve_ky};
                       maxdim::Int, nsweeps::Int = 10,
                       outputlevel::Int = 0, conserve_ky::Bool = true,
@@ -39,6 +42,8 @@ function runbenchmark(::Val{:dmrg_2d_conserve_ky};
   energy, ψ = dmrg(H, ψ0, sweeps; outputlevel = outputlevel)
   if outputlevel > 0
     @show nsweeps
+    @show Nx, Ny
+    @show U, t
     @show cutoff
     @show energy
     @show flux(ψ)
