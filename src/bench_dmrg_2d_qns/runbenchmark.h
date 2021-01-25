@@ -8,8 +8,8 @@ run(Args const& args)
   {
   int maxdim = args.getInt("Maxdim");
   auto outputlevel = args.getInt("OutputLevel", 0);
-  int Nx = args.getInt("Nx", 6);
-  int Ny = args.getInt("Ny", 3);
+  int Nx = args.getInt("Nx", 8);
+  int Ny = args.getInt("Ny", 4);
   auto U = args.getReal("U", 4.0);
   auto t = args.getReal("t", 1.0);
   int nsweeps = args.getInt("NSweeps", 10);
