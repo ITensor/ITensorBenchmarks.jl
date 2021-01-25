@@ -1,5 +1,3 @@
-println("This is where we will try to build C++ ITensor")
-
 using GitCommand
 
 cpp_itensor_version = get(ENV, "CPP_ITENSOR_VERSION", nothing)
@@ -8,19 +6,28 @@ if isnothing(cpp_itensor_version)
 end
 
 const deps_dir = @__DIR__
-const itensor_dir = joinpath(deps_dir, "itensor_v$cpp_itensor_version")
-if !isdir(itensor_dir)
+const cpp_itensor_dir = joinpath(deps_dir, "itensor_v$cpp_itensor_version")
+if !isfile(joinpath(cpp_itensor_dir, "itensor", "core.h")) 
+  println("Cloning C++ ITensor and checking out the desired version v$cpp_itensor_version.")
   git() do git
-    run(`$git clone https://github.com/ITensor/ITensor.git $itensor_dir`)
+    run(`$git clone https://github.com/ITensor/ITensor.git $cpp_itensor_dir`)
   end
-  cp(joinpath(deps_dir, "options.mk"), joinpath(itensor_dir, "options.mk"))
-  cd(itensor_dir)
   git() do git
-    run(`$git checkout v$cpp_itensor_version`)
+    run(`$git -C $cpp_itensor_dir checkout v$cpp_itensor_version`)
   end
-  # XXX: this isn't working right now
-  # Try changing directory
-  #run(`make -j --directory=$(@__DIR__)`)
+  println("Finished cloning C++ ITensor, next we will try to build it.")
 end
-println("Now enter the directory $itensor_dir and type `make` at the command line to build C++ ITensor")
+if !isfile(joinpath(cpp_itensor_dir, "lib", "libitensor.a"))
+  options = joinpath(cpp_itensor_dir, "options.mk")
+  if !isfile(options)
+    options_sample = joinpath(deps_dir, "options.mk.sample")
+    println("Need options.mk to build C++ ITensor.")
+    println("First we are copying the file $options_sample to $options.")
+    cp(options_sample, options)
+  end
+  println("Edit $options (for example with `edit(\"$options\")` at the Julia command line) to point to the proper location of your BLAS installation. You can use the instructions at http://www.itensor.org/docs.cgi?page=install&vers=cppv3.")
+  println("Building C++ ITensor, this may take some time. Running command `make --directory=$cpp_itensor_dir`")
+  cd(cpp_itensor_dir)
+  run(`make --directory=$cpp_itensor_dir`)
+end
 

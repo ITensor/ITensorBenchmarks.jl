@@ -69,7 +69,10 @@ CCCOM=g++ -m64 -std=c++17 -fconcepts -fPIC
 
 PLATFORM=mkl
 ## MKL example - you may need to change the names of the folders below
-BLAS_LAPACK_LIBFLAGS=-L/opt/intel/mkl/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread
+## or run the script `mklvars.sh intel64` in the directory `<mkl_install_dir>/mkl/bin/`
+## (for example `/opt/intel/mkl/bin/mklvars.sh intel64`), which you should put in
+## you .bashrc or .zshrc file.
+BLAS_LAPACK_LIBFLAGS=-L$(MKLROOT)/lib/intel64 -L$(MKLROOT)/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread
 ## Example of using a sequential version of MKL. You may want to link to 
 ## the sequential version of MKL if you are using ITensor's native multithreading, 
 ## see section [4] for more details.
