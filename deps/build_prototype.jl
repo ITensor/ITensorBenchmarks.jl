@@ -19,7 +19,8 @@ if !isdir(itensor_dir)
     run(`$git checkout v$cpp_itensor_version`)
   end
   # XXX: this isn't working right now
-  #run(`make -j`)
+  # Try changing directory
+  #run(`make -j --directory=$(@__DIR__)`)
 end
 println("Now enter the directory $itensor_dir and type `make` at the command line to build C++ ITensor")
 
