@@ -37,7 +37,7 @@ julia> runbenchmarks(write_results = true) # Run all of the benchmarks, save res
 julia> runbenchmarks(write_results = true, blas_num_threads = 4) # Run all of the benchmarks using 4 BLAS threads
 [...]
 
-julia> runbenchmarks(write_results = true, blas_num_threads = 1:4) # Run all of the benchmarks using 1,2,3, and 4 BLAS threads
+julia> runbenchmarks(write_results = true, blas_num_threads = [1, 4, 8]) # Run all of the benchmarks using 1, 4, and 8 BLAS threads
 [...]
 ```
 You can run benchmarks with multiple block sparse threads with:
@@ -45,6 +45,9 @@ You can run benchmarks with multiple block sparse threads with:
 $ julia -t 4
 
 julia> runbenchmarks(write_results = true, benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"], blocksparse_num_threads = 4)
+[...]
+
+julia> runbenchmarks(write_results = true, benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"], blocksparse_num_threads = [1, 8, 16, 24])
 [...]
 ```
 To loop over different numbers of block sparse threads, currently this can only be done by launching multiple Julia processes that are started with different numbers of threads. This can be done from within Julia as follows:
