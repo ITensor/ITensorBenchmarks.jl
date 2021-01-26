@@ -61,7 +61,7 @@ or you can use a shell script to do the same thing.
 
 Here is an example for running benchmarks in the background:
 ```
-$ nohup julia -e 'using ITensorsBenchmarks; runbenchmarks(write_results = true, blas_num_threads = 1:8)' > log_$(date "+%Y.%m.%d-%H.%M.%S").txt 2> err_$(date "+%Y.%m.%d-%H.%M.%S").txt &
+$ nohup julia -e 'using ITensorsBenchmarks; runbenchmarks(write_results = true, blas_num_threads = [1, 4, 8])' > log_$(date "+%Y.%m.%d-%H.%M.%S").txt 2> err_$(date "+%Y.%m.%d-%H.%M.%S").txt &
 ```
 
 Here are some commands to plot the benchmarks:
