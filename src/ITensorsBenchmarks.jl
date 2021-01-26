@@ -1,6 +1,6 @@
 module ITensorsBenchmarks
 
-ENV["GKSwstype"]="100"
+ENV["GKSwstype"]= "100"
 
 using Dates
 using DelimitedFiles
@@ -45,6 +45,7 @@ DEFAULT_OPTIONS["benchmarks"] = _benchmarks
 DEFAULT_OPTIONS["julia_itensor_version"] = ITensors.version()
 DEFAULT_OPTIONS["cpp_itensor_version"] = v"3.1.6"
 DEFAULT_OPTIONS["cpp_itensor_dir"] = joinpath(pkgdir(@__MODULE__), "deps", "itensor_v$(DEFAULT_OPTIONS["cpp_itensor_version"])")
+DEFAULT_OPTIONS["splitblocks"] = false
 
 const OPTIONS = deepcopy(DEFAULT_OPTIONS)
 function reset_options!()

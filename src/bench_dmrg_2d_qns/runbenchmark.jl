@@ -6,7 +6,8 @@ function runbenchmark(::Val{:dmrg_2d_qns};
                       maxdim::Int, nsweeps::Int = 10,
                       outputlevel::Int = 0, cutoff::Float64 = 0.0,
                       Nx::Int = 8, Ny::Int = 4,
-                      U::Float64 = 4.0, t::Float64 = 1.0)
+                      U::Float64 = 4.0, t::Float64 = 1.0,
+                      splitblocks::Bool = false)
   N = Nx * Ny
   sweeps = Sweeps(nsweeps)
   maxdims = min.(maxdim, [100, 200, 400, 800, 2000, 3000, maxdim])
@@ -26,6 +27,9 @@ function runbenchmark(::Val{:dmrg_2d_qns};
     ampo .+= U, "Nupdn", n
   end
   H = MPO(ampo,sites)
+  if splitblocks
+    H = ITensors.splitblocks(linkinds, H)
+  end
   state = [isodd(n) ? "↑" : "↓" for n in 1:N]
   ψ0 = productMPS(sites, state)
   energy, ψ = dmrg(H, ψ0, sweeps;

@@ -12,7 +12,8 @@ function runbenchmarks(io; write_results = OPTIONS["write_results"],
                            benchmarks = OPTIONS["benchmarks"],
                            cpp_itensor_version = OPTIONS["cpp_itensor_version"],
                            cpp_itensor_dir = OPTIONS["cpp_itensor_dir"],
-                           julia_itensor_version = OPTIONS["julia_itensor_version"])
+                           julia_itensor_version = OPTIONS["julia_itensor_version"],
+                           splitblocks = OPTIONS["splitblocks"])
   println(stdout, "Running benchmark with the following options:")
   if io == stdout
     println(stdout, "io = stdout")
@@ -30,6 +31,7 @@ function runbenchmarks(io; write_results = OPTIONS["write_results"],
   @show benchmarks
   @show cpp_itensor_version
   @show julia_itensor_version
+  @show splitblocks
   println(stdout)
 
   if julia_itensor_version ≠ ITensors.version()
@@ -39,14 +41,20 @@ function runbenchmarks(io; write_results = OPTIONS["write_results"],
   warning_seperator = "X"^70
 
   println(io)
+  println(stdout)
   println(io, warning_seperator)
+  println(stdout, warning_seperator)
   if write_results
     println(io, "XXX WARNING: benchmark results are set to be written to disk, may overwrite previous results")
+    println(stdout, "XXX WARNING: benchmark results are set to be written to disk, may overwrite previous results")
   else
     println(io, "XXX WARNING: benchmark results are not set to be written to disk.")
+    println(stdout, "XXX WARNING: benchmark results are not set to be written to disk.")
   end
   println(io, warning_seperator)
+  println(stdout, warning_seperator)
   println(io)
+  println(stdout)
 
   seperator = "#"^70
 
@@ -106,6 +114,9 @@ function runbenchmarks(io; write_results = OPTIONS["write_results"],
       writepath = "bench_$benchmark"
       writepath = joinpath(writepath, "blas_num_threads_$(blas_num_thread)")
       writepath = joinpath(writepath, "blocksparse_num_threads_$(blocksparse_num_thread)")
+      if splitblocks
+        writepath = joinpath(writepath, "splitblocks_$(splitblocks)")
+      end
 
       # Check consistency of threads that are set
       if blocksparse_num_thread == 1
@@ -119,27 +130,32 @@ function runbenchmarks(io; write_results = OPTIONS["write_results"],
       end
       BLAS.set_num_threads(blas_num_thread)
 
-      st = "Maximum bond dimension set to $maxdim, BLAS threads set to $blas_num_thread, and block sparse threads set to $blocksparse_num_thread."
+      st = "Maximum bond dimension set to $maxdim, BLAS threads set to $blas_num_thread, block sparse threads set to $blocksparse_num_thread, and splitblocks is set to $splitblocks."
       println(io, "Benchmark located in path $benchmark_dir")
       println(io)
       io ≠ stdout && println(stdout, " " * st)
       println(io, st)
       println(io)
       if isnothing(cpp_or_julia) || cpp_or_julia == "julia"
-        st = "Run Julia benchmark $benchmark for bond dimension $maxdim, $blas_num_thread BLAS threads, and $blocksparse_num_thread block sparse threads."
+        st = "Run Julia benchmark $benchmark for bond dimension $maxdim, $blas_num_thread BLAS threads, $blocksparse_num_thread block sparse threads, and splitblocks $splitblocks."
         println(io, seperator)
         io ≠ stdout && println(stdout, " "^2 * st)
         println(io, st)
         println(io)
 
         # Trigger compilation
-        runbenchmark(valbenchmark; maxdim = 10, nsweeps = 2,
-                     outputlevel = 0)
+        comp_time = runbenchmark(valbenchmark; maxdim = 10, nsweeps = 2,
+                                 outputlevel = 0, splitblocks = splitblocks)
+        if isnothing(comp_time)
+          println(io, "Moving on to the next benchmark.")
+          println(stdout, "Moving on to the next benchmark.")
+          continue
+        end
 
         local time
         local maxdim_
         output = @capture_out begin
-          time = @elapsed maxdim_ = runbenchmark(valbenchmark; maxdim = maxdim, outputlevel = outputlevel)
+          time = @elapsed maxdim_ = runbenchmark(valbenchmark; maxdim = maxdim, outputlevel = outputlevel, splitblocks = splitblocks)
         end
         println(io, output)
 
@@ -161,8 +177,8 @@ function runbenchmarks(io; write_results = OPTIONS["write_results"],
           writedlm(filepath, time)
         end
       end
-      if isnothing(cpp_or_julia) || cpp_or_julia == "c++"
-        st = "Run C++ benchmark $benchmark for bond dimension $maxdim, $blas_num_thread BLAS threads, and $blocksparse_num_thread block sparse threads."
+      if !splitblocks && (isnothing(cpp_or_julia) || cpp_or_julia == "c++")
+        st = "Run C++ benchmark $benchmark for bond dimension $maxdim, $blas_num_thread BLAS threads, $blocksparse_num_thread block sparse threads, and splitblocks $splitblocks."
         println(io, seperator)
         io ≠ stdout && println(stdout, " "^2 * st)
         println(io, st)
@@ -257,18 +273,35 @@ function runbenchmarks(io; write_results = OPTIONS["write_results"],
   return nothing
 end
 
+function logfile_name(rootdir, benchmarks, blas_num_threads,
+                      blocksparse_num_threads, splitblocks)
+  logfile = rootdir
+  logfile = joinpath(logfile, "logs")
+  logfile = joinpath(logfile, "$(now())")
+  logfile *= "_benchmark_$(benchmarks)"
+  logfile *= "_blas_num_threads_$(blas_num_threads)"
+  logfile *= "_blocksparse_num_threads_$(blocksparse_num_threads)"
+  if splitblocks
+    logfile *= "_splitblocks_$(splitblocks)"
+  end
+  logfile *= ".log"
+  return logfile
+end
+
 # This version outputs to a file
 function runbenchmarks(; blas_num_threads = OPTIONS["blas_num_threads"],
                          blocksparse_num_threads = OPTIONS["blocksparse_num_threads"],
                          benchmarks = OPTIONS["benchmarks"],
-                         logfile = joinpath(pkgdir(@__MODULE__), "logs", "$(now())_benchmark_$(benchmarks)_blas_num_threads_$(blas_num_threads)_blocksparse_num_threads_$(blocksparse_num_threads).log"),
+                         splitblocks = OPTIONS["splitblocks"],
+                         logfile = logfile_name(pkgdir(@__MODULE__), benchmarks, blas_num_threads, blocksparse_num_threads, splitblocks),
                          kwargs...)
   println(stdout, "Saving information about the benchmark run to the file $logfile")
   println(stdout)
   open(logfile, "w") do io
     runbenchmarks(io; blas_num_threads = blas_num_threads,
                       blocksparse_num_threads = blocksparse_num_threads,
-                      benchmarks = benchmarks, kwargs...)
+                      benchmarks = benchmarks,
+                      splitblocks = splitblocks, kwargs...)
   end # open
   return nothing
 end

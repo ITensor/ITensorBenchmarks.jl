@@ -3,10 +3,13 @@ maxdims["ctmrg"] = 50:50:500
 descriptions["ctmrg"] = "CTMRG, 2D classical Ising model\nN → ∞, 800 iterations\nβ = 1.001 βc"
 
 function runbenchmark(::Val{:ctmrg};
-                      maxdim::Int,
-                      nsweeps::Int = 800,
-                      outputlevel::Int = 1,
-                      β::Float64 = 1.001 * βc)
+                      maxdim::Int, nsweeps::Int = 800,
+                      outputlevel::Int = 1, β::Float64 = 1.001 * βc,
+                      splitblocks = false)
+  if splitblocks
+    println("Benchmark ctmrg doesn't support splitblocks $splitblocks.")
+    return nothing
+  end
   # Make Ising model MPO
   s = Index(2, "Site")
   sₕ = addtags(s, "horiz")
@@ -27,9 +30,7 @@ function runbenchmark(::Val{:ctmrg};
   Aₗ = ITensor(lᵥ, lᵥ', sₕ)
   Aₗ[lᵥ => 1, lᵥ' => 1, sₕ => 1] = 1.0
 
-  Cₗᵤ, Aₗ = ctmrg(T, Cₗᵤ, Aₗ;
-                  χmax = maxdim,
-                  cutoff = 0.0,
+  Cₗᵤ, Aₗ = ctmrg(T, Cₗᵤ, Aₗ; χmax = maxdim, cutoff = 0.0,
                   nsteps = nsweeps)
 
   lᵥ = commonind(Cₗᵤ, Aₗ)

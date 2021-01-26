@@ -3,11 +3,13 @@ maxdims["trg"] = 10:10:50
 descriptions["trg"] = "TRG, 2D classical Ising model\nN → ∞, 20 iterations\nβ = 1.001 βc"
 
 function runbenchmark(::Val{:trg};
-                      maxdim::Int,
-                      nsweeps::Int = 20,
-                      outputlevel::Int = 0,
-                      cutoff::Float64 = 0.0,
-                      β::Float64 = 1.001 * βc)
+                      maxdim::Int, nsweeps::Int = 20,
+                      outputlevel::Int = 0, cutoff::Float64 = 0.0,
+                      β::Float64 = 1.001 * βc, splitblocks::Bool = false)
+  if splitblocks
+    println("Benchmark trg doesn't support splitblocks $splitblocks.")
+    return nothing
+  end
   # Make Ising model MPO
   s = Index(2)
   sₕ = addtags(s, "horiz")

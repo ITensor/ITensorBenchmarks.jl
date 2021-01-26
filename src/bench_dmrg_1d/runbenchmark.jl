@@ -6,7 +6,12 @@ function runbenchmark(::Val{:dmrg_1d};
                       maxdim::Int, nsweeps::Int = 5,
                       outputlevel::Int = 0,
                       conserve_qns::Bool = false,
-                      N::Int = 100, cutoff::Real = 0.0)
+                      N::Int = 100, cutoff::Real = 0.0,
+                      splitblocks::Bool = false)
+  if !conserve_qns && splitblocks
+    println("In benchmark dmrg_1d, conserve_qns is $conserve_qns, cannot use with splitblocks $splitblocks.")
+    return nothing
+  end
   sweeps = Sweeps(nsweeps)
   maxdims = min.(maxdim, [10, 20, 100, maxdim])
   maxdim!(sweeps, maxdims...)

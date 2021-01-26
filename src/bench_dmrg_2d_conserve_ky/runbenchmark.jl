@@ -6,7 +6,8 @@ function runbenchmark(::Val{:dmrg_2d_conserve_ky};
                       maxdim::Int, nsweeps::Int = 10,
                       outputlevel::Int = 0, conserve_ky::Bool = true,
                       cutoff::Float64 = 0.0, Nx::Int = 8, Ny::Int = 4,
-                      U::Float64 = 4.0, t::Float64 = 1.0)
+                      U::Float64 = 4.0, t::Float64 = 1.0,
+                      splitblocks::Bool = false)
   N = Nx * Ny
   sweeps = Sweeps(nsweeps)
   maxdims = min.(maxdim, [100, 200, 400, 800, 2000, 10_000, maxdim])
@@ -19,6 +20,9 @@ function runbenchmark(::Val{:dmrg_2d_conserve_ky};
                    modulus_ky = Ny)
   ampo = hubbard(Nx = Nx, Ny = Ny, t = t, U = U, ky = true) 
   H = MPO(ampo, sites)
+  if splitblocks
+    H = ITensors.splitblocks(linkinds, H)
+  end
   # Create start state
   state = Vector{String}(undef, N)
   for i in 1:N
