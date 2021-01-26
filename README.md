@@ -4,15 +4,28 @@ Run benchmarks comparing ITensors.jl to C++ ITensor for various tensor network a
 ## Installation
 
 1. Download the latest version of Julia: https://julialang.org/downloads/
-2. Install this package with Julia package manager with:
+2. Install this package with the Julia package manager and check out for development:
 ```julia
 $ julia
 
 julia> ]
 
 pkg> add https://github.com/ITensor/ITensorsBenchmarks.jl
+
+pkg> dev ITensorsBenchmarks
 ```
-3. Install C++ ITensor with the instructions: http://www.itensor.org/docs.cgi?page=install&vers=cppv3. Install the desired version into the directory `deps/itensor_v#` where `#` is the version number, for example `3.1.6` (or use a custom location, which you will need to specify in the options when running the benchmarks).
+3. Install C++ ITensor with the instructions: http://www.itensor.org/docs.cgi?page=install&vers=cppv3. Install the desired version into the directory `~/.julia/dev/ITensorsBenchmarks/deps/itensor_v#` where `#` is the version number, for example `3.1.6` (or use a custom location, which you will need to specify in the options when running the benchmarks). You can use the file in `~/.julia/dev/ITensorsBenchmarks/deps/options.mk.sample` to for your `options.mk` to install ITensor with Intel MKL. Here is an example:
+```
+$ git clone https://github.com/ITensor/ITensor ~/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6
+
+$ cd ~/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6
+
+$ git clone v3.1.6
+
+$ cp ../options.mk.sample .
+
+$ make -j
+```
 
 Then, you can start Julia and run the benchmarks with:
 ```julia
@@ -51,4 +64,5 @@ $ nohup julia -e 'using ITensorsBenchmarks; runbenchmarks(write_results = true, 
 ## TODO
 
  - Make a version of `plotbenchmarks` the plots with respect to number of threads and also shows speedups as a function of number of threads.
+ - Add option for running benchmarks with `splitblocks`.
 
