@@ -45,8 +45,11 @@ function plotbenchmarks(; write_results = OPTIONS["write_results"],
              xguidefontsize = 14,
              yguidefontsize = 14)
 
+    markers = [:circle, :rect, :star5, :diamond, :hexagon, :cross, :xcross, :utriangle, :dtriangle, :rtriangle, :ltriangle, :pentagon, :heptagon, :octagon, :star4, :star6, :star7, :star8, :vline, :hline, :+, :x]
+    marker_ind = 1
     for blas_num_thread in blas_num_threads,
         blocksparse_num_thread in blocksparse_num_threads
+      marker, marker_ind = iterate(markers, marker_ind)
 
       times_julia = Float64[]
       times_cpp = Float64[]
@@ -75,14 +78,24 @@ function plotbenchmarks(; write_results = OPTIONS["write_results"],
         end
       end
 
+      label_details = ""
+      if length(blas_num_threads) > 1
+        label_details *= ", $blas_num_thread BLAS threads"
+      end
+      if length(blocksparse_num_threads) > 1
+        label_details *= ", $blocksparse_num_thread block sparse threads"
+      end
+
       plot!(p, maxdims_benchmark, times_julia;
             line = (:solid, 4),
-            marker = (:dot, 8),
-            label = "Julia, $blas_num_thread BLAS thread, $blocksparse_num_thread block sparse thread")
+            marker = (marker, 8),
+            color = :blue,
+            label = "Julia ITensor" * label_details)
       plot!(p, maxdims_benchmark, times_cpp;
-            line = (:solid, 4),
-            marker = (:dot, 8),
-            label = "C++, $blas_num_thread BLAS thread, $blocksparse_num_thread block sparse thread")
+            line = (:dash, 4),
+            marker = (marker, 8),
+            color = :red,
+            label = "C++ ITensor" * label_details)
     end
     filename = "plot_benchmark_$(benchmark)_maxdims_$(maxdims_benchmark)_blas_num_threads_$(blas_num_threads)_blocksparse_num_threads_$(blocksparse_num_threads).png"
     filepath = joinpath(pkgdir(@__MODULE__), "plots", filename)

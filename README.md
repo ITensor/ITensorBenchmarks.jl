@@ -56,9 +56,16 @@ julia> for n in 1:Sys.CPU_THREADS # 1:6 if your system has 6 available threads
 ```
 or you can use a shell script to do the same thing.
 
-Run in the background with:
+Here is an example for running benchmarks in the background:
 ```
-$ nohup julia -e 'using ITensorsBenchmarks; runbenchmarks(write_results = true, blas_num_threads = 1:8)' > log.txt 2> err.txt &
+$ nohup julia -e 'using ITensorsBenchmarks; runbenchmarks(write_results = true, blas_num_threads = 1:8)' > log_$(date "+%Y.%m.%d-%H.%M.%S").txt 2> err_$(date "+%Y.%m.%d-%H.%M.%S").txt &
+```
+
+Here are some commands to plot the benchmarks:
+```julia
+plotbenchmarks(blas_num_threads = [1, 8])
+plotbenchmarks(benchmarks = ["ctmrg", "dmrg_1d", "dmrg_1d_qns", "dmrg_2d_conserve_ky"], blas_num_threads = [1, 8])
+plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"], blocksparse_num_threads = [1, 8, 16])
 ```
 
 ## TODO
