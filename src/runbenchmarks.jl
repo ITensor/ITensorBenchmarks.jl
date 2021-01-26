@@ -258,11 +258,17 @@ function runbenchmarks(io; write_results = OPTIONS["write_results"],
 end
 
 # This version outputs to a file
-function runbenchmarks(; logfile = joinpath(pkgdir(@__MODULE__), "logs", "runbenchmarks_$(now()).log"), kwargs...)
+function runbenchmarks(; blas_num_threads = OPTIONS["blas_num_threads"],
+                         blocksparse_num_threads = OPTIONS["blocksparse_num_threads"],
+                         benchmarks = OPTIONS["benchmarks"],
+                         logfile = joinpath(pkgdir(@__MODULE__), "logs", "$(now())_benchmark_$(benchmarks)_blas_num_threads_$(blas_num_threads)_blocksparse_num_threads_$(blocksparse_num_threads).log"),
+                         kwargs...)
   println(stdout, "Saving information about the benchmark run to the file $logfile")
   println(stdout)
   open(logfile, "w") do io
-    runbenchmarks(io; kwargs...)
+    runbenchmarks(io; blas_num_threads = blas_num_threads,
+                      blocksparse_num_threads = blocksparse_num_threads,
+                      benchmarks = benchmarks, kwargs...)
   end # open
   return nothing
 end

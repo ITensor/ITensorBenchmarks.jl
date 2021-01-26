@@ -1,5 +1,4 @@
 .*.swp
 *.o
 deps/itensor_v*
-logs/runbenchmarks_*.log
 src/.tmp_*
