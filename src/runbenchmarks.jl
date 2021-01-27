@@ -123,6 +123,8 @@ function runbenchmarks(io; write_results = OPTIONS["write_results"],
         ITensors.disable_threaded_blocksparse()
       elseif blocksparse_num_thread ≠ Threads.nthreads()
         error("Trying to benchmark with $blocksparse_num_thread number of threads for block sparse operations, but Julia was started with $(Threads.nthreads()) threads. Start Julia with $blocksparse_num_thread threads using `JULIA_NUM_THREADS=$blocksparse_num_thread julia`, `julia --threads=$blocksparse_num_thread`, or `julia -t $blocksparse_num_thread`.")
+      else
+        ITensors.enable_threaded_blocksparse()
       end
 
       if blocksparse_num_thread > 1 && blas_num_thread > 1
