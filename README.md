@@ -52,7 +52,7 @@ julia> runbenchmarks(write_results = true, benchmarks = ["dmrg_1d_qns", "dmrg_2d
 ```
 To loop over different numbers of block sparse threads, currently this can only be done by launching multiple Julia processes that are started with different numbers of threads. This can be done from within Julia as follows:
 ```julia
-julia> for n in 1:Sys.CPU_THREADS # 1:6 if your system has 6 available threads
+julia> for n in 4:4:Sys.CPU_THREADS
          run(`julia -t $n -e 'using ITensorsBenchmarks; runbenchmarks(write_results = true, benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"], blocksparse_num_threads = Threads.nthreads())'`)
        end
 [...]
@@ -74,5 +74,12 @@ plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"
 ## TODO
 
  - Make a version of `plotbenchmarks` the plots with respect to number of threads and also shows speedups as a function of number of threads.
- - Add option for running benchmarks with `splitblocks`.
+
+## To benchmark
+
+ - Run all benchmarks with `blas_num_threads = [12, 16]`.
+ - Run `benchmarks = ["dmrg_2d_qns"]` with `maxdims = 5000`, `blas_num_threads = [1, 4, 8, 12, 16]`, `blocksparse_num_threads = [1, 4, 8, 12, 16]`, and `splitblocks = [false, true]`.
+ - Run `benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"]` with `[4, 8, 12, 16]` blocksparse threads.
+ - Run `benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"]` with `splitblocks = true` and `[1, 4, 8, 12, 16]` blocksparse threads.
+ - Run `benchmarks = ["dmrg_2d_conserve_ky"]` with `maxdims = 6000:1000:10000` .
 
