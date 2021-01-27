@@ -86,16 +86,20 @@ function plotbenchmarks(; write_results = OPTIONS["write_results"],
         label_details *= ", $blocksparse_num_thread block sparse threads"
       end
 
-      plot!(p, maxdims_benchmark, times_julia;
-            line = (:solid, 4),
-            marker = (marker, 8),
-            color = :blue,
-            label = "Julia ITensor" * label_details)
-      plot!(p, maxdims_benchmark, times_cpp;
-            line = (:dash, 4),
-            marker = (marker, 8),
-            color = :red,
-            label = "C++ ITensor" * label_details)
+      if isnothing(cpp_or_julia) || cpp_or_julia == "julia"
+        plot!(p, maxdims_benchmark, times_julia;
+              line = (:solid, 4),
+              marker = (marker, 8),
+              color = :blue,
+              label = "Julia ITensor" * label_details)
+      end
+      if isnothing(cpp_or_julia) || cpp_or_julia == "c++"
+        plot!(p, maxdims_benchmark, times_cpp;
+              line = (:dash, 4),
+              marker = (marker, 8),
+              color = :red,
+              label = "C++ ITensor" * label_details)
+      end
     end
     filename = "plot_benchmark_$(benchmark)_maxdims_$(maxdims_benchmark)_blas_num_threads_$(blas_num_threads)_blocksparse_num_threads_$(blocksparse_num_threads).png"
     filepath = joinpath(pkgdir(@__MODULE__), "plots", filename)
