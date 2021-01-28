@@ -37,7 +37,7 @@ function plotbenchmarks(; write_results = OPTIONS["write_results"],
 
     p = plot(; title = descriptions[benchmark],
              legend = :topleft,
-             legendfontsize = 12,
+             legendfontsize = 10,
              xlabel = "Maximum bond dimension",
              ylabel = "Computation time (seconds)",
              xtickfontsize = 14,
