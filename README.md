@@ -71,19 +71,18 @@ plotbenchmarks(benchmarks = ["ctmrg", "dmrg_1d", "dmrg_1d_qns", "dmrg_2d_conserv
 plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"], blocksparse_num_threads = [1, 8, 16])
 ```
 
-## TODO
+# TODO
 
- - Make a version of `plotbenchmarks` the plots with respect to number of threads and also shows speedups as a function of number of threads.
+ - Make a version of `plotbenchmarks` that plots with respect to number of threads and also shows speedups as a function of number of threads.
 
 ## To benchmark
 
- - Rerun `benchmarks = ["dmrg_2d_conserve_ky"]` with `maxdims = 5000` and `blas_num_threads = 8` (the results look pretty far off).
- - Run `benchmarks = ["dmrg_2d_qns"]` with `maxdims = 5000`, `blas_num_threads = [1, 4]`.
- - Run `benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"]` with `[4, 8]` blocksparse threads.
+ - Run `benchmarks = ["dmrg_2d_qns"]` with `maxdims = 5000`, `blas_num_threads = [1, 4]` (currently running).
+ - Rerun `benchmarks = ["dmrg_2d_conserve_ky"]` with `maxdims = 5000` and `blas_num_threads = 8` (the results look pretty far off, but maybe it is just determintal to use too many threads at some point).
  - Run `benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"]` with `splitblocks = true` and `[1, 4, 8]` blocksparse threads.
 
-# If there is time
+## If there is time
 
- - Run all benchmarks with `blas_num_threads = [12, 16]`, `blocksparse_num_threads = [12, 16]`.
+ - Run all benchmarks with `blas_num_threads = 12`, `blocksparse_num_threads = 12`.
  - Run `benchmarks = ["dmrg_2d_conserve_ky"]` with `maxdims = 6000:1000:10000` for all thread options and splitblocks.
 
