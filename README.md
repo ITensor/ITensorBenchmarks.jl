@@ -77,12 +77,12 @@ plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"
 
 ## To benchmark
 
- - Run `benchmarks = ["dmrg_2d_qns"]` with `maxdims = 5000`, `blas_num_threads = [1, 4]` (currently running).
  - Rerun `benchmarks = ["dmrg_2d_conserve_ky"]` with `maxdims = 5000` and `blas_num_threads = 8` (the results look pretty far off, but maybe it is just determintal to use too many threads at some point).
  - Run `benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"]` with `splitblocks = true` and `[1, 4, 8]` blocksparse threads.
 
 ## If there is time
 
+ - Run `benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"]` with `splitblocks = true` and `[1, 4, 8]` BLAS threads.
  - Run all benchmarks with `blas_num_threads = 12`, `blocksparse_num_threads = 12`.
  - Run `benchmarks = ["dmrg_2d_conserve_ky"]` with `maxdims = 6000:1000:10000` for all thread options and splitblocks.
 
