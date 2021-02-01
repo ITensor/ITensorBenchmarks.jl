@@ -35,7 +35,7 @@ function runbenchmarks(io; write_results = OPTIONS["write_results"],
   println(stdout)
 
   if julia_itensor_version ≠ ITensors.version()
-    error("Attempting to benchmark with ITensors.jl v$julia_version, but the current version is v$(ITensors.version()). You should fix the ITensors.jl version by running `] add ITensors@0.1.32` at the Julia command prompt.")
+    error("Attempting to benchmark with ITensors.jl v$julia_version, but the current version is v$(ITensors.version()). You should fix the ITensors.jl version by running `] add ITensors@$julia_version` at the Julia command prompt.")
   end
 
   warning_seperator = "X"^70
