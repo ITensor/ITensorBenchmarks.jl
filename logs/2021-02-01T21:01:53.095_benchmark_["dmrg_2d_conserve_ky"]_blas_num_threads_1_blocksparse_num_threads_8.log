@@ -1,0 +1,670 @@
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXX WARNING: benchmark results are set to be written to disk, may overwrite previous results
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+Using Julia v1.5.3
+
+Using ITensors.jl v0.1.37
+
+Using C++ ITensor v3.1.6
+
+Julia is using BLAS vendor mkl. Please double check this is the same as the one you compile C++ ITensor against.
+Using 1 BLAS threads
+
+Benchmarking ["dmrg_2d_conserve_ky"]
+
+Bond dimensions set to:
+Dict{String,StepRange{Int64,Int64}} with 1 entry:
+  "dmrg_2d_conserve_ky" => 6000:1000:10000
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+Running benchmark dmrg_2d_conserve_ky for bond dimensions 6000:1000:10000, BLAS threads 1, and block sparse threads 8
+
+DMRG, 2D Hubbard model (U/t = 4)
+(Nx, Ny) = (8, 4), 10 sweeps
+Hybrid real and momentum space
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 6000, BLAS threads set to 1, block sparse threads set to 8, and splitblocks is set to false.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 6000, 1 BLAS threads, 8 block sparse threads, and splitblocks false.
+
+After sweep 1 energy=-13.867906253804 maxlinkdim=100 time=16.505
+After sweep 2 energy=-25.548150275644 maxlinkdim=200 time=46.002
+After sweep 3 energy=-26.532750891853 maxlinkdim=400 time=61.295
+After sweep 4 energy=-26.639824175417 maxlinkdim=800 time=59.092
+After sweep 5 energy=-26.670134170307 maxlinkdim=2000 time=85.345
+After sweep 6 energy=-26.676130188351 maxlinkdim=6000 time=174.587
+After sweep 7 energy=-26.676155161015 maxlinkdim=6000 time=214.583
+After sweep 8 energy=-26.676154321491 maxlinkdim=6000 time=210.033
+After sweep 9 energy=-26.676154306197 maxlinkdim=6000 time=211.374
+After sweep 10 energy=-26.676154306610 maxlinkdim=6000 time=210.363
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.676154306610073
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 6000
+Total runtime = 1290.000444277 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_8/maxdim_6000.txt
+
+######################################################################
+Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 6000, 1 BLAS threads, 8 block sparse threads, and splitblocks false.
+
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_it2IPzfK1PoP379y
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_it2IPzfK1PoP379y'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_it2IPzfK1PoP379y'
+
+
+Run the C++ benchmark
+
+    vN Entropy at center bond b=16 = 1.529396314992
+    Eigs at center bond b=16: 0.6264 0.1816 0.0166 0.0147 0.0140 0.0132 0.0131 0.0131 0.0130 0.0126 
+    Largest link dim during sweep 1/10 was 100
+    Largest truncation error: 0.00174655
+    Energy after sweep 1/10 is -13.180976036476
+    Sweep 1/10 CPU time = 1m, 39.4s (Wall time = 12.75s)
+
+    vN Entropy at center bond b=16 = 1.253954205436
+    Eigs at center bond b=16: 0.7616 0.0430 0.0337 0.0221 0.0200 0.0186 0.0103 0.0094 0.0080 0.0068 
+    Largest link dim during sweep 2/10 was 200
+    Largest truncation error: 0.000321734
+    Energy after sweep 2/10 is -25.485468667796
+    Sweep 2/10 CPU time = 4m, 40.7s (Wall time = 36.37s)
+
+    vN Entropy at center bond b=16 = 1.808596250185
+    Eigs at center bond b=16: 0.6451 0.0453 0.0308 0.0297 0.0293 0.0292 0.0263 0.0176 0.0171 0.0165 
+    Largest link dim during sweep 3/10 was 400
+    Largest truncation error: 0.000103965
+    Energy after sweep 3/10 is -26.537109188345
+    Sweep 3/10 CPU time = 6m, 25.1s (Wall time = 51.67s)
+
+    vN Entropy at center bond b=16 = 2.257307718745
+    Eigs at center bond b=16: 0.5362 0.0550 0.0494 0.0435 0.0268 0.0267 0.0267 0.0264 0.0243 0.0242 
+    Largest link dim during sweep 4/10 was 800
+    Largest truncation error: 2.82045e-05
+    Energy after sweep 4/10 is -26.639884119675
+    Sweep 4/10 CPU time = 6m, 27.3s (Wall time = 49.80s)
+
+    vN Entropy at center bond b=16 = 2.440873213170
+    Eigs at center bond b=16: 0.4987 0.0557 0.0548 0.0534 0.0257 0.0257 0.0257 0.0257 0.0253 0.0253 
+    Largest link dim during sweep 5/10 was 2000
+    Largest truncation error: 7.72528e-06
+    Energy after sweep 5/10 is -26.670142766893
+    Sweep 5/10 CPU time = 9m, 56.8s (Wall time = 1m, 21.7s)
+
+    vN Entropy at center bond b=16 = 2.510487940460
+    Eigs at center bond b=16: 0.4876 0.0559 0.0558 0.0556 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 6/10 was 6000
+    Largest truncation error: 7.36639e-07
+    Energy after sweep 6/10 is -26.676132355657
+    Sweep 6/10 CPU time = 20m, 10s (Wall time = 3m, 29.5s)
+
+    vN Entropy at center bond b=16 = 2.520351240656
+    Eigs at center bond b=16: 0.4860 0.0560 0.0560 0.0560 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 7/10 was 6000
+    Largest truncation error: 8.54436e-07
+    Energy after sweep 7/10 is -26.676154615479
+    Sweep 7/10 CPU time = 24m, 44s (Wall time = 4m, 33.6s)
+
+    vN Entropy at center bond b=16 = 2.520821050431
+    Eigs at center bond b=16: 0.4859 0.0560 0.0560 0.0560 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 8/10 was 6000
+    Largest truncation error: 8.64515e-07
+    Energy after sweep 8/10 is -26.676154228087
+    Sweep 8/10 CPU time = 24m, 44s (Wall time = 4m, 34.3s)
+
+    vN Entropy at center bond b=16 = 2.520853766651
+    Eigs at center bond b=16: 0.4859 0.0560 0.0560 0.0560 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 9/10 was 6000
+    Largest truncation error: 8.66133e-07
+    Energy after sweep 9/10 is -26.676154377536
+    Sweep 9/10 CPU time = 24m, 59s (Wall time = 4m, 36.3s)
+
+    vN Entropy at center bond b=16 = 2.520856826158
+    Eigs at center bond b=16: 0.4859 0.0560 0.0560 0.0560 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 10/10 was 6000
+    Largest truncation error: 8.6661e-07
+    Energy after sweep 10/10 is -26.676154423145
+    Sweep 10/10 CPU time = 25m, 1s (Wall time = 4m, 37.3s)
+nsweeps = 10
+Nx = 8
+Ny = 4
+U = 4
+t = 1
+cutoff = 0
+maxLinkDim(psi) = 6000
+totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
+energy = -26.676154423145
+
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_it2IPzfK1PoP379y used for building C++ benchmark
+
+Maximum dimension = 6000
+Total runtime = 1543.814035525 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_8/maxdim_6000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 7000, BLAS threads set to 1, block sparse threads set to 8, and splitblocks is set to false.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 7000, 1 BLAS threads, 8 block sparse threads, and splitblocks false.
+
+After sweep 1 energy=-13.277902831447 maxlinkdim=100 time=18.512
+After sweep 2 energy=-25.422586241627 maxlinkdim=200 time=51.992
+After sweep 3 energy=-26.526900465680 maxlinkdim=400 time=73.431
+After sweep 4 energy=-26.639244732500 maxlinkdim=800 time=63.278
+After sweep 5 energy=-26.670112074130 maxlinkdim=2000 time=90.786
+After sweep 6 energy=-26.676267729882 maxlinkdim=7000 time=199.199
+After sweep 7 energy=-26.676304497438 maxlinkdim=7000 time=260.885
+After sweep 8 energy=-26.676304744927 maxlinkdim=7000 time=260.550
+After sweep 9 energy=-26.676304785427 maxlinkdim=7000 time=261.932
+After sweep 10 energy=-26.676304729098 maxlinkdim=7000 time=261.278
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.676304729097907
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 7000
+Total runtime = 1542.129409061 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_8/maxdim_7000.txt
+
+######################################################################
+Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 7000, 1 BLAS threads, 8 block sparse threads, and splitblocks false.
+
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_bXVo4qcfPqbKzQGy
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_bXVo4qcfPqbKzQGy'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_bXVo4qcfPqbKzQGy'
+
+
+Run the C++ benchmark
+
+    vN Entropy at center bond b=16 = 1.498752002254
+    Eigs at center bond b=16: 0.6345 0.1780 0.0163 0.0146 0.0145 0.0130 0.0127 0.0124 0.0124 0.0121 
+    Largest link dim during sweep 1/10 was 100
+    Largest truncation error: 0.00147821
+    Energy after sweep 1/10 is -12.744869195342
+    Sweep 1/10 CPU time = 1m, 43.5s (Wall time = 13.35s)
+
+    vN Entropy at center bond b=16 = 1.325773941499
+    Eigs at center bond b=16: 0.7494 0.0400 0.0272 0.0211 0.0208 0.0183 0.0143 0.0140 0.0105 0.0101 
+    Largest link dim during sweep 2/10 was 200
+    Largest truncation error: 0.000283229
+    Energy after sweep 2/10 is -25.421212067698
+    Sweep 2/10 CPU time = 4m, 47.0s (Wall time = 37.19s)
+
+    vN Entropy at center bond b=16 = 1.817735916991
+    Eigs at center bond b=16: 0.6424 0.0465 0.0318 0.0302 0.0301 0.0298 0.0283 0.0168 0.0166 0.0154 
+    Largest link dim during sweep 3/10 was 400
+    Largest truncation error: 9.62746e-05
+    Energy after sweep 3/10 is -26.530905030810
+    Sweep 3/10 CPU time = 6m, 34.8s (Wall time = 52.98s)
+
+    vN Entropy at center bond b=16 = 2.251972318393
+    Eigs at center bond b=16: 0.5376 0.0553 0.0500 0.0420 0.0270 0.0269 0.0268 0.0265 0.0241 0.0240 
+    Largest link dim during sweep 4/10 was 800
+    Largest truncation error: 2.92721e-05
+    Energy after sweep 4/10 is -26.639784824946
+    Sweep 4/10 CPU time = 6m, 42.7s (Wall time = 52.05s)
+
+    vN Entropy at center bond b=16 = 2.442204968102
+    Eigs at center bond b=16: 0.4984 0.0557 0.0550 0.0533 0.0257 0.0257 0.0257 0.0257 0.0253 0.0253 
+    Largest link dim during sweep 5/10 was 2000
+    Largest truncation error: 7.7523e-06
+    Energy after sweep 5/10 is -26.670167956708
+    Sweep 5/10 CPU time = 10m, 13s (Wall time = 1m, 24.0s)
+
+    vN Entropy at center bond b=16 = 2.513170251084
+    Eigs at center bond b=16: 0.4871 0.0559 0.0559 0.0557 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 6/10 was 7000
+    Largest truncation error: 4.63683e-07
+    Energy after sweep 6/10 is -26.676287358969
+    Sweep 6/10 CPU time = 23m, 9s (Wall time = 4m, 11.9s)
+
+    vN Entropy at center bond b=16 = 2.522123006825
+    Eigs at center bond b=16: 0.4857 0.0560 0.0560 0.0560 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 7/10 was 7000
+    Largest truncation error: 5.88408e-07
+    Energy after sweep 7/10 is -26.676304600492
+    Sweep 7/10 CPU time = 29m, 34s (Wall time = 5m, 45.1s)
+
+    vN Entropy at center bond b=16 = 2.522438013848
+    Eigs at center bond b=16: 0.4857 0.0560 0.0560 0.0560 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 8/10 was 7000
+    Largest truncation error: 5.95373e-07
+    Energy after sweep 8/10 is -26.676304642070
+    Sweep 8/10 CPU time = 29m, 25s (Wall time = 5m, 42.2s)
+
+    vN Entropy at center bond b=16 = 2.522456135449
+    Eigs at center bond b=16: 0.4857 0.0560 0.0560 0.0560 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 9/10 was 7000
+    Largest truncation error: 5.9641e-07
+    Energy after sweep 9/10 is -26.676304724394
+    Sweep 9/10 CPU time = 29m, 24s (Wall time = 5m, 43.6s)
+
+    vN Entropy at center bond b=16 = 2.522457931039
+    Eigs at center bond b=16: 0.4857 0.0560 0.0560 0.0560 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 10/10 was 7000
+    Largest truncation error: 5.96692e-07
+    Energy after sweep 10/10 is -26.676304672800
+    Sweep 10/10 CPU time = 29m, 12s (Wall time = 5m, 41.8s)
+nsweeps = 10
+Nx = 8
+Ny = 4
+U = 4
+t = 1
+cutoff = 0
+maxLinkDim(psi) = 7000
+totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
+energy = -26.67630467280017
+
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_bXVo4qcfPqbKzQGy used for building C++ benchmark
+
+Maximum dimension = 7000
+Total runtime = 1864.560384463 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_8/maxdim_7000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 8000, BLAS threads set to 1, block sparse threads set to 8, and splitblocks is set to false.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 8000, 1 BLAS threads, 8 block sparse threads, and splitblocks false.
+
+After sweep 1 energy=-12.641659779273 maxlinkdim=100 time=20.204
+After sweep 2 energy=-25.431601484077 maxlinkdim=200 time=46.633
+After sweep 3 energy=-26.533839054368 maxlinkdim=400 time=69.660
+After sweep 4 energy=-26.639558542554 maxlinkdim=800 time=61.425
+After sweep 5 energy=-26.670163169869 maxlinkdim=2000 time=91.811
+After sweep 6 energy=-26.676379632340 maxlinkdim=8000 time=242.841
+After sweep 7 energy=-26.676396818793 maxlinkdim=8000 time=327.248
+After sweep 8 energy=-26.676396826003 maxlinkdim=8000 time=331.021
+After sweep 9 energy=-26.676396918321 maxlinkdim=8000 time=329.964
+After sweep 10 energy=-26.676396975369 maxlinkdim=8000 time=333.620
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.676396975369485
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 8000
+Total runtime = 1854.668206146 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_8/maxdim_8000.txt
+
+######################################################################
+Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 8000, 1 BLAS threads, 8 block sparse threads, and splitblocks false.
+
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_mNb5n7oZDHnmKcSF
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_mNb5n7oZDHnmKcSF'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_mNb5n7oZDHnmKcSF'
+
+
+Run the C++ benchmark
+
+    vN Entropy at center bond b=16 = 1.508583959574
+    Eigs at center bond b=16: 0.6337 0.1771 0.0160 0.0145 0.0144 0.0134 0.0127 0.0126 0.0126 0.0116 
+    Largest link dim during sweep 1/10 was 100
+    Largest truncation error: 0.00149856
+    Energy after sweep 1/10 is -12.783242938901
+    Sweep 1/10 CPU time = 1m, 41.5s (Wall time = 13.05s)
+
+    vN Entropy at center bond b=16 = 1.236414651634
+    Eigs at center bond b=16: 0.7649 0.0442 0.0271 0.0263 0.0238 0.0155 0.0116 0.0100 0.0084 0.0065 
+    Largest link dim during sweep 2/10 was 200
+    Largest truncation error: 0.00018633
+    Energy after sweep 2/10 is -25.624641892720
+    Sweep 2/10 CPU time = 4m, 43.6s (Wall time = 36.73s)
+
+    vN Entropy at center bond b=16 = 1.816416789123
+    Eigs at center bond b=16: 0.6424 0.0467 0.0305 0.0304 0.0303 0.0302 0.0264 0.0169 0.0169 0.0160 
+    Largest link dim during sweep 3/10 was 400
+    Largest truncation error: 0.000105015
+    Energy after sweep 3/10 is -26.534513055642
+    Sweep 3/10 CPU time = 6m, 33.4s (Wall time = 52.68s)
+
+    vN Entropy at center bond b=16 = 2.259233862249
+    Eigs at center bond b=16: 0.5360 0.0556 0.0497 0.0427 0.0270 0.0269 0.0269 0.0265 0.0241 0.0240 
+    Largest link dim during sweep 4/10 was 800
+    Largest truncation error: 2.83451e-05
+    Energy after sweep 4/10 is -26.639401343863
+    Sweep 4/10 CPU time = 6m, 24.0s (Wall time = 49.25s)
+
+    vN Entropy at center bond b=16 = 2.432321756617
+    Eigs at center bond b=16: 0.5003 0.0558 0.0547 0.0528 0.0258 0.0258 0.0258 0.0257 0.0253 0.0253 
+    Largest link dim during sweep 5/10 was 2000
+    Largest truncation error: 7.02084e-06
+    Energy after sweep 5/10 is -26.670018271465
+    Sweep 5/10 CPU time = 10m, 10s (Wall time = 1m, 23.4s)
+
+    vN Entropy at center bond b=16 = 2.508797263202
+    Eigs at center bond b=16: 0.4879 0.0559 0.0558 0.0555 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 6/10 was 8000
+    Largest truncation error: 2.93004e-07
+    Energy after sweep 6/10 is -26.676358952224
+    Sweep 6/10 CPU time = 26m, 22s (Wall time = 4m, 58.6s)
+
+    vN Entropy at center bond b=16 = 2.522569770368
+    Eigs at center bond b=16: 0.4857 0.0560 0.0560 0.0559 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 7/10 was 8000
+    Largest truncation error: 4.09357e-07
+    Energy after sweep 7/10 is -26.676396683082
+    Sweep 7/10 CPU time = 34m, 40s (Wall time = 7m, 2.9s)
+
+    vN Entropy at center bond b=16 = 2.523459341251
+    Eigs at center bond b=16: 0.4856 0.0560 0.0560 0.0560 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 8/10 was 8000
+    Largest truncation error: 4.14565e-07
+    Energy after sweep 8/10 is -26.676396750978
+    Sweep 8/10 CPU time = 34m, 27s (Wall time = 6m, 58.4s)
+
+    vN Entropy at center bond b=16 = 2.523501636736
+    Eigs at center bond b=16: 0.4856 0.0560 0.0560 0.0560 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 9/10 was 8000
+    Largest truncation error: 4.1563e-07
+    Energy after sweep 9/10 is -26.676396916788
+    Sweep 9/10 CPU time = 34m, 16s (Wall time = 6m, 58.2s)
+
+    vN Entropy at center bond b=16 = 2.523506622809
+    Eigs at center bond b=16: 0.4856 0.0560 0.0560 0.0560 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 10/10 was 8000
+    Largest truncation error: 4.16435e-07
+    Energy after sweep 10/10 is -26.676396964965
+    Sweep 10/10 CPU time = 34m, 19s (Wall time = 6m, 58.2s)
+nsweeps = 10
+Nx = 8
+Ny = 4
+U = 4
+t = 1
+cutoff = 0
+maxLinkDim(psi) = 8000
+totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
+energy = -26.67639696496503
+
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_mNb5n7oZDHnmKcSF used for building C++ benchmark
+
+Maximum dimension = 8000
+Total runtime = 2211.763258576 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_8/maxdim_8000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 9000, BLAS threads set to 1, block sparse threads set to 8, and splitblocks is set to false.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 9000, 1 BLAS threads, 8 block sparse threads, and splitblocks false.
+
+After sweep 1 energy=-12.872186390399 maxlinkdim=100 time=17.019
+After sweep 2 energy=-25.346877842319 maxlinkdim=200 time=51.742
+After sweep 3 energy=-26.528495218794 maxlinkdim=400 time=70.742
+After sweep 4 energy=-26.639804951520 maxlinkdim=800 time=64.936
+After sweep 5 energy=-26.670148740106 maxlinkdim=2000 time=85.813
+After sweep 6 energy=-26.676434459202 maxlinkdim=9000 time=261.169
+After sweep 7 energy=-26.676456982023 maxlinkdim=9000 time=436.313
+After sweep 8 energy=-26.676456808136 maxlinkdim=9000 time=436.212
+After sweep 9 energy=-26.676456875645 maxlinkdim=9000 time=436.270
+After sweep 10 energy=-26.676456879054 maxlinkdim=9000 time=437.098
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.676456879054115
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 9000
+Total runtime = 2297.595029717 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_8/maxdim_9000.txt
+
+######################################################################
+Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 9000, 1 BLAS threads, 8 block sparse threads, and splitblocks false.
+
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_WeN3h2AxuglY4Ixu
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_WeN3h2AxuglY4Ixu'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_WeN3h2AxuglY4Ixu'
+
+
+Run the C++ benchmark
+
+    vN Entropy at center bond b=16 = 1.487383375304
+    Eigs at center bond b=16: 0.6370 0.1785 0.0164 0.0145 0.0136 0.0129 0.0128 0.0126 0.0124 0.0114 
+    Largest link dim during sweep 1/10 was 100
+    Largest truncation error: 0.00145836
+    Energy after sweep 1/10 is -13.605378811228
+    Sweep 1/10 CPU time = 1m, 42.6s (Wall time = 13.21s)
+
+    vN Entropy at center bond b=16 = 1.334051938191
+    Eigs at center bond b=16: 0.7496 0.0367 0.0247 0.0245 0.0183 0.0180 0.0153 0.0135 0.0119 0.0104 
+    Largest link dim during sweep 2/10 was 200
+    Largest truncation error: 0.000253453
+    Energy after sweep 2/10 is -25.496478797511
+    Sweep 2/10 CPU time = 4m, 43.3s (Wall time = 36.62s)
+
+    vN Entropy at center bond b=16 = 1.805193470832
+    Eigs at center bond b=16: 0.6467 0.0397 0.0327 0.0303 0.0294 0.0289 0.0286 0.0175 0.0174 0.0168 
+    Largest link dim during sweep 3/10 was 400
+    Largest truncation error: 0.00010547
+    Energy after sweep 3/10 is -26.532357625834
+    Sweep 3/10 CPU time = 6m, 28.6s (Wall time = 51.91s)
+
+    vN Entropy at center bond b=16 = 2.254901398396
+    Eigs at center bond b=16: 0.5373 0.0536 0.0515 0.0420 0.0268 0.0267 0.0267 0.0264 0.0242 0.0241 
+    Largest link dim during sweep 4/10 was 800
+    Largest truncation error: 2.85205e-05
+    Energy after sweep 4/10 is -26.639720157319
+    Sweep 4/10 CPU time = 6m, 28.9s (Wall time = 50.29s)
+
+    vN Entropy at center bond b=16 = 2.441308121664
+    Eigs at center bond b=16: 0.4986 0.0555 0.0552 0.0532 0.0257 0.0257 0.0257 0.0256 0.0253 0.0253 
+    Largest link dim during sweep 5/10 was 2000
+    Largest truncation error: 7.76003e-06
+    Energy after sweep 5/10 is -26.670112384915
+    Sweep 5/10 CPU time = 9m, 51.5s (Wall time = 1m, 20.8s)
+
+    vN Entropy at center bond b=16 = 2.510981524705
+    Eigs at center bond b=16: 0.4875 0.0559 0.0558 0.0556 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 6/10 was 9000
+    Largest truncation error: 1.79205e-07
+    Energy after sweep 6/10 is -26.676420729842
+    Sweep 6/10 CPU time = 27m, 25s (Wall time = 5m, 17.6s)
+
+    vN Entropy at center bond b=16 = 2.523495078362
+    Eigs at center bond b=16: 0.4856 0.0560 0.0560 0.0560 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 7/10 was 9000
+    Largest truncation error: 2.80145e-07
+    Energy after sweep 7/10 is -26.676457267715
+    Sweep 7/10 CPU time = 40m, 19s (Wall time = 8m, 31.1s)
+
+    vN Entropy at center bond b=16 = 2.524173926592
+    Eigs at center bond b=16: 0.4855 0.0560 0.0560 0.0560 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 8/10 was 9000
+    Largest truncation error: 3.03434e-07
+    Energy after sweep 8/10 is -26.676456875777
+    Sweep 8/10 CPU time = 40m, 26s (Wall time = 8m, 33.9s)
+
+    vN Entropy at center bond b=16 = 2.524213621443
+    Eigs at center bond b=16: 0.4855 0.0560 0.0560 0.0560 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 9/10 was 9000
+    Largest truncation error: 3.03076e-07
+    Energy after sweep 9/10 is -26.676456895797
+    Sweep 9/10 CPU time = 40m, 39s (Wall time = 8m, 34.7s)
+
+    vN Entropy at center bond b=16 = 2.524216495984
+    Eigs at center bond b=16: 0.4855 0.0560 0.0560 0.0560 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 10/10 was 9000
+    Largest truncation error: 3.03103e-07
+    Energy after sweep 10/10 is -26.676456896142
+    Sweep 10/10 CPU time = 40m, 42s (Wall time = 8m, 35.0s)
+nsweeps = 10
+Nx = 8
+Ny = 4
+U = 4
+t = 1
+cutoff = 0
+maxLinkDim(psi) = 9000
+totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
+energy = -26.67645689614196
+
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_WeN3h2AxuglY4Ixu used for building C++ benchmark
+
+Maximum dimension = 9000
+Total runtime = 2605.735331227 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_8/maxdim_9000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 10000, BLAS threads set to 1, block sparse threads set to 8, and splitblocks is set to false.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 10000, 1 BLAS threads, 8 block sparse threads, and splitblocks false.
+
+After sweep 1 energy=-13.134392577953 maxlinkdim=100 time=17.585
+After sweep 2 energy=-25.561592213530 maxlinkdim=200 time=49.417
+After sweep 3 energy=-26.534893376504 maxlinkdim=400 time=73.546
+After sweep 4 energy=-26.639887492593 maxlinkdim=800 time=63.724
+After sweep 5 energy=-26.670100325771 maxlinkdim=2000 time=86.310
+After sweep 6 energy=-26.676458374121 maxlinkdim=10000 time=288.029
+After sweep 7 energy=-26.676496910989 maxlinkdim=10000 time=533.324
+After sweep 8 energy=-26.676496499077 maxlinkdim=10000 time=526.652
+After sweep 9 energy=-26.676496531093 maxlinkdim=10000 time=534.560
+After sweep 10 energy=-26.676496539178 maxlinkdim=10000 time=527.977
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.676496539178288
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 10000
+Total runtime = 2701.388374554 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_8/maxdim_10000.txt
+
+######################################################################
+Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 10000, 1 BLAS threads, 8 block sparse threads, and splitblocks false.
+
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_TaEMEzyMV6GqoQjO
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_TaEMEzyMV6GqoQjO'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_TaEMEzyMV6GqoQjO'
+
+
+Run the C++ benchmark
+
+    vN Entropy at center bond b=16 = 1.515957649169
+    Eigs at center bond b=16: 0.6247 0.1875 0.0156 0.0150 0.0138 0.0130 0.0130 0.0129 0.0129 0.0124 
+    Largest link dim during sweep 1/10 was 100
+    Largest truncation error: 0.00134848
+    Energy after sweep 1/10 is -12.955955283040
+    Sweep 1/10 CPU time = 1m, 42.5s (Wall time = 13.18s)
+
+    vN Entropy at center bond b=16 = 1.296322847162
+    Eigs at center bond b=16: 0.7557 0.0388 0.0292 0.0238 0.0211 0.0161 0.0144 0.0108 0.0094 0.0092 
+    Largest link dim during sweep 2/10 was 200
+    Largest truncation error: 0.000257102
+    Energy after sweep 2/10 is -25.490801953628
+    Sweep 2/10 CPU time = 4m, 41.5s (Wall time = 36.37s)
+
+    vN Entropy at center bond b=16 = 1.805366536641
+    Eigs at center bond b=16: 0.6463 0.0445 0.0315 0.0299 0.0295 0.0293 0.0263 0.0172 0.0167 0.0162 
+    Largest link dim during sweep 3/10 was 400
+    Largest truncation error: 0.000102199
+    Energy after sweep 3/10 is -26.532579448105
+    Sweep 3/10 CPU time = 6m, 35.0s (Wall time = 52.77s)
+
+    vN Entropy at center bond b=16 = 2.258483976632
+    Eigs at center bond b=16: 0.5366 0.0550 0.0494 0.0430 0.0269 0.0267 0.0267 0.0264 0.0241 0.0241 
+    Largest link dim during sweep 4/10 was 800
+    Largest truncation error: 2.89812e-05
+    Energy after sweep 4/10 is -26.639726285336
+    Sweep 4/10 CPU time = 6m, 34.8s (Wall time = 50.90s)
+
+    vN Entropy at center bond b=16 = 2.438089341647
+    Eigs at center bond b=16: 0.4991 0.0557 0.0548 0.0532 0.0257 0.0257 0.0257 0.0257 0.0253 0.0253 
+    Largest link dim during sweep 5/10 was 2000
+    Largest truncation error: 7.46337e-06
+    Energy after sweep 5/10 is -26.670093574587
+    Sweep 5/10 CPU time = 10m, 9s (Wall time = 1m, 23.0s)
+
+    vN Entropy at center bond b=16 = 2.511186850538
+    Eigs at center bond b=16: 0.4875 0.0559 0.0558 0.0556 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 6/10 was 10000
+    Largest truncation error: 1.19961e-07
+    Energy after sweep 6/10 is -26.676460296265
+    Sweep 6/10 CPU time = 28m, 44s (Wall time = 5m, 38.6s)
+
+    vN Entropy at center bond b=16 = 2.524028777405
+    Eigs at center bond b=16: 0.4855 0.0560 0.0560 0.0560 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 7/10 was 10000
+    Largest truncation error: 2.12849e-07
+    Energy after sweep 7/10 is -26.676496812474
+    Sweep 7/10 CPU time = 46m, 37s (Wall time = 10m, 15s)
+
+    vN Entropy at center bond b=16 = 2.524670324256
+    Eigs at center bond b=16: 0.4854 0.0560 0.0560 0.0560 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 8/10 was 10000
+    Largest truncation error: 2.29058e-07
+    Energy after sweep 8/10 is -26.676496479971
+    Sweep 8/10 CPU time = 46m, 34s (Wall time = 10m, 16s)
+
+    vN Entropy at center bond b=16 = 2.524704362207
+    Eigs at center bond b=16: 0.4854 0.0560 0.0560 0.0560 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 9/10 was 10000
+    Largest truncation error: 2.29321e-07
+    Energy after sweep 9/10 is -26.676496524139
+    Sweep 9/10 CPU time = 46m, 51s (Wall time = 10m, 19s)
+
+    vN Entropy at center bond b=16 = 2.524706875169
+    Eigs at center bond b=16: 0.4854 0.0560 0.0560 0.0560 0.0253 0.0253 0.0253 0.0253 0.0253 0.0253 
+    Largest link dim during sweep 10/10 was 10000
+    Largest truncation error: 2.29469e-07
+    Energy after sweep 10/10 is -26.676496539840
+    Sweep 10/10 CPU time = 46m, 42s (Wall time = 10m, 16s)
+nsweeps = 10
+Nx = 8
+Ny = 4
+U = 4
+t = 1
+cutoff = 0
+maxLinkDim(psi) = 10000
+totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
+energy = -26.67649653983971
+
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_TaEMEzyMV6GqoQjO used for building C++ benchmark
+
+Maximum dimension = 10000
+Total runtime = 3041.608730646 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_8/maxdim_10000.txt
+
