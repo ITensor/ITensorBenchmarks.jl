@@ -1,5 +1,5 @@
 
-maxdims["dmrg_2d_conserve_ky"] = 1_000:1_000:5_000
+maxdims["dmrg_2d_conserve_ky"] = 1_000:1_000:10_000
 descriptions["dmrg_2d_conserve_ky"] = "DMRG, 2D Hubbard model (U/t = 4)\n(Nx, Ny) = (8, 4), 10 sweeps\nHybrid real and momentum space"
 
 function runbenchmark(::Val{:dmrg_2d_conserve_ky};
