@@ -66,9 +66,11 @@ $ nohup julia -e 'using ITensorsBenchmarks; runbenchmarks(write_results = true, 
 
 Here are some commands to plot the benchmarks:
 ```julia
-plotbenchmarks(blas_num_threads = [1, 8])
-plotbenchmarks(benchmarks = ["ctmrg", "dmrg_1d", "dmrg_1d_qns", "dmrg_2d_conserve_ky"], blas_num_threads = [1, 8])
-plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"], blocksparse_num_threads = [1, 8, 16])
+plotbenchmarks(blas_num_threads = [1, 4, 8])
+plotbenchmarks(blocksparse_num_threads = [1, 4, 8])
+plotbenchmarks(benchmarks = ["ctmrg", "dmrg_1d", "trg"], blas_num_threads = [1, 4, 8])
+plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_conserve_ky", "dmrg_2d_qns"], blocksparse_num_threads = [1, 4, 8])
+plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_conserve_ky", "dmrg_2d_qns"], blocksparse_num_threads = [1, 4, 8], splitblocks = true)
 ```
 
 # TODO
@@ -77,9 +79,11 @@ plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"
 
 ## To benchmark
 
- - Rerun `benchmarks = ["dmrg_2d_conserve_ky"]` with `maxdims = 5000` and `blas_num_threads = 8` (the results look pretty far off).
- - Run `benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"]` with `splitblocks = true` and `[1, 4, 8]` blocksparse threads (complete for `["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"]` with `blocksparse_num_threads = 1`, `"dmrg_1d_qns"` with `blocksparse_num_threads = 4`.).
+ - Run `benchmarks = ["dmrg_2d_conserve_ky"]` with `blocksparse_num_threads = 1`, `splitblocks = true` for `maxdims = 6000:1000:10000`.
+ - Run `benchmarks = ["dmrg_2d_qns"]` with `blocksparse_num_threads = 8`, `splitblocks = true` for `maxdims = 5000`.
+ - Run `benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"]` with `splitblocks = true` and `8` blocksparse threads (running).
  - Run `benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"]` with `splitblocks = true` and `[4, 8]` BLAS threads.
+ - Rerun `benchmarks = ["dmrg_2d_conserve_ky"]` with `maxdims = 5000` and `blas_num_threads = 8` (the results look pretty far off).
 
 ## If there is time
 
