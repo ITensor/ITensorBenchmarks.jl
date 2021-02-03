@@ -81,7 +81,6 @@ plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_conserve_ky", "dmrg_2d_qns"
 
  - Run `benchmarks = ["dmrg_2d_conserve_ky"]` with `blocksparse_num_threads = 1`, `splitblocks = true` for `maxdims = 6000:1000:10000`.
  - Run `benchmarks = ["dmrg_2d_qns"]` with `blocksparse_num_threads = 8`, `splitblocks = true` for `maxdims = 5000`.
- - Run `benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"]` with `splitblocks = true` and `8` blocksparse threads (running).
  - Run `benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"]` with `splitblocks = true` and `[4, 8]` BLAS threads.
  - Rerun `benchmarks = ["dmrg_2d_conserve_ky"]` with `maxdims = 5000` and `blas_num_threads = 8` (the results look pretty far off).
 
