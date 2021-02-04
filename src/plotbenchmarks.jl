@@ -38,11 +38,11 @@ function plotbenchmarks(; write_results = OPTIONS["write_results"],
 
     p = plot(; title = descriptions[benchmark],
              legend = :topleft,
-             legendfontsize = 10,
+             legendfontsize = 9,
              xlabel = "Maximum bond dimension",
              ylabel = "Computation time (seconds)",
-             xtickfontsize = 14,
-             ytickfontsize = 14,
+             xtickfontsize = 12,
+             ytickfontsize = 12,
              xguidefontsize = 14,
              yguidefontsize = 14)
 

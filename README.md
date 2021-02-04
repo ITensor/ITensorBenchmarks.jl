@@ -64,13 +64,12 @@ Here is an example for running benchmarks in the background:
 $ nohup julia -e 'using ITensorsBenchmarks; runbenchmarks(write_results = true, blas_num_threads = [1, 4, 8])' > log_$(date "+%Y.%m.%d-%H.%M.%S").txt 2> err_$(date "+%Y.%m.%d-%H.%M.%S").txt &
 ```
 
-Here are some commands to plot the benchmarks:
+Here are commands to plot all available benchmarks:
 ```julia
 plotbenchmarks(blas_num_threads = [1, 4, 8])
-plotbenchmarks(blocksparse_num_threads = [1, 4, 8])
-plotbenchmarks(benchmarks = ["ctmrg", "dmrg_1d", "trg"], blas_num_threads = [1, 4, 8])
 plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_conserve_ky", "dmrg_2d_qns"], blocksparse_num_threads = [1, 4, 8])
 plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_conserve_ky", "dmrg_2d_qns"], blocksparse_num_threads = [1, 4, 8], splitblocks = true)
+plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_conserve_ky", "dmrg_2d_qns"], blas_num_threads = [1, 4, 8], splitblocks = true)
 ```
 
 # TODO
@@ -79,7 +78,7 @@ plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_conserve_ky", "dmrg_2d_qns"
 
 ## To benchmark
 
- - Run `benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"]` with `splitblocks = true` and `[4, 8]` BLAS threads.
+ - Run `benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"]` with `splitblocks = true` and `[4, 8]` BLAS threads (running).
 
 ## If there is time
 
