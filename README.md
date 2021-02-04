@@ -27,49 +27,57 @@ $ cp ../options.mk.sample .
 $ make -j
 ```
 
-Then, you can start Julia and run the benchmarks with:
+## Run benchmarks with BLAS multithreading
+
+Here are commands to run all of the benchmark options:
 ```julia
-julia> using ITensorsBenchmarks
+# All benchmarks single threaded
+runbenchmarks(write_results = true)
 
-julia> runbenchmarks(write_results = true) # Run all of the benchmarks, save results into `data` directory
-[...]
+# splitblocks single threaded (splitblocks enables a more sparse representation of the MPO, only available in Julia)
+runbenchmarks(write_results = true, cpp_or_julia = "julia", benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"], splitblocks = true)
 
-julia> runbenchmarks(write_results = true, blas_num_threads = 4) # Run all of the benchmarks using 4 BLAS threads
-[...]
+# All benchmarks with multiple BLAS threads
+runbenchmarks(write_results = true, blas_num_threads = [4, 8])
 
-julia> runbenchmarks(write_results = true, blas_num_threads = [1, 4, 8]) # Run all of the benchmarks using 1, 4, and 8 BLAS threads
-[...]
+# splitblocks with multiple BLAS threads
+runbenchmarks(write_results = true, cpp_or_julia = "julia", benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"], blas_num_threads = [4, 8], splitblocks = true)
+
 ```
-You can run benchmarks with multiple block sparse threads with:
+
+## Run benchmarks with block sparse multithreading
+
+You can run benchmarks with multiple block sparse threads by starting Julia with multiple threads:
 ```julia
 $ julia -t 4
 
-julia> runbenchmarks(write_results = true, benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"], blocksparse_num_threads = 4)
-[...]
-
-julia> runbenchmarks(write_results = true, benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"], blocksparse_num_threads = [1, 8, 16, 24])
+julia> runbenchmarks(write_results = true, benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"], blocksparse_num_threads = Threads.nthreads())
 [...]
 ```
-To loop over different numbers of block sparse threads, currently this can only be done by launching multiple Julia processes that are started with different numbers of threads. This can be done from within Julia as follows:
+To loop over different numbers of block sparse threads, currently this can only be done by launching multiple Julia processes that are started with different numbers of threads. This can be done from within Julia by launching different Julia processes as follows:
 ```julia
-julia> for n in 4:4:Sys.CPU_THREADS
-         run(`julia -t $n -e 'using ITensorsBenchmarks; runbenchmarks(write_results = true, benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"], blocksparse_num_threads = Threads.nthreads())'`)
-       end
-[...]
+# Run all QN benchmarks with multiple block sparse threads
+for n in [4, 8] run(`julia -t $n -e 'using ITensorsBenchmarks; runbenchmarks(write_results = true, benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"], blocksparse_num_threads = Threads.nthreads())'`) end
+
+# Run Julia QN benchmarks with multiple block sparse threads and splitblocks
+for n in [4, 8] run(`julia -t $n -e 'using ITensorsBenchmarks; runbenchmarks(write_results = true, cpp_or_julia = "julia", benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"], blocksparse_num_threads = Threads.nthreads(), splitblocks = true)'`) end
 ```
 or you can use a shell script to do the same thing.
 
-Here is an example for running benchmarks in the background:
+Here is an example for running benchmarks in the background from the command line (for example it is helpful running them on a remote computer over ssh, if you want the benchmarks to continue running after you log off):
 ```
-$ nohup julia -e 'using ITensorsBenchmarks; runbenchmarks(write_results = true, blas_num_threads = [1, 4, 8])' > log_$(date "+%Y.%m.%d-%H.%M.%S").txt 2> err_$(date "+%Y.%m.%d-%H.%M.%S").txt &
+$ nohup julia -e 'using ITensorsBenchmarks; runbenchmarks(write_results = true, blas_num_threads = [4, 8])' > log_$(date "+%Y.%m.%d-%H.%M.%S").txt 2> err_$(date "+%Y.%m.%d-%H.%M.%S").txt &
 ```
 
 Here are commands to plot all available benchmarks:
 ```julia
 plotbenchmarks(blas_num_threads = [1, 4, 8])
+
+plotbenchmarks(cpp_or_julia = "julia", benchmarks = ["dmrg_1d_qns", "dmrg_2d_conserve_ky", "dmrg_2d_qns"], blas_num_threads = [1, 4, 8], splitblocks = true)
+
 plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_conserve_ky", "dmrg_2d_qns"], blocksparse_num_threads = [1, 4, 8])
-plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_conserve_ky", "dmrg_2d_qns"], blocksparse_num_threads = [1, 4, 8], splitblocks = true)
-plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_conserve_ky", "dmrg_2d_qns"], blas_num_threads = [1, 4, 8], splitblocks = true)
+
+plotbenchmarks(cpp_or_julia = "julia", benchmarks = ["dmrg_1d_qns", "dmrg_2d_conserve_ky", "dmrg_2d_qns"], blocksparse_num_threads = [1, 4, 8], splitblocks = true)
 ```
 
 # TODO
@@ -82,5 +90,6 @@ plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_conserve_ky", "dmrg_2d_qns"
 
 ## If there is time
 
- - Run all benchmarks with `blas_num_threads = 12`, `blocksparse_num_threads = 12` (or maybe just `"dmrg_2d_conserve_ky"`).
+ - Run all QN benchmarks with `blocksparse_num_threads = 12`.
+ - Run all benchmarks with `blas_num_threads = 12`.
 
