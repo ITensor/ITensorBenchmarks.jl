@@ -1,0 +1,60 @@
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXX WARNING: benchmark results are set to be written to disk, may overwrite previous results
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+Using Julia v1.5.3
+
+Using ITensors.jl v0.1.37
+
+Using C++ ITensor v3.1.6
+
+Julia is using BLAS vendor mkl. Please double check this is the same as the one you compile C++ ITensor against.
+Using 1 BLAS threads
+
+Benchmarking ["dmrg_2d_qns"]
+
+Bond dimensions set to:
+Dict{String,Int64} with 1 entry:
+  "dmrg_2d_qns" => 5000
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+Running benchmark dmrg_2d_qns for bond dimensions 5000, BLAS threads 1, and block sparse threads 4
+
+DMRG, 2D Hubbard model (U/t = 4)
+(Nx, Ny) = (8, 4), 10 sweeps
+Real space, periodic in the y-direction
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_qns
+
+Maximum bond dimension set to 5000, BLAS threads set to 1, block sparse threads set to 4, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_qns for bond dimension 5000, 1 BLAS threads, 4 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-21.223395872601 maxlinkdim=100 time=6.867
+After sweep 2 energy=-26.256495117101 maxlinkdim=200 time=22.345
+After sweep 3 energy=-26.545278476943 maxlinkdim=400 time=30.735
+After sweep 4 energy=-26.630061388133 maxlinkdim=800 time=34.828
+After sweep 5 energy=-26.668164829889 maxlinkdim=2000 time=83.267
+After sweep 6 energy=-26.673291707425 maxlinkdim=3000 time=195.540
+After sweep 7 energy=-26.675624799557 maxlinkdim=5000 time=573.789
+After sweep 8 energy=-26.675629393743 maxlinkdim=5000 time=761.778
+After sweep 9 energy=-26.675630353810 maxlinkdim=5000 time=773.373
+After sweep 10 energy=-26.675630632295 maxlinkdim=5000 time=762.371
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.675630632295174
+flux(ψ) = QN(("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 5000
+Total runtime = 3245.59839568 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_qns/blas_num_threads_1/blocksparse_num_threads_4/splitblocks_true/maxdim_5000.txt
+
