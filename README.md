@@ -73,20 +73,16 @@ Here are commands to plot all available benchmarks:
 ```julia
 plotbenchmarks(blas_num_threads = [1, 4, 8])
 
-plotbenchmarks(cpp_or_julia = "julia", benchmarks = ["dmrg_1d_qns", "dmrg_2d_conserve_ky", "dmrg_2d_qns"], blas_num_threads = [1, 4, 8], splitblocks = true)
+plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_conserve_ky", "dmrg_2d_qns"], blas_num_threads = [1, 4, 8], splitblocks = true)
 
 plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_conserve_ky", "dmrg_2d_qns"], blocksparse_num_threads = [1, 4, 8])
 
-plotbenchmarks(cpp_or_julia = "julia", benchmarks = ["dmrg_1d_qns", "dmrg_2d_conserve_ky", "dmrg_2d_qns"], blocksparse_num_threads = [1, 4, 8], splitblocks = true)
+plotbenchmarks(benchmarks = ["dmrg_1d_qns", "dmrg_2d_conserve_ky", "dmrg_2d_qns"], blocksparse_num_threads = [1, 4, 8], splitblocks = true)
 ```
 
 # TODO
 
  - Make a version of `plotbenchmarks` that plots with respect to number of threads and also shows speedups as a function of number of threads.
-
-## To benchmark
-
- - Run `benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"]` with `splitblocks = true` and `[4, 8]` BLAS threads (running).
 
 ## If there is time
 
