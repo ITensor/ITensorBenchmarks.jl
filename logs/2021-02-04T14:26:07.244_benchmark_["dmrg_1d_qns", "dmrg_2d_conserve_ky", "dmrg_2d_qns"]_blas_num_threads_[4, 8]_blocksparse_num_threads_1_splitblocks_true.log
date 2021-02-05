@@ -1,0 +1,1193 @@
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXX WARNING: benchmark results are set to be written to disk, may overwrite previous results
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+Using Julia v1.5.3
+
+Using ITensors.jl v0.1.37
+
+Using C++ ITensor v3.1.6
+
+Julia is using BLAS vendor mkl. Please double check this is the same as the one you compile C++ ITensor against.
+Using [4, 8] BLAS threads
+
+Benchmarking ["dmrg_1d_qns", "dmrg_2d_conserve_ky", "dmrg_2d_qns"]
+
+Bond dimensions set to:
+Dict{String,StepRange{Int64,Int64}} with 6 entries:
+  "dmrg_2d_conserve_ky" => 1000:1000:10000
+  "trg" => 10:10:50
+  "dmrg_1d" => 200:200:1000
+  "dmrg_1d_qns" => 200:200:1000
+  "ctmrg" => 50:50:500
+  "dmrg_2d_qns" => 1000:1000:5000
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+Running benchmark dmrg_1d_qns for bond dimensions 200:200:1000, BLAS threads [4, 8], and block sparse threads 1
+
+DMRG, 1D S=1 Heisenberg model
+N = 100, 5 sweeps
+Conserve total spin projection symmetry
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_1d_qns
+
+Maximum bond dimension set to 200, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_1d_qns for bond dimension 200, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-138.323936497127 maxlinkdim=9 time=0.395
+After sweep 2 energy=-138.937266523314 maxlinkdim=20 time=1.282
+After sweep 3 energy=-138.940084318427 maxlinkdim=100 time=2.058
+After sweep 4 energy=-138.940086128212 maxlinkdim=200 time=5.892
+After sweep 5 energy=-138.940086143088 maxlinkdim=200 time=6.389
+nsweeps = 5
+N = 100
+cutoff = ITensors.cutoff
+energy = -138.94008614308763
+flux(ψ) = QN("Sz",0)
+
+
+Maximum dimension = 200
+Total runtime = 16.406532448 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_1d_qns/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_200.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_1d_qns
+
+Maximum bond dimension set to 200, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_1d_qns for bond dimension 200, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-138.323936497127 maxlinkdim=9 time=0.365
+After sweep 2 energy=-138.937266523314 maxlinkdim=20 time=1.157
+After sweep 3 energy=-138.940084318427 maxlinkdim=100 time=1.963
+After sweep 4 energy=-138.940086128211 maxlinkdim=200 time=5.068
+After sweep 5 energy=-138.940086143087 maxlinkdim=200 time=6.174
+nsweeps = 5
+N = 100
+cutoff = ITensors.cutoff
+energy = -138.94008614308714
+flux(ψ) = QN("Sz",0)
+
+
+Maximum dimension = 200
+Total runtime = 14.781985326 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_1d_qns/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_200.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_1d_qns
+
+Maximum bond dimension set to 400, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_1d_qns for bond dimension 400, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-138.323936497127 maxlinkdim=9 time=0.356
+After sweep 2 energy=-138.937266523314 maxlinkdim=20 time=1.179
+After sweep 3 energy=-138.940084318427 maxlinkdim=100 time=1.921
+After sweep 4 energy=-138.940086119798 maxlinkdim=400 time=9.928
+After sweep 5 energy=-138.940086140311 maxlinkdim=400 time=16.989
+nsweeps = 5
+N = 100
+cutoff = ITensors.cutoff
+energy = -138.94008614031065
+flux(ψ) = QN("Sz",0)
+
+
+Maximum dimension = 400
+Total runtime = 30.439597114 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_1d_qns/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_400.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_1d_qns
+
+Maximum bond dimension set to 400, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_1d_qns for bond dimension 400, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-138.323936497127 maxlinkdim=9 time=0.367
+After sweep 2 energy=-138.937266523314 maxlinkdim=20 time=1.166
+After sweep 3 energy=-138.940084318427 maxlinkdim=100 time=2.020
+After sweep 4 energy=-138.940086119798 maxlinkdim=400 time=9.407
+After sweep 5 energy=-138.940086140309 maxlinkdim=400 time=17.147
+nsweeps = 5
+N = 100
+cutoff = ITensors.cutoff
+energy = -138.94008614030926
+flux(ψ) = QN("Sz",0)
+
+
+Maximum dimension = 400
+Total runtime = 30.171127683 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_1d_qns/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_400.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_1d_qns
+
+Maximum bond dimension set to 600, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_1d_qns for bond dimension 600, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-138.323936497127 maxlinkdim=9 time=0.353
+After sweep 2 energy=-138.937266523314 maxlinkdim=20 time=1.195
+After sweep 3 energy=-138.940084318427 maxlinkdim=100 time=2.016
+After sweep 4 energy=-138.940086117753 maxlinkdim=600 time=12.587
+After sweep 5 energy=-138.940086139635 maxlinkdim=600 time=34.878
+nsweeps = 5
+N = 100
+cutoff = ITensors.cutoff
+energy = -138.9400861396355
+flux(ψ) = QN("Sz",0)
+
+
+Maximum dimension = 600
+Total runtime = 51.085285674 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_1d_qns/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_600.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_1d_qns
+
+Maximum bond dimension set to 600, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_1d_qns for bond dimension 600, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-138.323936497127 maxlinkdim=9 time=0.359
+After sweep 2 energy=-138.937266523314 maxlinkdim=20 time=1.311
+After sweep 3 energy=-138.940084318427 maxlinkdim=100 time=2.124
+After sweep 4 energy=-138.940086117753 maxlinkdim=600 time=11.867
+After sweep 5 energy=-138.940086139636 maxlinkdim=600 time=34.550
+nsweeps = 5
+N = 100
+cutoff = ITensors.cutoff
+energy = -138.9400861396358
+flux(ψ) = QN("Sz",0)
+
+
+Maximum dimension = 600
+Total runtime = 50.320919775 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_1d_qns/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_600.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_1d_qns
+
+Maximum bond dimension set to 800, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_1d_qns for bond dimension 800, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-138.323936497127 maxlinkdim=9 time=0.384
+After sweep 2 energy=-138.937266523314 maxlinkdim=20 time=1.271
+After sweep 3 energy=-138.940084318427 maxlinkdim=100 time=2.029
+After sweep 4 energy=-138.940086118858 maxlinkdim=800 time=14.524
+After sweep 5 energy=-138.940086139880 maxlinkdim=800 time=59.118
+nsweeps = 5
+N = 100
+cutoff = ITensors.cutoff
+energy = -138.94008613988004
+flux(ψ) = QN("Sz",0)
+
+
+Maximum dimension = 800
+Total runtime = 77.387365457 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_1d_qns/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_800.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_1d_qns
+
+Maximum bond dimension set to 800, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_1d_qns for bond dimension 800, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-138.323936497127 maxlinkdim=9 time=0.440
+After sweep 2 energy=-138.937266523314 maxlinkdim=20 time=1.293
+After sweep 3 energy=-138.940084318427 maxlinkdim=100 time=2.358
+After sweep 4 energy=-138.940086118858 maxlinkdim=800 time=14.045
+After sweep 5 energy=-138.940086139884 maxlinkdim=800 time=52.979
+nsweeps = 5
+N = 100
+cutoff = ITensors.cutoff
+energy = -138.94008613988404
+flux(ψ) = QN("Sz",0)
+
+
+Maximum dimension = 800
+Total runtime = 71.188729193 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_1d_qns/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_800.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_1d_qns
+
+Maximum bond dimension set to 1000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_1d_qns for bond dimension 1000, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-138.323936497127 maxlinkdim=9 time=0.416
+After sweep 2 energy=-138.937266523314 maxlinkdim=20 time=1.311
+After sweep 3 energy=-138.940084318427 maxlinkdim=100 time=2.229
+After sweep 4 energy=-138.940086119036 maxlinkdim=900 time=14.709
+After sweep 5 energy=-138.940086140037 maxlinkdim=1000 time=81.470
+nsweeps = 5
+N = 100
+cutoff = ITensors.cutoff
+energy = -138.94008614003693
+flux(ψ) = QN("Sz",0)
+
+
+Maximum dimension = 1000
+Total runtime = 100.206509428 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_1d_qns/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_1000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_1d_qns
+
+Maximum bond dimension set to 1000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_1d_qns for bond dimension 1000, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-138.323936497127 maxlinkdim=9 time=0.434
+After sweep 2 energy=-138.937266523314 maxlinkdim=20 time=1.388
+After sweep 3 energy=-138.940084318427 maxlinkdim=100 time=2.479
+After sweep 4 energy=-138.940086119036 maxlinkdim=900 time=15.461
+After sweep 5 energy=-138.940086140039 maxlinkdim=1000 time=73.135
+nsweeps = 5
+N = 100
+cutoff = ITensors.cutoff
+energy = -138.94008614003926
+flux(ψ) = QN("Sz",0)
+
+
+Maximum dimension = 1000
+Total runtime = 92.957566134 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_1d_qns/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_1000.txt
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+Running benchmark dmrg_2d_conserve_ky for bond dimensions 1000:1000:10000, BLAS threads [4, 8], and block sparse threads 1
+
+DMRG, 2D Hubbard model (U/t = 4)
+(Nx, Ny) = (8, 4), 10 sweeps
+Hybrid real and momentum space
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 1000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 1000, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=16.274
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=57.509
+After sweep 3 energy=-26.530074023189 maxlinkdim=400 time=98.840
+After sweep 4 energy=-26.639292569897 maxlinkdim=800 time=58.140
+After sweep 5 energy=-26.652716422571 maxlinkdim=1000 time=69.111
+After sweep 6 energy=-26.653128840813 maxlinkdim=1000 time=71.714
+After sweep 7 energy=-26.653219037314 maxlinkdim=1000 time=71.951
+After sweep 8 energy=-26.653263741316 maxlinkdim=1000 time=71.432
+After sweep 9 energy=-26.653274374021 maxlinkdim=1000 time=70.683
+After sweep 10 energy=-26.653289552914 maxlinkdim=1000 time=68.144
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.653289552914373
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 1000
+Total runtime = 654.260593557 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_1000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 1000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 1000, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=15.329
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=54.970
+After sweep 3 energy=-26.530074023165 maxlinkdim=400 time=94.475
+After sweep 4 energy=-26.639292569898 maxlinkdim=800 time=54.452
+After sweep 5 energy=-26.652716422571 maxlinkdim=1000 time=64.691
+After sweep 6 energy=-26.653128840813 maxlinkdim=1000 time=67.885
+After sweep 7 energy=-26.653219037314 maxlinkdim=1000 time=68.335
+After sweep 8 energy=-26.653263741316 maxlinkdim=1000 time=69.290
+After sweep 9 energy=-26.653274374021 maxlinkdim=1000 time=69.228
+After sweep 10 energy=-26.653289552914 maxlinkdim=1000 time=68.006
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.65328955291433
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 1000
+Total runtime = 626.904278103 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_1000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 2000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 2000, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=15.325
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=53.626
+After sweep 3 energy=-26.530074023189 maxlinkdim=400 time=91.286
+After sweep 4 energy=-26.639292569897 maxlinkdim=800 time=51.561
+After sweep 5 energy=-26.669977749568 maxlinkdim=2000 time=94.475
+After sweep 6 energy=-26.670494785538 maxlinkdim=2000 time=112.216
+After sweep 7 energy=-26.670504281748 maxlinkdim=2000 time=114.242
+After sweep 8 energy=-26.670503875529 maxlinkdim=2000 time=113.913
+After sweep 9 energy=-26.670504621911 maxlinkdim=2000 time=112.551
+After sweep 10 energy=-26.670504994970 maxlinkdim=2000 time=112.623
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.670504994970308
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 2000
+Total runtime = 872.052584624 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_2000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 2000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 2000, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=15.570
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=52.235
+After sweep 3 energy=-26.530074023165 maxlinkdim=400 time=91.904
+After sweep 4 energy=-26.639292569898 maxlinkdim=800 time=54.478
+After sweep 5 energy=-26.669977749568 maxlinkdim=2000 time=91.677
+After sweep 6 energy=-26.670494785538 maxlinkdim=2000 time=111.014
+After sweep 7 energy=-26.670504281748 maxlinkdim=2000 time=111.922
+After sweep 8 energy=-26.670503875529 maxlinkdim=2000 time=110.657
+After sweep 9 energy=-26.670504621911 maxlinkdim=2000 time=110.486
+After sweep 10 energy=-26.670504994970 maxlinkdim=2000 time=109.105
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.670504994970333
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 2000
+Total runtime = 859.291721346 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_2000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 3000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 3000, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=15.508
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=56.285
+After sweep 3 energy=-26.530074023189 maxlinkdim=400 time=94.434
+After sweep 4 energy=-26.639292569897 maxlinkdim=800 time=53.749
+After sweep 5 energy=-26.669977749568 maxlinkdim=2000 time=92.752
+After sweep 6 energy=-26.674072276955 maxlinkdim=3000 time=165.257
+After sweep 7 energy=-26.674095624321 maxlinkdim=3000 time=184.884
+After sweep 8 energy=-26.674096580184 maxlinkdim=3000 time=181.307
+After sweep 9 energy=-26.674097466976 maxlinkdim=3000 time=179.622
+After sweep 10 energy=-26.674097308924 maxlinkdim=3000 time=179.783
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.67409730892397
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 3000
+Total runtime = 1203.761713419 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_3000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 3000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 3000, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=15.904
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=56.000
+After sweep 3 energy=-26.530074023165 maxlinkdim=400 time=97.437
+After sweep 4 energy=-26.639292569898 maxlinkdim=800 time=57.670
+After sweep 5 energy=-26.669977749568 maxlinkdim=2000 time=95.353
+After sweep 6 energy=-26.674072276955 maxlinkdim=3000 time=161.759
+After sweep 7 energy=-26.674095624321 maxlinkdim=3000 time=179.238
+After sweep 8 energy=-26.674096580184 maxlinkdim=3000 time=174.332
+After sweep 9 energy=-26.674097466976 maxlinkdim=3000 time=178.522
+After sweep 10 energy=-26.674097308924 maxlinkdim=3000 time=178.058
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.674097308923965
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 3000
+Total runtime = 1194.455161308 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_3000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 4000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 4000, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=16.032
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=55.850
+After sweep 3 energy=-26.530074023189 maxlinkdim=400 time=95.981
+After sweep 4 energy=-26.639292569897 maxlinkdim=800 time=56.472
+After sweep 5 energy=-26.669977749568 maxlinkdim=2000 time=96.086
+After sweep 6 energy=-26.675314599998 maxlinkdim=4000 time=206.071
+After sweep 7 energy=-26.675352759483 maxlinkdim=4000 time=244.162
+After sweep 8 energy=-26.675352678357 maxlinkdim=4000 time=239.479
+After sweep 9 energy=-26.675353495888 maxlinkdim=4000 time=241.300
+After sweep 10 energy=-26.675353562842 maxlinkdim=4000 time=239.616
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.675353562841565
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 4000
+Total runtime = 1491.235922905 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_4000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 4000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 4000, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=16.172
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=55.864
+After sweep 3 energy=-26.530074023165 maxlinkdim=400 time=97.651
+After sweep 4 energy=-26.639292569898 maxlinkdim=800 time=58.375
+After sweep 5 energy=-26.669977749568 maxlinkdim=2000 time=94.365
+After sweep 6 energy=-26.675314599998 maxlinkdim=4000 time=205.823
+After sweep 7 energy=-26.675352759483 maxlinkdim=4000 time=247.606
+After sweep 8 energy=-26.675352678357 maxlinkdim=4000 time=246.370
+After sweep 9 energy=-26.675353495888 maxlinkdim=4000 time=241.375
+After sweep 10 energy=-26.675353562842 maxlinkdim=4000 time=242.155
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.675353562841604
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 4000
+Total runtime = 1506.156959393 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_4000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 5000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 5000, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=16.172
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=55.525
+After sweep 3 energy=-26.530074023189 maxlinkdim=400 time=97.243
+After sweep 4 energy=-26.639292569897 maxlinkdim=800 time=57.289
+After sweep 5 energy=-26.669977749568 maxlinkdim=2000 time=98.279
+After sweep 6 energy=-26.675844243140 maxlinkdim=5000 time=248.993
+After sweep 7 energy=-26.675887685614 maxlinkdim=5000 time=308.344
+After sweep 8 energy=-26.675886916318 maxlinkdim=5000 time=308.811
+After sweep 9 energy=-26.675887176631 maxlinkdim=5000 time=307.764
+After sweep 10 energy=-26.675887283603 maxlinkdim=5000 time=308.468
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.675887283603387
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 5000
+Total runtime = 1807.068189383 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_5000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 5000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 5000, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=16.027
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=55.582
+After sweep 3 energy=-26.530074023165 maxlinkdim=400 time=96.752
+After sweep 4 energy=-26.639292569898 maxlinkdim=800 time=58.362
+After sweep 5 energy=-26.669977749568 maxlinkdim=2000 time=99.541
+After sweep 6 energy=-26.675844243140 maxlinkdim=5000 time=245.811
+After sweep 7 energy=-26.675887685614 maxlinkdim=5000 time=302.672
+After sweep 8 energy=-26.675886916318 maxlinkdim=5000 time=305.861
+After sweep 9 energy=-26.675887176631 maxlinkdim=5000 time=306.030
+After sweep 10 energy=-26.675887283603 maxlinkdim=5000 time=307.227
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.6758872836034
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 5000
+Total runtime = 1794.053873154 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_5000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 6000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 6000, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=16.103
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=56.428
+After sweep 3 energy=-26.530074023189 maxlinkdim=400 time=95.815
+After sweep 4 energy=-26.639292569897 maxlinkdim=800 time=56.176
+After sweep 5 energy=-26.669977749568 maxlinkdim=2000 time=100.695
+After sweep 6 energy=-26.676109213869 maxlinkdim=6000 time=292.910
+After sweep 7 energy=-26.676154340759 maxlinkdim=6000 time=397.613
+After sweep 8 energy=-26.676154294733 maxlinkdim=6000 time=394.753
+After sweep 9 energy=-26.676154456829 maxlinkdim=6000 time=392.231
+After sweep 10 energy=-26.676154490451 maxlinkdim=6000 time=383.956
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.67615449045052
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 6000
+Total runtime = 2186.86813176 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_6000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 6000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 6000, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=15.949
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=56.789
+After sweep 3 energy=-26.530074023165 maxlinkdim=400 time=99.554
+After sweep 4 energy=-26.639292569898 maxlinkdim=800 time=58.852
+After sweep 5 energy=-26.669977749568 maxlinkdim=2000 time=104.722
+After sweep 6 energy=-26.676109213869 maxlinkdim=6000 time=305.265
+After sweep 7 energy=-26.676154340759 maxlinkdim=6000 time=375.740
+After sweep 8 energy=-26.676154294733 maxlinkdim=6000 time=380.416
+After sweep 9 energy=-26.676154456829 maxlinkdim=6000 time=378.845
+After sweep 10 energy=-26.676154490450 maxlinkdim=6000 time=379.877
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.676154490450493
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 6000
+Total runtime = 2156.204414164 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_6000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 7000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 7000, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=16.235
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=57.023
+After sweep 3 energy=-26.530074023189 maxlinkdim=400 time=96.219
+After sweep 4 energy=-26.639292569897 maxlinkdim=800 time=56.934
+After sweep 5 energy=-26.669977749568 maxlinkdim=2000 time=100.638
+After sweep 6 energy=-26.676258783502 maxlinkdim=7000 time=347.890
+After sweep 7 energy=-26.676306001467 maxlinkdim=7000 time=462.717
+After sweep 8 energy=-26.676305749663 maxlinkdim=7000 time=460.676
+After sweep 9 energy=-26.676304748067 maxlinkdim=7000 time=462.775
+After sweep 10 energy=-26.676304828121 maxlinkdim=7000 time=466.929
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.67630482812072
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 7000
+Total runtime = 2528.227681589 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_7000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 7000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 7000, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=16.313
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=56.057
+After sweep 3 energy=-26.530074023165 maxlinkdim=400 time=100.875
+After sweep 4 energy=-26.639292569898 maxlinkdim=800 time=60.988
+After sweep 5 energy=-26.669977749568 maxlinkdim=2000 time=103.202
+After sweep 6 energy=-26.676258783502 maxlinkdim=7000 time=332.476
+After sweep 7 energy=-26.676306001467 maxlinkdim=7000 time=437.411
+After sweep 8 energy=-26.676305749663 maxlinkdim=7000 time=436.417
+After sweep 9 energy=-26.676304748067 maxlinkdim=7000 time=434.021
+After sweep 10 energy=-26.676304828121 maxlinkdim=7000 time=441.727
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.67630482812067
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 7000
+Total runtime = 2419.697568265 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_7000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 8000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 8000, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=17.110
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=58.292
+After sweep 3 energy=-26.530074023189 maxlinkdim=400 time=96.645
+After sweep 4 energy=-26.639292569897 maxlinkdim=800 time=56.952
+After sweep 5 energy=-26.669977749568 maxlinkdim=2000 time=100.422
+After sweep 6 energy=-26.676349525927 maxlinkdim=8000 time=412.119
+After sweep 7 energy=-26.676397482961 maxlinkdim=8000 time=574.389
+After sweep 8 energy=-26.676396809128 maxlinkdim=8000 time=572.721
+After sweep 9 energy=-26.676396874816 maxlinkdim=8000 time=572.805
+After sweep 10 energy=-26.676396972144 maxlinkdim=8000 time=575.945
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.67639697214387
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 8000
+Total runtime = 3037.60615533 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_8000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 8000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 8000, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=17.302
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=56.716
+After sweep 3 energy=-26.530074023165 maxlinkdim=400 time=96.324
+After sweep 4 energy=-26.639292569898 maxlinkdim=800 time=57.095
+After sweep 5 energy=-26.669977749568 maxlinkdim=2000 time=98.246
+After sweep 6 energy=-26.676349525927 maxlinkdim=8000 time=405.152
+After sweep 7 energy=-26.676397482961 maxlinkdim=8000 time=554.371
+After sweep 8 energy=-26.676396809128 maxlinkdim=8000 time=559.609
+After sweep 9 energy=-26.676396874816 maxlinkdim=8000 time=563.888
+After sweep 10 energy=-26.676396972144 maxlinkdim=8000 time=571.097
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.67639697214384
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 8000
+Total runtime = 2980.001720309 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_8000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 9000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 9000, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=16.117
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=55.784
+After sweep 3 energy=-26.530074023189 maxlinkdim=400 time=95.741
+After sweep 4 energy=-26.639292569897 maxlinkdim=800 time=56.923
+After sweep 5 energy=-26.669977749568 maxlinkdim=2000 time=99.339
+After sweep 6 energy=-26.676405091621 maxlinkdim=9000 time=468.486
+After sweep 7 energy=-26.676457013672 maxlinkdim=9000 time=766.338
+After sweep 8 energy=-26.676457336150 maxlinkdim=9000 time=749.447
+After sweep 9 energy=-26.676456861376 maxlinkdim=9000 time=743.915
+After sweep 10 energy=-26.676456877183 maxlinkdim=9000 time=740.079
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.676456877182936
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 9000
+Total runtime = 3792.370206909 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_9000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 9000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 9000, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=16.450
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=56.243
+After sweep 3 energy=-26.530074023165 maxlinkdim=400 time=97.142
+After sweep 4 energy=-26.639292569898 maxlinkdim=800 time=57.405
+After sweep 5 energy=-26.669977749568 maxlinkdim=2000 time=97.897
+After sweep 6 energy=-26.676405091621 maxlinkdim=9000 time=442.953
+After sweep 7 energy=-26.676457013672 maxlinkdim=9000 time=692.140
+After sweep 8 energy=-26.676457336150 maxlinkdim=9000 time=692.657
+After sweep 9 energy=-26.676456861376 maxlinkdim=9000 time=703.428
+After sweep 10 energy=-26.676456877183 maxlinkdim=9000 time=727.409
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.676456877182943
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 9000
+Total runtime = 3583.932837665 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_9000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 10000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 10000, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=16.392
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=55.977
+After sweep 3 energy=-26.530074023189 maxlinkdim=400 time=95.452
+After sweep 4 energy=-26.639292569897 maxlinkdim=800 time=56.760
+After sweep 5 energy=-26.669977749568 maxlinkdim=2000 time=98.061
+After sweep 6 energy=-26.676442386588 maxlinkdim=10000 time=511.913
+After sweep 7 energy=-26.676496547862 maxlinkdim=10000 time=928.693
+After sweep 8 energy=-26.676496997583 maxlinkdim=10000 time=925.372
+After sweep 9 energy=-26.676496510314 maxlinkdim=10000 time=929.419
+After sweep 10 energy=-26.676496524795 maxlinkdim=10000 time=924.194
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.676496524794537
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 10000
+Total runtime = 4542.435212328 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_10000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+
+Maximum bond dimension set to 10000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_conserve_ky for bond dimension 10000, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-13.568317926435 maxlinkdim=100 time=15.082
+After sweep 2 energy=-25.508781336473 maxlinkdim=200 time=55.869
+After sweep 3 energy=-26.530074023165 maxlinkdim=400 time=97.775
+After sweep 4 energy=-26.639292569898 maxlinkdim=800 time=58.761
+After sweep 5 energy=-26.669977749568 maxlinkdim=2000 time=97.259
+After sweep 6 energy=-26.676442386588 maxlinkdim=10000 time=486.071
+After sweep 7 energy=-26.676496547862 maxlinkdim=10000 time=854.295
+After sweep 8 energy=-26.676496997583 maxlinkdim=10000 time=862.581
+After sweep 9 energy=-26.676496510314 maxlinkdim=10000 time=862.229
+After sweep 10 energy=-26.676496524795 maxlinkdim=10000 time=859.728
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.67649652479456
+flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 10000
+Total runtime = 4249.809854114 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_10000.txt
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+Running benchmark dmrg_2d_qns for bond dimensions 1000:1000:5000, BLAS threads [4, 8], and block sparse threads 1
+
+DMRG, 2D Hubbard model (U/t = 4)
+(Nx, Ny) = (8, 4), 10 sweeps
+Real space, periodic in the y-direction
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_qns
+
+Maximum bond dimension set to 1000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_qns for bond dimension 1000, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-21.430143600269 maxlinkdim=100 time=3.548
+After sweep 2 energy=-26.263724028819 maxlinkdim=200 time=15.299
+After sweep 3 energy=-26.548539922565 maxlinkdim=400 time=27.078
+After sweep 4 energy=-26.632831488569 maxlinkdim=800 time=28.617
+After sweep 5 energy=-26.647474452502 maxlinkdim=1000 time=41.980
+After sweep 6 energy=-26.647698613004 maxlinkdim=1000 time=46.420
+After sweep 7 energy=-26.647744362520 maxlinkdim=1000 time=46.465
+After sweep 8 energy=-26.647750661886 maxlinkdim=1000 time=47.099
+After sweep 9 energy=-26.647751479158 maxlinkdim=1000 time=48.089
+After sweep 10 energy=-26.647763673606 maxlinkdim=1000 time=48.334
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.64776367360553
+flux(ψ) = QN(("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 1000
+Total runtime = 353.032260557 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_qns/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_1000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_qns
+
+Maximum bond dimension set to 1000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_qns for bond dimension 1000, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-21.541036063093 maxlinkdim=100 time=4.445
+After sweep 2 energy=-26.281876470808 maxlinkdim=200 time=16.425
+After sweep 3 energy=-26.543774714646 maxlinkdim=400 time=26.862
+After sweep 4 energy=-26.627798042510 maxlinkdim=800 time=30.545
+After sweep 5 energy=-26.646588352057 maxlinkdim=1000 time=44.418
+After sweep 6 energy=-26.647598238959 maxlinkdim=1000 time=46.405
+After sweep 7 energy=-26.647713947403 maxlinkdim=1000 time=46.594
+After sweep 8 energy=-26.647757691304 maxlinkdim=1000 time=46.864
+After sweep 9 energy=-26.647765408703 maxlinkdim=1000 time=47.066
+After sweep 10 energy=-26.647768893171 maxlinkdim=1000 time=47.198
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.64776889317107
+flux(ψ) = QN(("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 1000
+Total runtime = 356.911313074 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_qns/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_1000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_qns
+
+Maximum bond dimension set to 2000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_qns for bond dimension 2000, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-21.430143600269 maxlinkdim=100 time=4.360
+After sweep 2 energy=-26.263724028819 maxlinkdim=200 time=16.360
+After sweep 3 energy=-26.548539922565 maxlinkdim=400 time=27.149
+After sweep 4 energy=-26.632831488569 maxlinkdim=800 time=30.607
+After sweep 5 energy=-26.668445030222 maxlinkdim=2000 time=97.253
+After sweep 6 energy=-26.668688637308 maxlinkdim=2000 time=129.609
+After sweep 7 energy=-26.668695865235 maxlinkdim=2000 time=129.268
+After sweep 8 energy=-26.668695757870 maxlinkdim=2000 time=128.423
+After sweep 9 energy=-26.668695916183 maxlinkdim=2000 time=129.943
+After sweep 10 energy=-26.668695511597 maxlinkdim=2000 time=128.979
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.668695511597466
+flux(ψ) = QN(("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 2000
+Total runtime = 822.044815188 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_qns/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_2000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_qns
+
+Maximum bond dimension set to 2000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_qns for bond dimension 2000, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-21.541036063093 maxlinkdim=100 time=4.440
+After sweep 2 energy=-26.281876470808 maxlinkdim=200 time=16.765
+After sweep 3 energy=-26.543774714646 maxlinkdim=400 time=27.014
+After sweep 4 energy=-26.627798042510 maxlinkdim=800 time=29.966
+After sweep 5 energy=-26.667885700357 maxlinkdim=2000 time=89.644
+After sweep 6 energy=-26.668638290721 maxlinkdim=2000 time=118.023
+After sweep 7 energy=-26.668677173821 maxlinkdim=2000 time=120.480
+After sweep 8 energy=-26.668680629710 maxlinkdim=2000 time=120.767
+After sweep 9 energy=-26.668679225942 maxlinkdim=2000 time=120.877
+After sweep 10 energy=-26.668679189141 maxlinkdim=2000 time=120.648
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.66867918914068
+flux(ψ) = QN(("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 2000
+Total runtime = 768.719239225 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_qns/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_2000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_qns
+
+Maximum bond dimension set to 3000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_qns for bond dimension 3000, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-21.430143600269 maxlinkdim=100 time=4.440
+After sweep 2 energy=-26.263724028819 maxlinkdim=200 time=16.019
+After sweep 3 energy=-26.548539922565 maxlinkdim=400 time=27.387
+After sweep 4 energy=-26.632831488569 maxlinkdim=800 time=31.101
+After sweep 5 energy=-26.668445030222 maxlinkdim=2000 time=97.248
+After sweep 6 energy=-26.673299852758 maxlinkdim=3000 time=222.040
+After sweep 7 energy=-26.673318898795 maxlinkdim=3000 time=266.946
+After sweep 8 energy=-26.673319734927 maxlinkdim=3000 time=266.817
+After sweep 9 energy=-26.673320851164 maxlinkdim=3000 time=267.173
+After sweep 10 energy=-26.673321391269 maxlinkdim=3000 time=267.956
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.673321391268807
+flux(ψ) = QN(("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 3000
+Total runtime = 1467.21626084 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_qns/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_3000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_qns
+
+Maximum bond dimension set to 3000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_qns for bond dimension 3000, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-21.541036063093 maxlinkdim=100 time=4.653
+After sweep 2 energy=-26.281876470808 maxlinkdim=200 time=17.304
+After sweep 3 energy=-26.543774714646 maxlinkdim=400 time=27.614
+After sweep 4 energy=-26.627798042510 maxlinkdim=800 time=31.615
+After sweep 5 energy=-26.667885700357 maxlinkdim=2000 time=92.358
+After sweep 6 energy=-26.673282129834 maxlinkdim=3000 time=204.509
+After sweep 7 energy=-26.673319125870 maxlinkdim=3000 time=243.101
+After sweep 8 energy=-26.673321323161 maxlinkdim=3000 time=239.443
+After sweep 9 energy=-26.673321092648 maxlinkdim=3000 time=240.737
+After sweep 10 energy=-26.673321340285 maxlinkdim=3000 time=241.481
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.673321340284758
+flux(ψ) = QN(("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 3000
+Total runtime = 1342.910548305 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_qns/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_3000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_qns
+
+Maximum bond dimension set to 4000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_qns for bond dimension 4000, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-21.430143600269 maxlinkdim=100 time=4.404
+After sweep 2 energy=-26.263724028819 maxlinkdim=200 time=16.403
+After sweep 3 energy=-26.548539922565 maxlinkdim=400 time=27.319
+After sweep 4 energy=-26.632831488569 maxlinkdim=800 time=30.572
+After sweep 5 energy=-26.668445030222 maxlinkdim=2000 time=97.274
+After sweep 6 energy=-26.673299852758 maxlinkdim=3000 time=226.787
+After sweep 7 energy=-26.674924410082 maxlinkdim=4000 time=462.893
+After sweep 8 energy=-26.674927539850 maxlinkdim=4000 time=545.691
+After sweep 9 energy=-26.674927779565 maxlinkdim=4000 time=545.993
+After sweep 10 energy=-26.674928093342 maxlinkdim=4000 time=549.470
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.674928093342114
+flux(ψ) = QN(("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 4000
+Total runtime = 2506.902041091 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_qns/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_4000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_qns
+
+Maximum bond dimension set to 4000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_qns for bond dimension 4000, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-21.541036063093 maxlinkdim=100 time=3.717
+After sweep 2 energy=-26.281876470808 maxlinkdim=200 time=16.150
+After sweep 3 energy=-26.543774714646 maxlinkdim=400 time=28.056
+After sweep 4 energy=-26.627798042510 maxlinkdim=800 time=30.012
+After sweep 5 energy=-26.667885700357 maxlinkdim=2000 time=91.859
+After sweep 6 energy=-26.673282129834 maxlinkdim=3000 time=203.912
+After sweep 7 energy=-26.674924409897 maxlinkdim=4000 time=410.599
+After sweep 8 energy=-26.674927013380 maxlinkdim=4000 time=485.600
+After sweep 9 energy=-26.674927590935 maxlinkdim=4000 time=487.574
+After sweep 10 energy=-26.674928310160 maxlinkdim=4000 time=488.019
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.67492831015994
+flux(ψ) = QN(("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 4000
+Total runtime = 2245.579887267 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_qns/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_4000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_qns
+
+Maximum bond dimension set to 5000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_qns for bond dimension 5000, 4 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-21.430143600269 maxlinkdim=100 time=3.550
+After sweep 2 energy=-26.263724028819 maxlinkdim=200 time=15.619
+After sweep 3 energy=-26.548539922565 maxlinkdim=400 time=27.103
+After sweep 4 energy=-26.632831488569 maxlinkdim=800 time=29.314
+After sweep 5 energy=-26.668445030222 maxlinkdim=2000 time=96.491
+After sweep 6 energy=-26.673299852758 maxlinkdim=3000 time=237.932
+After sweep 7 energy=-26.675625283458 maxlinkdim=5000 time=652.315
+After sweep 8 energy=-26.675629638318 maxlinkdim=5000 time=806.184
+After sweep 9 energy=-26.675630556041 maxlinkdim=5000 time=808.176
+After sweep 10 energy=-26.675630784890 maxlinkdim=5000 time=805.546
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.67563078489015
+flux(ψ) = QN(("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 5000
+Total runtime = 3482.314570023 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_qns/blas_num_threads_4/blocksparse_num_threads_1/splitblocks_true/maxdim_5000.txt
+
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_qns
+
+Maximum bond dimension set to 5000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to true.
+
+######################################################################
+Run Julia benchmark dmrg_2d_qns for bond dimension 5000, 8 BLAS threads, 1 block sparse threads, and splitblocks true.
+
+After sweep 1 energy=-21.541036063093 maxlinkdim=100 time=3.768
+After sweep 2 energy=-26.281876470808 maxlinkdim=200 time=16.201
+After sweep 3 energy=-26.543774714646 maxlinkdim=400 time=28.032
+After sweep 4 energy=-26.627798042510 maxlinkdim=800 time=30.186
+After sweep 5 energy=-26.667885700357 maxlinkdim=2000 time=91.681
+After sweep 6 energy=-26.673282129834 maxlinkdim=3000 time=215.480
+After sweep 7 energy=-26.675624818042 maxlinkdim=5000 time=561.886
+After sweep 8 energy=-26.675629979257 maxlinkdim=5000 time=686.522
+After sweep 9 energy=-26.675630524613 maxlinkdim=5000 time=685.862
+After sweep 10 energy=-26.675630787180 maxlinkdim=5000 time=689.808
+nsweeps = 10
+(Nx, Ny) = (8, 4)
+(U, t) = (4.0, 1.0)
+cutoff = 0.0
+energy = -26.675630787180125
+flux(ψ) = QN(("Nf",32,-1),("Sz",0))
+
+
+Maximum dimension = 5000
+Total runtime = 3009.508841414 seconds
+
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_qns/blas_num_threads_8/blocksparse_num_threads_1/splitblocks_true/maxdim_5000.txt
+
