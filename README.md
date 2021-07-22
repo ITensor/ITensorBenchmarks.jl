@@ -1,6 +1,10 @@
 # ITensorsBenchmarks.jl
 Run benchmarks comparing ITensors.jl to C++ ITensor for various tensor network algorithms.
 
+| **Documentation**                                                               |
+|:-------------------------------------------------------------------------------:|
+| [![](https://img.shields.io/badge/docs-dev-blue.svg)](https://itensor.github.io/ITensorsBenchmarks.jl/dev/) |
+
 ## Installation
 
 1. Download the latest version of Julia: https://julialang.org/downloads/
