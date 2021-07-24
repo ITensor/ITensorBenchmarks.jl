@@ -12,6 +12,8 @@ at [https://github.com/tenpy/tenpy](https://github.com/tenpy/tenpy). We thank Te
 Here we will be interested in comparing the performance of the Julia version of ITensor[^ITensor]
 to TeNPy.
 
+[^ITensor]: ["The ITensor Software Library for Tensor Network Calculations"](https://arxiv.org/abs/2007.14822), Matthew Fishman, Steven R. White, E. Miles Stoudenmire, arxiv:2007.14822. [https://itensor.org/](https://itensor.org)
+
 ## Setup of the Two Codes and Baseline Comparisons
 
 To make the comparisons meaningful, we first checked that the BLAS GEMM matrix-matrix multiplication performance was the same in both our Julia and Python configurations. For this purpose we used a custom Python configuration which uses the Intel MKL implementations of BLAS and LAPACK. Other important checks included stepping through details of the DMRG codes used in both libraries, to check for example that the number of Lanczos steps performed at the core of each DMRG implementation was the same, and that similar truncation parameters resulted in similar MPS bond dimensi
