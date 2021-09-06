@@ -16,7 +16,7 @@ to TeNPy.
 
 ## Setup of the Two Codes and Baseline Comparisons
 
-To make the comparisons meaningful, we first checked that the BLAS GEMM matrix-matrix multiplication performance was the same in both our Julia and Python configurations. For this purpose we used a custom Python configuration which uses the Intel MKL implementations of BLAS and LAPACK. Other important checks included stepping through details of the DMRG codes used in both libraries, to check for example that the number of Lanczos steps performed at the core of each DMRG implementation was the same, and that similar truncation parameters resulted in similar MPS bond dimensi
+To make the comparisons meaningful, we first checked that the BLAS GEMM matrix-matrix multiplication performance was the same in both our Julia and Python configurations. For this purpose we used a custom Python configuration which uses the Intel MKL implementations of BLAS and LAPACK. Other important checks included stepping through details of the DMRG codes used in both libraries, to check for example that the number of Lanczos steps performed at the core of each DMRG implementation was the same, and that similar truncation parameters resulted in similar MPS bond dimensions.
 
 All benchmarks were carried out on a single workstation with four Intel Xeon Gold 6128 (Skylake) 3.4 GHz CPUs with six cores each. Times shown are "wall" or actual time, not CPU time.
 The BLAS and LAPACK distribution used for the C++, Julia, and Python calculations was Intel MKL.
@@ -53,3 +53,20 @@ Finally, we benchmark block-sparse DMRG calculations with the Hamiltonian MPO ta
 
 By comparing to the previous results, we can see that making the MPO as sparse as possible speeds up both codes significantly, with the ITensor implementation now outperforming TeNPy by about $10\%$ for the largest bond dimension studied. We believe the reason for this difference is that, based on recent optimizations we have performed that significantly improved the above results, the latest version of ITensor now has rather low overhead in managing the extra details and side computations required for block-sparse tensor operations. 
 Another conclusion from the above study is that the significantly better performance obtained from a maximally sparse MPO suggests it would be good default setting for ITensor going forward.
+
+## Codes Used for the Benchmarks
+
+We have provided the codes used to produce the above benchmarks [at this link](https://github.com/ITensor/ITensorsBenchmarks.jl/tree/main/src/tenpy_itensor_comparisons).
+
+Note that when running these codes, it is crucial that the Python NumPy implementation uses the same BLAS backend as the ITensor Julia setup. As mentioned, for the benchmarks presented above, we used Intel MKL as the BLAS for both codes.
+
+Some notes on using the codes:
+- the TeNPy codes can be run on the command line as follows: 
+    * `python densempo_tenpy_1d_dmrg.py 100` will use a maximum MPS bond dimension of 100 and not conserve quantum numbers
+    * `python densempo_tenpy_1d_dmrg.py 200 cons_Sz` will use a maximum MPS bond dimension of 200 and conserve quantum numbers
+- for the non-quantum-number (dense tensor) case, there should be no difference between the two TeNPy codes
+- the `sparsempo_tenpy_1d_dmrg.py` code is the default behavior of TeNPy in terms of the MPO used. The `densempo_tenpy_1d_dmrg.py` sets up the MPO in a way more similar to the default behavior of ITensors.jl as of version 0.2.26.
+- the ITensor code can be run by `include`'ing it in the Julia REPL (Julia command line) then calling the `run` function and passing the various named arguments.
+
+
+
