@@ -56,7 +56,7 @@ Another conclusion from the above study is that the significantly better perform
 
 ## Codes Used for the Benchmarks
 
-We have provided the codes used to produce the above benchmarks [at this link](https://github.com/ITensor/ITensorsBenchmarks.jl/tree/main/src/tenpy_itensor_comparisons).
+We have provided the codes used to produce the above benchmarks [at this link](https://github.com/ITensor/ITensorsBenchmarks.jl/tree/main/src/tenpy_itensor_comparison).
 
 Note that when running these codes, it is crucial that the Python NumPy implementation uses the same BLAS backend as the ITensor Julia setup. As mentioned, for the benchmarks presented above, we used Intel MKL as the BLAS for both codes.
 
