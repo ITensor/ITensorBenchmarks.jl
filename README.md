@@ -18,7 +18,7 @@ pkg> add https://github.com/ITensor/ITensorsBenchmarks.jl
 
 pkg> dev ITensorsBenchmarks
 ```
-3. Install C++ ITensor with the instructions: http://www.itensor.org/docs.cgi?page=install&vers=cppv3. Install the desired version into the directory `~/.julia/dev/ITensorsBenchmarks/deps/itensor_v#` where `#` is the version number, for example `3.1.6` (or use a custom location, which you will need to specify in the options when running the benchmarks). You can use the file in `~/.julia/dev/ITensorsBenchmarks/deps/options.mk.sample` to for your `options.mk` to install ITensor with Intel MKL. Here is an example:
+3. Install C++ ITensor with the instructions: http://www.itensor.org/docs.cgi?page=install&vers=cppv3. Install the desired version into the directory `~/.julia/dev/ITensorsBenchmarks/deps/itensor_v#` where `#` is the version number, for example `3.1.6` (or use a custom location, which you will need to specify in the options when running the benchmarks). You can use the file in `~/.julia/dev/ITensorsBenchmarks/deps/options.mk.sample` for your `options.mk`, which is the file that specifies the options for installing C++ ITensor. This `options.mk.sample` specifies the options for installing ITensor with Intel MKL. Here is an example:
 ```
 $ git clone https://github.com/ITensor/ITensor ~/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6
 
@@ -26,10 +26,11 @@ $ cd ~/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6
 
 $ git clone v3.1.6
 
-$ cp ../options.mk.sample .
+$ cp ../options.mk.sample ./options.mk
 
 $ make -j
 ```
+`make -j` compiles the C++ ITensor library (the `-j` option specifies that the compilation will be done in parallel to speed up the compilation time, if possible).
 
 ## Run benchmarks with BLAS multithreading
 
@@ -38,7 +39,7 @@ Here are commands to run all of the benchmark options:
 # All benchmarks single threaded
 runbenchmarks(write_results = true)
 
-# splitblocks single threaded (splitblocks enables a more sparse representation of the MPO, only available in Julia)
+# splitblocks single threaded (splitblocks enables a more sparse representation of the MPO, currently only available in Julia)
 runbenchmarks(write_results = true, cpp_or_julia = "julia", benchmarks = ["dmrg_1d_qns", "dmrg_2d_qns", "dmrg_2d_conserve_ky"], splitblocks = true)
 
 # All benchmarks with multiple BLAS threads
