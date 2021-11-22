@@ -46,6 +46,9 @@ DEFAULT_OPTIONS["julia_itensor_version"] = v"0.1.37" #ITensors.version()
 DEFAULT_OPTIONS["cpp_itensor_version"] = v"3.1.6"
 DEFAULT_OPTIONS["cpp_itensor_dir"] = joinpath(pkgdir(@__MODULE__), "deps", "itensor_v$(DEFAULT_OPTIONS["cpp_itensor_version"])")
 DEFAULT_OPTIONS["splitblocks"] = false
+DEFAULT_OPTIONS["format"] = "png"
+DEFAULT_OPTIONS["plot_linewidth"] = 3
+DEFAULT_OPTIONS["plot_markersize"] = 6
 
 const OPTIONS = deepcopy(DEFAULT_OPTIONS)
 function reset_options!()

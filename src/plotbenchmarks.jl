@@ -10,7 +10,10 @@ function plotbenchmarks(; write_results = OPTIONS["write_results"],
                           splitblocks = OPTIONS["splitblocks"],
                           cpp_itensor_version = OPTIONS["cpp_itensor_version"],
                           cpp_itensor_dir = OPTIONS["cpp_itensor_dir"],
-                          julia_itensor_version = OPTIONS["julia_itensor_version"])
+                          julia_itensor_version = OPTIONS["julia_itensor_version"],
+                          format = OPTIONS["format"],
+                          plot_linewidth = OPTIONS["plot_linewidth"],
+                          plot_markersize = OPTIONS["plot_markersize"])
   println(stdout, "Plotting benchmarks with the following options:")
   @show write_results
   @show test
@@ -99,8 +102,8 @@ function plotbenchmarks(; write_results = OPTIONS["write_results"],
 
       if isnothing(cpp_or_julia) || cpp_or_julia == "julia"
         plot!(p, maxdims_benchmark, times_julia;
-              line = (:solid, 4),
-              marker = (marker, 8),
+              line = (:solid, plot_linewidth),
+              marker = (marker, plot_markersize),
               color = :blue,
               label = "Julia" * label_details)
       end
@@ -111,8 +114,8 @@ function plotbenchmarks(; write_results = OPTIONS["write_results"],
         end
 
         plot!(p, maxdims_benchmark, times_cpp;
-              line = (:dash, 4),
-              marker = (marker, 8),
+              line = (:dash, plot_linewidth),
+              marker = (marker, plot_markersize),
               color = :red,
               label = "C++" * label_details)
       end
@@ -121,7 +124,7 @@ function plotbenchmarks(; write_results = OPTIONS["write_results"],
     if splitblocks
       filename *= "_splitblocks_$(splitblocks)"
     end
-    filename *= ".png"
+    filename *= ".$format"
     filepath = joinpath(pkgdir(@__MODULE__), "plots", filename)
     println(stdout, "Saving plot to $filepath")
     savefig(p, joinpath(pkgdir(@__MODULE__), "plots", filename))
