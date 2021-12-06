@@ -28,7 +28,7 @@ DMRG, 2D Hubbard model (U/t = 4)
 (Nx, Ny) = (8, 4), 10 sweeps
 Hybrid real and momentum space
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_2d_conserve_ky
 
 Maximum bond dimension set to 5000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to false.
 
@@ -56,5 +56,5 @@ flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
 Maximum dimension = 5000
 Total runtime = 2090.320926619 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_5000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.37/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_5000.txt
 

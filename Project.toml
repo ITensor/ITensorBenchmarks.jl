@@ -1,5 +1,5 @@
-name = "ITensorsBenchmarks"
-uuid = "32ab6ad7-591b-45e8-87a7-a4d59e918c63"
+name = "ITensorBenchmarks"
+uuid = "2efdb88f-da34-45e1-bb02-fff9122cdc89"
 authors = ["Matthew Fishman <mfishman@flatironinstitute.org>"]
 version = "0.1.0"
 

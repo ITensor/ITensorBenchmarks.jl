@@ -28,7 +28,7 @@ DMRG, 2D Hubbard model (U/t = 4)
 (Nx, Ny) = (8, 4), 10 sweeps
 Hybrid real and momentum space
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_2d_conserve_ky
 
 Maximum bond dimension set to 6000, BLAS threads set to 1, block sparse threads set to 1, and splitblocks is set to false.
 
@@ -56,16 +56,16 @@ flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
 Maximum dimension = 6000
 Total runtime = 2464.746600888 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_6000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_6000.txt
 
 ######################################################################
 Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 6000, 1 BLAS threads, 1 block sparse threads, and splitblocks false.
 
-Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_1dPSDROH4Gs9yaj4
-make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_1dPSDROH4Gs9yaj4'
-g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
-g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
-make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_1dPSDROH4Gs9yaj4'
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_1dPSDROH4Gs9yaj4
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_1dPSDROH4Gs9yaj4'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_1dPSDROH4Gs9yaj4'
 
 
 Run the C++ benchmark
@@ -149,14 +149,14 @@ maxLinkDim(psi) = 6000
 totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
 energy = -26.67615439945156
 
-Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_1dPSDROH4Gs9yaj4 used for building C++ benchmark
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_1dPSDROH4Gs9yaj4 used for building C++ benchmark
 
 Maximum dimension = 6000
 Total runtime = 4146.641603702 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_6000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_6000.txt
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_2d_conserve_ky
 
 Maximum bond dimension set to 6000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to false.
 
@@ -184,16 +184,16 @@ flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
 Maximum dimension = 6000
 Total runtime = 2381.441973994 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_6000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_6000.txt
 
 ######################################################################
 Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 6000, 4 BLAS threads, 1 block sparse threads, and splitblocks false.
 
-Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_9pR40w96xJEkRfrJ
-make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_9pR40w96xJEkRfrJ'
-g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
-g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
-make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_9pR40w96xJEkRfrJ'
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_9pR40w96xJEkRfrJ
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_9pR40w96xJEkRfrJ'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_9pR40w96xJEkRfrJ'
 
 
 Run the C++ benchmark
@@ -277,14 +277,14 @@ maxLinkDim(psi) = 6000
 totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
 energy = -26.67615446526424
 
-Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_9pR40w96xJEkRfrJ used for building C++ benchmark
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_9pR40w96xJEkRfrJ used for building C++ benchmark
 
 Maximum dimension = 6000
 Total runtime = 4355.362284061 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_6000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_6000.txt
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_2d_conserve_ky
 
 Maximum bond dimension set to 6000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to false.
 
@@ -312,16 +312,16 @@ flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
 Maximum dimension = 6000
 Total runtime = 2316.270155507 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_6000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_6000.txt
 
 ######################################################################
 Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 6000, 8 BLAS threads, 1 block sparse threads, and splitblocks false.
 
-Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_yY77AZEANJGUlAZ3
-make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_yY77AZEANJGUlAZ3'
-g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
-g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
-make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_yY77AZEANJGUlAZ3'
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_yY77AZEANJGUlAZ3
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_yY77AZEANJGUlAZ3'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_yY77AZEANJGUlAZ3'
 
 
 Run the C++ benchmark
@@ -405,14 +405,14 @@ maxLinkDim(psi) = 6000
 totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
 energy = -26.67615446526424
 
-Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_yY77AZEANJGUlAZ3 used for building C++ benchmark
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_yY77AZEANJGUlAZ3 used for building C++ benchmark
 
 Maximum dimension = 6000
 Total runtime = 4273.161025962 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_6000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_6000.txt
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_2d_conserve_ky
 
 Maximum bond dimension set to 7000, BLAS threads set to 1, block sparse threads set to 1, and splitblocks is set to false.
 
@@ -440,16 +440,16 @@ flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
 Maximum dimension = 7000
 Total runtime = 3063.216405543 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_7000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_7000.txt
 
 ######################################################################
 Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 7000, 1 BLAS threads, 1 block sparse threads, and splitblocks false.
 
-Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_fkPmvJtLFDEbBUai
-make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_fkPmvJtLFDEbBUai'
-g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
-g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
-make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_fkPmvJtLFDEbBUai'
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_fkPmvJtLFDEbBUai
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_fkPmvJtLFDEbBUai'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_fkPmvJtLFDEbBUai'
 
 
 Run the C++ benchmark
@@ -533,14 +533,14 @@ maxLinkDim(psi) = 7000
 totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
 energy = -26.67630472114909
 
-Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_fkPmvJtLFDEbBUai used for building C++ benchmark
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_fkPmvJtLFDEbBUai used for building C++ benchmark
 
 Maximum dimension = 7000
 Total runtime = 5134.468394378 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_7000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_7000.txt
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_2d_conserve_ky
 
 Maximum bond dimension set to 7000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to false.
 
@@ -568,16 +568,16 @@ flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
 Maximum dimension = 7000
 Total runtime = 2835.216501256 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_7000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_7000.txt
 
 ######################################################################
 Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 7000, 4 BLAS threads, 1 block sparse threads, and splitblocks false.
 
-Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_oEkF2uYqMcvKg0ct
-make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_oEkF2uYqMcvKg0ct'
-g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
-g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
-make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_oEkF2uYqMcvKg0ct'
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_oEkF2uYqMcvKg0ct
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_oEkF2uYqMcvKg0ct'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_oEkF2uYqMcvKg0ct'
 
 
 Run the C++ benchmark
@@ -661,14 +661,14 @@ maxLinkDim(psi) = 7000
 totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
 energy = -26.67630479208936
 
-Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_oEkF2uYqMcvKg0ct used for building C++ benchmark
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_oEkF2uYqMcvKg0ct used for building C++ benchmark
 
 Maximum dimension = 7000
 Total runtime = 5320.505357143 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_7000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_7000.txt
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_2d_conserve_ky
 
 Maximum bond dimension set to 7000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to false.
 
@@ -696,16 +696,16 @@ flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
 Maximum dimension = 7000
 Total runtime = 2796.222284613 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_7000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_7000.txt
 
 ######################################################################
 Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 7000, 8 BLAS threads, 1 block sparse threads, and splitblocks false.
 
-Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_cJPOjE57vASOrmaM
-make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_cJPOjE57vASOrmaM'
-g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
-g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
-make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_cJPOjE57vASOrmaM'
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_cJPOjE57vASOrmaM
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_cJPOjE57vASOrmaM'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_cJPOjE57vASOrmaM'
 
 
 Run the C++ benchmark
@@ -789,14 +789,14 @@ maxLinkDim(psi) = 7000
 totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
 energy = -26.67630479208936
 
-Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_cJPOjE57vASOrmaM used for building C++ benchmark
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_cJPOjE57vASOrmaM used for building C++ benchmark
 
 Maximum dimension = 7000
 Total runtime = 5308.444451982 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_7000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_7000.txt
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_2d_conserve_ky
 
 Maximum bond dimension set to 8000, BLAS threads set to 1, block sparse threads set to 1, and splitblocks is set to false.
 
@@ -824,16 +824,16 @@ flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
 Maximum dimension = 8000
 Total runtime = 3813.345100597 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_8000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_8000.txt
 
 ######################################################################
 Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 8000, 1 BLAS threads, 1 block sparse threads, and splitblocks false.
 
-Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_mqbpbYCwAphARYVu
-make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_mqbpbYCwAphARYVu'
-g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
-g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
-make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_mqbpbYCwAphARYVu'
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_mqbpbYCwAphARYVu
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_mqbpbYCwAphARYVu'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_mqbpbYCwAphARYVu'
 
 
 Run the C++ benchmark
@@ -917,14 +917,14 @@ maxLinkDim(psi) = 8000
 totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
 energy = -26.6763969237182
 
-Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_mqbpbYCwAphARYVu used for building C++ benchmark
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_mqbpbYCwAphARYVu used for building C++ benchmark
 
 Maximum dimension = 8000
 Total runtime = 6248.013639181 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_8000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_8000.txt
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_2d_conserve_ky
 
 Maximum bond dimension set to 8000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to false.
 
@@ -952,16 +952,16 @@ flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
 Maximum dimension = 8000
 Total runtime = 3576.720281587 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_8000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_8000.txt
 
 ######################################################################
 Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 8000, 4 BLAS threads, 1 block sparse threads, and splitblocks false.
 
-Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_1ULHLWfMaxt3gleb
-make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_1ULHLWfMaxt3gleb'
-g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
-g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
-make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_1ULHLWfMaxt3gleb'
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_1ULHLWfMaxt3gleb
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_1ULHLWfMaxt3gleb'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_1ULHLWfMaxt3gleb'
 
 
 Run the C++ benchmark
@@ -1045,14 +1045,14 @@ maxLinkDim(psi) = 8000
 totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
 energy = -26.67639693875653
 
-Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_1ULHLWfMaxt3gleb used for building C++ benchmark
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_1ULHLWfMaxt3gleb used for building C++ benchmark
 
 Maximum dimension = 8000
 Total runtime = 6429.761212232 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_8000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_8000.txt
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_2d_conserve_ky
 
 Maximum bond dimension set to 8000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to false.
 
@@ -1080,16 +1080,16 @@ flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
 Maximum dimension = 8000
 Total runtime = 3609.139245253 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_8000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_8000.txt
 
 ######################################################################
 Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 8000, 8 BLAS threads, 1 block sparse threads, and splitblocks false.
 
-Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_3IDKh0eGDc3NP2Hg
-make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_3IDKh0eGDc3NP2Hg'
-g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
-g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
-make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_3IDKh0eGDc3NP2Hg'
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_3IDKh0eGDc3NP2Hg
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_3IDKh0eGDc3NP2Hg'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_3IDKh0eGDc3NP2Hg'
 
 
 Run the C++ benchmark
@@ -1173,14 +1173,14 @@ maxLinkDim(psi) = 8000
 totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
 energy = -26.6763969387565
 
-Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_3IDKh0eGDc3NP2Hg used for building C++ benchmark
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_3IDKh0eGDc3NP2Hg used for building C++ benchmark
 
 Maximum dimension = 8000
 Total runtime = 6308.486172288 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_8000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_8000.txt
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_2d_conserve_ky
 
 Maximum bond dimension set to 9000, BLAS threads set to 1, block sparse threads set to 1, and splitblocks is set to false.
 
@@ -1208,16 +1208,16 @@ flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
 Maximum dimension = 9000
 Total runtime = 4994.081989576 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_9000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_9000.txt
 
 ######################################################################
 Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 9000, 1 BLAS threads, 1 block sparse threads, and splitblocks false.
 
-Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_rXAUedgCMj5czMq7
-make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_rXAUedgCMj5czMq7'
-g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
-g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
-make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_rXAUedgCMj5czMq7'
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_rXAUedgCMj5czMq7
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_rXAUedgCMj5czMq7'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_rXAUedgCMj5czMq7'
 
 
 Run the C++ benchmark
@@ -1301,14 +1301,14 @@ maxLinkDim(psi) = 9000
 totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
 energy = -26.67645688476741
 
-Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_rXAUedgCMj5czMq7 used for building C++ benchmark
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_rXAUedgCMj5czMq7 used for building C++ benchmark
 
 Maximum dimension = 9000
 Total runtime = 7482.606179837 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_9000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_9000.txt
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_2d_conserve_ky
 
 Maximum bond dimension set to 9000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to false.
 
@@ -1336,16 +1336,16 @@ flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
 Maximum dimension = 9000
 Total runtime = 4661.81486864 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_9000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_9000.txt
 
 ######################################################################
 Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 9000, 4 BLAS threads, 1 block sparse threads, and splitblocks false.
 
-Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_CjLIJmKsk8jMCHnS
-make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_CjLIJmKsk8jMCHnS'
-g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
-g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
-make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_CjLIJmKsk8jMCHnS'
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_CjLIJmKsk8jMCHnS
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_CjLIJmKsk8jMCHnS'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_CjLIJmKsk8jMCHnS'
 
 
 Run the C++ benchmark
@@ -1429,14 +1429,14 @@ maxLinkDim(psi) = 9000
 totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
 energy = -26.67645712107254
 
-Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_CjLIJmKsk8jMCHnS used for building C++ benchmark
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_CjLIJmKsk8jMCHnS used for building C++ benchmark
 
 Maximum dimension = 9000
 Total runtime = 7624.991858271 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_9000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_9000.txt
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_2d_conserve_ky
 
 Maximum bond dimension set to 9000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to false.
 
@@ -1464,16 +1464,16 @@ flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
 Maximum dimension = 9000
 Total runtime = 4451.491268566 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_9000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_9000.txt
 
 ######################################################################
 Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 9000, 8 BLAS threads, 1 block sparse threads, and splitblocks false.
 
-Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_YobqJ4eIs5sIIu4N
-make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_YobqJ4eIs5sIIu4N'
-g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
-g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
-make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_YobqJ4eIs5sIIu4N'
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_YobqJ4eIs5sIIu4N
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_YobqJ4eIs5sIIu4N'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_YobqJ4eIs5sIIu4N'
 
 
 Run the C++ benchmark
@@ -1557,14 +1557,14 @@ maxLinkDim(psi) = 9000
 totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
 energy = -26.67645712107255
 
-Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_YobqJ4eIs5sIIu4N used for building C++ benchmark
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_YobqJ4eIs5sIIu4N used for building C++ benchmark
 
 Maximum dimension = 9000
 Total runtime = 7494.511173367 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_9000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_9000.txt
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_2d_conserve_ky
 
 Maximum bond dimension set to 10000, BLAS threads set to 1, block sparse threads set to 1, and splitblocks is set to false.
 
@@ -1592,16 +1592,16 @@ flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
 Maximum dimension = 10000
 Total runtime = 6245.361527219 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_10000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_10000.txt
 
 ######################################################################
 Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 10000, 1 BLAS threads, 1 block sparse threads, and splitblocks false.
 
-Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_JYwktHeJTOnWcOJ9
-make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_JYwktHeJTOnWcOJ9'
-g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
-g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
-make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_JYwktHeJTOnWcOJ9'
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_JYwktHeJTOnWcOJ9
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_JYwktHeJTOnWcOJ9'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_JYwktHeJTOnWcOJ9'
 
 
 Run the C++ benchmark
@@ -1685,14 +1685,14 @@ maxLinkDim(psi) = 10000
 totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
 energy = -26.67649653672424
 
-Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_JYwktHeJTOnWcOJ9 used for building C++ benchmark
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_JYwktHeJTOnWcOJ9 used for building C++ benchmark
 
 Maximum dimension = 10000
 Total runtime = 8944.84141224 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_10000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_1/blocksparse_num_threads_1/maxdim_10000.txt
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_2d_conserve_ky
 
 Maximum bond dimension set to 10000, BLAS threads set to 4, block sparse threads set to 1, and splitblocks is set to false.
 
@@ -1720,16 +1720,16 @@ flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
 Maximum dimension = 10000
 Total runtime = 5282.643310977 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_10000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_10000.txt
 
 ######################################################################
 Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 10000, 4 BLAS threads, 1 block sparse threads, and splitblocks false.
 
-Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_cXabdJx4k5Zu5eXj
-make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_cXabdJx4k5Zu5eXj'
-g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
-g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
-make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_cXabdJx4k5Zu5eXj'
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_cXabdJx4k5Zu5eXj
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_cXabdJx4k5Zu5eXj'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_cXabdJx4k5Zu5eXj'
 
 
 Run the C++ benchmark
@@ -1813,14 +1813,14 @@ maxLinkDim(psi) = 10000
 totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
 energy = -26.67649681975914
 
-Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_cXabdJx4k5Zu5eXj used for building C++ benchmark
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_cXabdJx4k5Zu5eXj used for building C++ benchmark
 
 Maximum dimension = 10000
 Total runtime = 8964.305239443 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_10000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_4/blocksparse_num_threads_1/maxdim_10000.txt
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_conserve_ky
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_2d_conserve_ky
 
 Maximum bond dimension set to 10000, BLAS threads set to 8, block sparse threads set to 1, and splitblocks is set to false.
 
@@ -1848,16 +1848,16 @@ flux(ψ) = QN(("Ky",0,4),("Nf",32,-1),("Sz",0))
 Maximum dimension = 10000
 Total runtime = 5094.679754158 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_10000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_10000.txt
 
 ######################################################################
 Run C++ benchmark dmrg_2d_conserve_ky for bond dimension 10000, 8 BLAS threads, 1 block sparse threads, and splitblocks false.
 
-Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_DejXWJjeXpbKYhJO
-make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_DejXWJjeXpbKYhJO'
-g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
-g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
-make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_DejXWJjeXpbKYhJO'
+Compile the C++ benchmark in temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_DejXWJjeXpbKYhJO
+make: Entering directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_DejXWJjeXpbKYhJO'
+g++ -m64 -std=c++17 -fconcepts -fPIC -c -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable -o runbenchmark.o runbenchmark.cc
+g++ -m64 -std=c++17 -fconcepts -fPIC -I. -I'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6' -I/opt/intel/mkl/include -DITENSOR_USE_OMP -fopenmp -O2 -DNDEBUG -Wall -Wno-unknown-pragmas -Wno-unused-variable runbenchmark.o -o runbenchmark -L'/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/deps/itensor_v3.1.6/lib' -litensor -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/cm/shared/sw/pkg/vendor/intel-pstudio/2020-4/compilers_and_libraries_2020.4.304/linux/mkl/../compiler/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_rt -lmkl_core -liomp5 -lpthread -fopenmp
+make: Leaving directory `/mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_DejXWJjeXpbKYhJO'
 
 
 Run the C++ benchmark
@@ -1941,10 +1941,10 @@ maxLinkDim(psi) = 10000
 totalQN(psi) = QN({"K",0,4},{"Nf",32,-1},{"Sz",0})
 energy = -26.67649681975914
 
-Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/.tmp_DejXWJjeXpbKYhJO used for building C++ benchmark
+Cleaning up temporary directory /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/.tmp_DejXWJjeXpbKYhJO used for building C++ benchmark
 
 Maximum dimension = 10000
 Total runtime = 8792.802759764 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_10000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/c++/v3.1.6/bench_dmrg_2d_conserve_ky/blas_num_threads_8/blocksparse_num_threads_1/maxdim_10000.txt
 

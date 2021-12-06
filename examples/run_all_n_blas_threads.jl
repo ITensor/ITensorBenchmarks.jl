@@ -1,4 +1,4 @@
-using ITensorsBenchmarks
+using ITensorBenchmarks
 
 # Run all of the benchmarks over the range of BLAS threads blas_num_threads and write the results
 # By default, a verbose output is written to a log file

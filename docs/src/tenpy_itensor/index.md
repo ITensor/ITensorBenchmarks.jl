@@ -23,7 +23,7 @@ The BLAS and LAPACK distribution used for the C++, Julia, and Python calculation
 For the Julia ITensor benchmarks we used version 0.2.0 of ITensors.jl running on Julia version 1.6.1.
 For the TeNPy benchmark results we used TeNPy version 0.8.4.
 The benchmarks presented below have been made publicly available at:
-[https://github.com/ITensor/ITensorsBenchmarks.jl](https://github.com/ITensor/ITensorsBenchmarks.jl).
+[https://github.com/ITensor/ITensorBenchmarks.jl](https://github.com/ITensor/ITensorBenchmarks.jl).
 
 
 ## Dense DMRG Comparison
@@ -56,7 +56,7 @@ Another conclusion from the above study is that the significantly better perform
 
 ## Codes Used for the Benchmarks
 
-We have provided the codes used to produce the above benchmarks [at this link](https://github.com/ITensor/ITensorsBenchmarks.jl/tree/main/src/tenpy_itensor_comparison).
+We have provided the codes used to produce the above benchmarks [at this link](https://github.com/ITensor/ITensorBenchmarks.jl/tree/main/src/tenpy_itensor_comparison).
 
 Note that when running these codes, it is crucial that the Python NumPy implementation uses the same BLAS backend as the ITensor Julia setup. As mentioned, for the benchmarks presented above, we used Intel MKL as the BLAS for both codes.
 

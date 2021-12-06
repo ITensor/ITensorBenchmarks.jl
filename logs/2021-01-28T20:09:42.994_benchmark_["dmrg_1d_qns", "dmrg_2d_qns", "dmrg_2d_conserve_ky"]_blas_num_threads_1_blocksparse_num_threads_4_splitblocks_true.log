@@ -33,7 +33,7 @@ DMRG, 1D S=1 Heisenberg model
 N = 100, 5 sweeps
 Conserve total spin projection symmetry
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_1d_qns
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_1d_qns
 
 Maximum bond dimension set to 200, BLAS threads set to 1, block sparse threads set to 4, and splitblocks is set to true.
 
@@ -55,9 +55,9 @@ flux(ψ) = QN("Sz",0)
 Maximum dimension = 200
 Total runtime = 17.334256298 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_1d_qns/blas_num_threads_1/blocksparse_num_threads_4/splitblocks_true/maxdim_200.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_1d_qns/blas_num_threads_1/blocksparse_num_threads_4/splitblocks_true/maxdim_200.txt
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_1d_qns
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_1d_qns
 
 Maximum bond dimension set to 400, BLAS threads set to 1, block sparse threads set to 4, and splitblocks is set to true.
 
@@ -79,9 +79,9 @@ flux(ψ) = QN("Sz",0)
 Maximum dimension = 400
 Total runtime = 30.879704649 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_1d_qns/blas_num_threads_1/blocksparse_num_threads_4/splitblocks_true/maxdim_400.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_1d_qns/blas_num_threads_1/blocksparse_num_threads_4/splitblocks_true/maxdim_400.txt
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_1d_qns
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_1d_qns
 
 Maximum bond dimension set to 600, BLAS threads set to 1, block sparse threads set to 4, and splitblocks is set to true.
 
@@ -103,9 +103,9 @@ flux(ψ) = QN("Sz",0)
 Maximum dimension = 600
 Total runtime = 49.785865486 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_1d_qns/blas_num_threads_1/blocksparse_num_threads_4/splitblocks_true/maxdim_600.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_1d_qns/blas_num_threads_1/blocksparse_num_threads_4/splitblocks_true/maxdim_600.txt
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_1d_qns
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_1d_qns
 
 Maximum bond dimension set to 800, BLAS threads set to 1, block sparse threads set to 4, and splitblocks is set to true.
 
@@ -127,9 +127,9 @@ flux(ψ) = QN("Sz",0)
 Maximum dimension = 800
 Total runtime = 84.071482993 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_1d_qns/blas_num_threads_1/blocksparse_num_threads_4/splitblocks_true/maxdim_800.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_1d_qns/blas_num_threads_1/blocksparse_num_threads_4/splitblocks_true/maxdim_800.txt
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_1d_qns
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_1d_qns
 
 Maximum bond dimension set to 1000, BLAS threads set to 1, block sparse threads set to 4, and splitblocks is set to true.
 
@@ -151,7 +151,7 @@ flux(ψ) = QN("Sz",0)
 Maximum dimension = 1000
 Total runtime = 120.993757307 seconds
 
-Writing results to /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/data/julia/v0.1.36/bench_dmrg_1d_qns/blas_num_threads_1/blocksparse_num_threads_4/splitblocks_true/maxdim_1000.txt
+Writing results to /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/data/julia/v0.1.36/bench_dmrg_1d_qns/blas_num_threads_1/blocksparse_num_threads_4/splitblocks_true/maxdim_1000.txt
 
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -162,7 +162,7 @@ DMRG, 2D Hubbard model (U/t = 4)
 (Nx, Ny) = (8, 4), 10 sweeps
 Real space, periodic in the y-direction
 
-Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorsBenchmarks/src/bench_dmrg_2d_qns
+Benchmark located in path /mnt/home/mfishman/.julia/dev/ITensorBenchmarks/src/bench_dmrg_2d_qns
 
 Maximum bond dimension set to 1000, BLAS threads set to 1, block sparse threads set to 4, and splitblocks is set to true.
 

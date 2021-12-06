@@ -1,4 +1,4 @@
-using ITensorsBenchmarks
+using ITensorBenchmarks
 
 # Run all of the block sparse benchmarks using all of the available Julia threads and write the results
 # By default, a verbose output is written to a log file
