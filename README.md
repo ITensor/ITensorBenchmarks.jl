@@ -14,9 +14,7 @@ $ julia
 
 julia> ]
 
-pkg> add https://github.com/ITensor/ITensorBenchmarks.jl
-
-pkg> dev ITensorBenchmarks
+pkg> dev https://github.com/ITensor/ITensorBenchmarks.jl
 ```
 3. Install C++ ITensor with the instructions: http://www.itensor.org/docs.cgi?page=install&vers=cppv3. Install the desired version into the directory `~/.julia/dev/ITensorBenchmarks/deps/itensor_v#` where `#` is the version number, for example `3.1.6` (or use a custom location, which you will need to specify in the options when running the benchmarks). You can use the file in `~/.julia/dev/ITensorBenchmarks/deps/options.mk.sample` for your `options.mk`, which is the file that specifies the options for installing C++ ITensor. This `options.mk.sample` specifies the options for installing ITensor with Intel MKL. Here is an example:
 ```
