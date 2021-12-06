@@ -1,4 +1,4 @@
-module ITensorsBenchmarks
+module ITensorBenchmarks
 
 ENV["GKSwstype"]= "100"
 

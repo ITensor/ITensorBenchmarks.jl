@@ -1,11 +1,11 @@
-using Documenter, ITensorsBenchmarks
+using Documenter, ITensorBenchmarks
 
 #DocMeta.setdocmeta!(ITensors, :DocTestSetup, :(using ITensors); recursive=true)
 
-sitename = "ITensorsBenchmarks"
+sitename = "ITensorBenchmarks"
 
 settings = Dict(
-  :modules => [ITensorsBenchmarks],
+  :modules => [ITensorBenchmarks],
   :pages => [
     "Introduction" => "index.md",
     "TeNPy and ITensor Comparisons" => "tenpy_itensor/index.md",
